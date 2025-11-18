@@ -1,12 +1,9 @@
-// import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
-// import { AllEnterpriseModule, LicenseManager } from 'ag-grid-enterprise';
-// ModuleRegistry.registerModules([AllCommunityModule, AllEnterpriseModule]);
-
+// AG Grid Enterprise 설정
 import 'ag-grid-enterprise';
 import { ModuleRegistry } from 'ag-grid-community';
 import { LicenseManager, AllEnterpriseModule } from 'ag-grid-enterprise';
 
-/* 🔥 GitHub Pages / Vite 환경에서 AG Grid License 오류 방지 */
+/* 🔥 GitHub Pages / Vite 환경에서 라이선스 에러 방지 
 if (typeof window !== 'undefined') {
   try {
     LicenseManager.setLicenseKey(
@@ -14,19 +11,24 @@ if (typeof window !== 'undefined') {
     );
     ModuleRegistry.registerModules([AllEnterpriseModule]);
   } catch (e) {
-    console.error("AG Grid License error:", e);
+    console.error('AG Grid License Init Error:', e);
   }
-}
+}*/
 
-/* 스타일 import */
+/* 1️⃣ Polyfill */
 import 'react-app-polyfill/ie11';
+
+/* 2️⃣ 글로벌 스타일 */
 import './tailwind.css';
+
 import 'primereact/resources/themes/lara-light-cyan/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
+
 import '@components/aggrid/grid.css';
 import 'prismjs/themes/prism-coy.css';
+
 import './assets/layout/layout.scss';
 import './App.scss';
 import './index.css';
@@ -35,10 +37,11 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 
-/* 🔥 BrowserRouter는 절대 import 금지 */
+/* 🔥 GitHub Pages에서는 HashRouter만 사용 */
 import { HashRouter } from 'react-router-dom';
 
 import ScrollTop from './ScrollTop.jsx';
+
 import { createStore } from 'redux';
 import persistStore from 'redux-persist/es/persistStore';
 import { Provider } from 'react-redux';
@@ -50,14 +53,16 @@ const store = createStore(rootReducer);
 const persistor = persistStore(store);
 
 createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <PersistGate persistor={persistor}>
-      <HashRouter>
-        <ScrollTop />
-        <TabProvider>
-          <App />
-        </TabProvider>
-      </HashRouter>
-    </PersistGate>
-  </Provider>
+  <StrictMode>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <HashRouter>
+          <ScrollTop />
+          <TabProvider>
+            <App />
+          </TabProvider>
+        </HashRouter>
+      </PersistGate>
+    </Provider>
+  </StrictMode>
 );

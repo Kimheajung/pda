@@ -19,6 +19,21 @@ import {
   ImageRenderer,
 } from './CustomCellEditors';
 
+import { ModuleRegistry } from 'ag-grid-community';
+import { LicenseManager, AllEnterpriseModule } from 'ag-grid-enterprise';
+
+if (typeof window !== 'undefined') {
+  try {
+    LicenseManager.setLicenseKey(
+      'Using_this_{AG_Grid}_Enterprise_key_{AG-105090}_...'
+    );
+    ModuleRegistry.registerModules([AllEnterpriseModule]);
+  } catch (e) {
+    console.error('AG Grid License Error:', e);
+  }
+}
+
+
 const CustomAgGrid = forwardRef(
   (
     {
