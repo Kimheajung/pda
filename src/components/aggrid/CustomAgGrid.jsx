@@ -550,26 +550,28 @@ const CustomAgGrid = forwardRef(
       return [sumRow];
     }, [rowData, sumFields, pinnedBottomConfig]);
     return (
-      <AgGridReact
-        ref={gridRef}
-        rowData={rowData}
-        // columnDefs={colDefs}
-        columnDefs={enhancedColDefs}
-        columnTypes={columnTypes}
-        defaultColDef={handleDefaultColDef}
-        rowSelection={rowSelection}
-        theme={myTheme}
-        gridOptions={gridOptions}
-        onGridReady={handleGridReady}
-        onRowClicked={handleRowClicked}
-        onCellClicked={onCellClicked}
-        onSelectionChanged={handleSelectionChanged}
-        getMainMenuItems={getMainMenuItems}
-        // getContextMenuItems={getContextMenuItems}
-        pinnedBottomRowData={pinnedBottomRowData}
-        localeText={AG_GRID_LOCALE_KR}
-        {...restProps}
-      />
+      <div className="ag-theme-quartz">
+        <AgGridReact
+          ref={gridRef}
+          rowData={rowData}
+          // columnDefs={colDefs}
+          columnDefs={enhancedColDefs}
+          columnTypes={columnTypes}
+          defaultColDef={handleDefaultColDef}
+          rowSelection={rowSelection}
+          theme={myTheme}
+          gridOptions={gridOptions}
+          onGridReady={handleGridReady}
+          onRowClicked={handleRowClicked}
+          onCellClicked={onCellClicked}
+          onSelectionChanged={handleSelectionChanged}
+          getMainMenuItems={getMainMenuItems}
+          // getContextMenuItems={getContextMenuItems}
+          pinnedBottomRowData={pinnedBottomRowData}
+          localeText={AG_GRID_LOCALE_KR}
+          {...restProps}
+        />
+      </div>
     );
   }
 );

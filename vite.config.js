@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   base: '/green/',
 
+
   plugins: [
     react(),
     tailwindcss(),
@@ -56,4 +57,8 @@ export default defineConfig({
   optimizeDeps: {
     include: ['ag-grid-react', 'ag-grid-community'],
   },
+
+  cssMinify: true,
+  assetsDir: '',
+  
 });
