@@ -550,7 +550,7 @@ const CustomAgGrid = forwardRef(
       return [sumRow];
     }, [rowData, sumFields, pinnedBottomConfig]);
     return (
-      <div className="ag-theme-quartz" style={{ height: '100px',background:"blue" }}>
+      <div className="ag-theme-quartz" style={{ height: '100vh',background:"blue" }}>
         <AgGridReact
           ref={gridRef}
           rowData={rowData}
