@@ -11,10 +11,7 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   base: '/green/',
 
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
 
   resolve: {
     alias: {
@@ -31,26 +28,15 @@ export default defineConfig({
 
   build: {
     sourcemap: false,
+
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          // ⚠️ AG Grid는 chunk 분리하면 오류 발생 → 제거!
-
-          // PrimeReact 계열 분리 (안전)
-          if (
-            id.includes('primereact') ||
-            id.includes('primeflex') ||
-            id.includes('primeicons')
-          )
-            return 'prime';
-
-          // React + ReactDOM 분리 (안전)
-          if (id.includes('react') || id.includes('react-dom'))
-            return 'vendor';
-        },
+        manualChunks: {},   // ← 🔥 chunk splitting 완전 OFF
       },
     },
-    chunkSizeWarningLimit: 1000,
+
+    // 경고 완화
+    chunkSizeWarningLimit: 5000,
   },
 
   css: {
@@ -64,5 +50,5 @@ export default defineConfig({
 
   optimizeDeps: {
     include: ['ag-grid-react', 'ag-grid-community'],
-  },
+  }
 });
