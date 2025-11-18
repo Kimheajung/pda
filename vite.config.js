@@ -12,12 +12,10 @@ export default defineConfig({
   /*  플러그인
       테일윈드
    */
+  base: '/green/',   // git 저장소명으로 변경!
   plugins: [react(), tailwindcss()],
 
-   server: {
-    host: true,   // ★ 외부 접속 허용 (모바일 접속 가능)
-    port: 5173,   // 원하는 포트 (기본 5173)
-  },
+
 
   /*  경로 별칭
       '../../src/api/apiService' => '@api/apiService' 변경해서 사용
