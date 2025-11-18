@@ -9,7 +9,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
-  // GitHub Pages 배포 경로
   base: '/green/',
 
   plugins: [
@@ -17,7 +16,6 @@ export default defineConfig({
     tailwindcss(),
   ],
 
-  // 경로 별칭
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -36,12 +34,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // AG Grid 안정 분리(필수)
-          if (id.includes('ag-grid-react')) return 'aggrid-react';
-          if (id.includes('ag-grid-enterprise')) return 'aggrid-enterprise';
-          if (id.includes('ag-grid-community')) return 'aggrid-community';
+          // ⚠️ AG Grid는 chunk 분리하면 오류 발생 → 제거!
 
-          // PrimeReact 계열 분리
+          // PrimeReact 계열 분리 (안전)
           if (
             id.includes('primereact') ||
             id.includes('primeflex') ||
@@ -49,7 +44,7 @@ export default defineConfig({
           )
             return 'prime';
 
-          // React & ReactDOM 분리
+          // React + ReactDOM 분리 (안전)
           if (id.includes('react') || id.includes('react-dom'))
             return 'vendor';
         },
