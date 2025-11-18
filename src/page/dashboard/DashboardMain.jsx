@@ -29,7 +29,7 @@ const DashboardMain = (props) => {
       </style>
 
       <div className="flex justify-center items-center w-full h-full">
-        <img src="/images/main.png" alt="main" className="max-w-none" />
+        <img src="/green/images/main.png" alt="main" className="max-w-none"  />
       </div>
     </>
   );
