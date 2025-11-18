@@ -7,6 +7,10 @@ import 'react-app-polyfill/ie11';
 /* 2️⃣ 글로벌 스타일 */
 import './tailwind.css';
 
+/*ag 그리드 css */
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";  // 너가 쓰는 테마 기준
+
 import 'primereact/resources/themes/lara-light-cyan/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeflex/primeflex.css';
