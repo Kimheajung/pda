@@ -10,13 +10,14 @@ import {
   ValidationModule,
   AllCommunityModule,
 } from 'ag-grid-community';
+{/* 
 import {
   ColumnMenuModule,
   ContextMenuModule,
   MultiFilterModule,
   SetFilterModule,
 } from 'ag-grid-enterprise';
-import { AllEnterpriseModule } from 'ag-grid-enterprise';
+import { AllEnterpriseModule } from 'ag-grid-enterprise';*/}
 import { useSelector } from 'react-redux';
 import { Get } from '../../api/CommonCall';
 import Loading from '../../util/Loading';
