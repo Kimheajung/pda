@@ -163,6 +163,11 @@
     align-items: center;
     justify-content: space-between;
 
+    .NumText{
+        font-weight: 400;
+        margin-right:1rem;
+        color:#7E84A3;
+    }
     .totalNumText{
         font-weight: 600;
         span {color: $color-primary;}

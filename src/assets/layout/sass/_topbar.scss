@@ -36,7 +36,10 @@
             height: 12px;
             margin-left: .5rem;
             margin-right: .5rem;
-            margin-top : -8px;
+            margin-top : -6px;
+        }
+         span:nth-of-type(2) {
+            font-size: 1.214rem;
         }
 
         &:focus {

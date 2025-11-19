@@ -184,7 +184,7 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                 <Link to="/" className="layout-topbar-logo">
                     <span>Hugreen</span>
                     <img src={props.layoutColorMode === 'light' ? 'assets/layout/images/logo-white.svg' : 'assets/layout/images/logo-white.svg'} alt="logo"/>
-                    <span>건자재시스템</span>
+                    <span>건자재 시스템</span>
                 </Link>
 
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 layout-topbar-menu lg:flex origin-top">
@@ -285,10 +285,7 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                 <div className="megamenu-wrapper flex flex-row justify-center p-4 gap-12 text-white">
                     {menuData.map((menu) => (
                         <div key={menu.label} className="megamenu-column">
-                        {/* 🔹 1depth */}
                         <div className="megamenu-title">{menu.label}</div>
-
-                        {/* 🔹 2depth */}
                         <div className="megamenu-items">
                             {menu.items.map((item) => (
                             <Link key={item.label} to={item.url} className="megamenu-link">
@@ -302,7 +299,7 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                 </div>
             </CSSTransition>
             )}
-            
+
 
         </div>
     );

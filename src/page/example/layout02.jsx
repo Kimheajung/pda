@@ -206,6 +206,7 @@ const Layout02 = () => {
             {/* 공통 : 그리드 상단 버튼  */}
             <div className="hugreen_aggridbtn_hwrap">
                <div className="flex">
+                  <span className="NumText"> 조회결과</span>
                   <p class="totalNumText" >총&nbsp;<span>18,203</span>건</p>
                </div>
                <div className="flex gap-2"> 

@@ -12,6 +12,7 @@ import { Checkbox } from "primereact/checkbox";
 import { Dialog } from 'primereact/dialog';
 import { FileUpload } from 'primereact/fileupload';
 import { Calendar } from 'primereact/calendar';
+import { Tag } from 'primereact/tag';
 
 
 import CustomAgGrid from '@components/aggrid/CustomAgGrid';
@@ -112,6 +113,7 @@ const Example02 = () => {
  const [visible2, setVisible2] = useState(false);
  const [visible3, setVisible3] = useState(false);
  const [visible4, setVisible4] = useState(false);
+ const [visible5, setVisible5] = useState(false);
  const footerContent = (
         <div className="gap-2">
             <Button label="취소"  onClick={() => setVisible(false)} outlined className='mr-2'/>
@@ -119,12 +121,18 @@ const Example02 = () => {
         </div>
     );
 
-     const footerContent4 = (
-        <div className="gap-2">
-            <Button label="취소"  onClick={() => setVisible4(false)} outlined className='mr-2'/>
-            <Button label="적용"  onClick={() => setVisible4(false)} autoFocus />
-        </div>
-    );
+  const footerContent4 = (
+    <div className="gap-2">
+        <Button label="취소"  onClick={() => setVisible4(false)} outlined className='mr-2'/>
+        <Button label="적용"  onClick={() => setVisible4(false)} autoFocus />
+    </div>
+  );
+  const footerContent5 = (
+    <div className="gap-2">
+        <Button label="취소"  onClick={() => setVisible5(false)} outlined className='mr-2'/>
+        <Button label="적용"  onClick={() => setVisible5(false)} autoFocus />
+    </div>
+  );
 
 
   return (
@@ -172,32 +180,33 @@ const Example02 = () => {
          
 
             {/* 공통 : 그리드 상단 버튼  */}
-            <div className="guidetitle mt-10">3.총건수 + 버튼 </div>
+            <div className="guidetitle mt-10">3.그리드 상단 총건수 + 버튼 </div>
             <div className="hugreen_aggridbtn_hwrap">
               <div className="flex">
                 <p class="totalNumText" >총&nbsp;<span>18,203</span>건</p>
               </div>
                <div className="flex gap-2"> 
                 <Button label="저장" className="btn-28-intable" severity="secondary" outlined /> 
-                <Button label="삭제" className="btn-28-sec" severity="secondary" outlined /> 
+                <Button label="엑셀 다운로드" className="btn-28-sec" severity="secondary" outlined /> 
                 <Button label="검색" className="btn-28-master" severity="secondary" outlined />
               </div>
             </div>
         </div>
 
 
-        
-
-
-
-
         {/* 공통 : ag그리드  */}
         <div className="guidetitle mt-10">4.버튼 재정의 </div>
-        <div className="flex">
+        <div className="flex flex-wrap gap-10">
             <div className="flex gap-2"> 
               <Button label="저장" className="btn-28-intable" severity="secondary" outlined /> 
-              <Button label="삭제" className="btn-28-sec" severity="secondary" outlined /> 
+              <Button label="엑셀 다운로드" className="btn-28-sec" severity="secondary" outlined /> 
               <Button label="검색" className="btn-28-master" severity="secondary" outlined />
+            </div>
+            <div className="flex gap-2"> 
+              <Tag severity="contrast" value="대리점"></Tag>
+              <Tag severity="success" value="본사"></Tag>
+              <Tag severity="info" value="협력사"></Tag>
+              <Tag severity="secondary" value="관리자"></Tag>
             </div>
         </div>  
 
@@ -273,31 +282,101 @@ const Example02 = () => {
 
          <div className="guidetitle mt-10">6.모달정의 resizable=false(모달사이즈 고정) / 드래그앤드랍=가능 / width와 height을 직접조절  </div>
         <div className=" flex flex-wrap gap-4">
-            <Button label="1.기본 그리드 모달팝업" onClick={() => setVisible(true)} />
+            <Button label="1.모달 - 그리드" onClick={() => setVisible(true)} />
             <Dialog header="사용자정보 상세조회" visible={visible} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => {if (!visible) return; setVisible(false); }} footer={footerContent}>
+               {/* 공통 : ag그리드  */}
+                <div className="flex flex-wrap w-full">
+                  
+                  {/* 공통 : 그리드 상단 버튼  */}
+                  <div className="hugreen_aggridbtn_hwrap">
+                    <div className="flex">
+                        <span className="NumText"> 조회결과</span>
+                        <p className="totalNumText"> 총&nbsp;<span>18,203</span>건</p>
+                    </div>
+                    {/*  필요시 */}
+                    <div className="flex gap-2"> 
+                      <Button label="확인" className="btn-28-sec" severity="secondary" outlined /> 
+                    </div>
+                  </div>
+                  {/* 공통 : 그리드 - 모달은 vh를 작성해야 함!  */}
+                  <div className="hugreen_aggrid_hwrap" style={{height: "40vh"}}>
+                    <CustomAgGrid
+                        gridId="grid1" // 필수 입력
+                        rowId="ROW_ID" // 필수 입력
+                        ref={gridRef} // 필수 입력
+                        rowData={rowData} // 필수 입력
+                        colDefs={colDefs} // 필수 입력
+                        overrideRowClicked={() => {
+                          return null;
+                        }}
+                        overrideRowSelection={() => {
+                          return null;
+                        }}
+                        onGridReady={(params) => params.api.autoSizeAllColumns()}
+                        // 필요 시 옵션 추가
+                      />
+                  </div>
+                  
+                </div>
+            </Dialog>  
+
+             <Button label="2.모달 (검색 + 그리드)" onClick={() => setVisible5(true)} />
+            <Dialog header="2.모달" visible={visible5} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => setVisible5(false)} footer={footerContent}>
                 {/* 공통 : ag그리드  */}
-                <div className="hugreen_aggrid_hwrap" style={{ height: '50vh' }}>
-                  <CustomAgGrid
-                      gridId="grid1" // 필수 입력
-                      rowId="ROW_ID" // 필수 입력
-                      ref={gridRef} // 필수 입력
-                      rowData={rowData} // 필수 입력
-                      colDefs={colDefs} // 필수 입력
-                      overrideRowClicked={() => {
-                        return null;
-                      }}
-                      overrideRowSelection={() => {
-                        return null;
-                      }}
-                      onGridReady={(params) => params.api.autoSizeAllColumns()}
-                      // 필요 시 옵션 추가
-                    />
+                <div className="flex flex-wrap w-full">
+                  <div className="hugreen_searchwrap" >
+                    <div className="flex w-[90%]">
+                      <div className="flex w-full">
+                            <div className="grid-searchwrap">
+                              <div className="row">
+                                <div className="th"> <label for="firstname5">현장선택</label></div>
+                                <div className="td">
+                                  <Calendar value={date} className="w-full" onChange={(e) => setDate(e.value)} showIcon /> 
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div className="flex">
+                      <Button label="검색" text />
+                    </div>
+                  </div>
+                  {/* 공통 : 그리드 상단 버튼  */}
+                  <div className="hugreen_aggridbtn_hwrap">
+                    <div className="flex">
+                        <span className="NumText"> 조회결과</span>
+                        <p class="totalNumText" >총&nbsp;<span>18,203</span>건</p>
+                    </div>
+                    {/*  필요시 */}
+                    <div className="flex gap-2"> 
+                      <Button label="필요시 버튼영역" className="btn-28-sec" severity="secondary" outlined /> 
+                    </div>
+                  </div>
+                  {/* 공통 : 그리드 - 모달은 vh를 작성해야 함!  */}
+                  <div className="hugreen_aggrid_hwrap" style={{height: "40vh"}}>
+                    <CustomAgGrid
+                        gridId="grid1" // 필수 입력
+                        rowId="ROW_ID" // 필수 입력
+                        ref={gridRef} // 필수 입력
+                        rowData={rowData} // 필수 입력
+                        colDefs={colDefs} // 필수 입력
+                        overrideRowClicked={() => {
+                          return null;
+                        }}
+                        overrideRowSelection={() => {
+                          return null;
+                        }}
+                        onGridReady={(params) => params.api.autoSizeAllColumns()}
+                        // 필요 시 옵션 추가
+                      />
+                  </div>
+                  
                 </div>
             </Dialog>  
 
 
-            <Button label="2.상세화면 타입1 모달" onClick={() => setVisible2(true)} />
-            <Dialog header="상세화면" visible={visible2} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => setVisible2(false)} footer={footerContent}>
+            <Button label="3.모달 - 상세화면" onClick={() => setVisible2(true)} />
+            <Dialog header="3.상세화면" visible={visible2} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => setVisible2(false)} footer={footerContent}>
                 
                 {/* 공통 : ag그리드  */}
                 <div className="flex w-full" style={{ height: '40vh' }}>
@@ -327,8 +406,8 @@ const Example02 = () => {
             </Dialog> 
 
 
-            <Button label="3.상세화면 타입2 모달" onClick={() => setVisible3(true)} />
-            <Dialog header="사용자정보 상세조회" visible={visible3} modal={false} resizable={false}  className="user-dialog" onHide={() => setVisible3(false)} footer={footerContent}>
+            <Button label="4.모달 -  상세+입력 MIX형" onClick={() => setVisible3(true)} />
+            <Dialog header="4.사용자정보 상세조회" visible={visible3} modal={false} resizable={false}  className="user-dialog" onHide={() => setVisible3(false)} footer={footerContent}>
                 
                 {/* 공통 : ag그리드  */}
                 <div className="flex w-full">
@@ -359,7 +438,15 @@ const Example02 = () => {
                   </div>
             </Dialog>
             
-            <div className='flex flex-wrap gap-2'>
+            
+          
+        </div> 
+
+
+
+      <div className="guidetitle mt-10">8.파일 업로드 </div>
+        <div className=" flex">
+         <div className='flex flex-wrap gap-2'>
               <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>
               <Button label="찾아보기" className="btn-32-intable" severity="secondary" outlined onClick={() => setVisible4(true)}/> 
               <Dialog header="공통-파일첨부" visible={visible4} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => setVisible4(false)} footer={footerContent4}>
@@ -370,12 +457,10 @@ const Example02 = () => {
                   </div>
               </Dialog>  
             </div>
-           
-
-
-
-
         </div> 
+
+
+
 
 
       

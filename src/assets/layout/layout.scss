@@ -144,7 +144,7 @@ ol, ul {padding-left: 0rem !important;}
 .p-dialog .p-dialog-header {
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
-    padding: 2rem 1.5rem 1.5rem 1.5rem;}
+    padding: 2rem 1.5rem .5rem 1.5rem;}
 
 .p-overlaypanel { --overlayArrowLeft: -9999px !important;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12) !important; 
@@ -317,10 +317,26 @@ ol, ul {padding-left: 0rem !important;}
 
 /* tag 재정의 */
 .p-tag{
- background-color: #DFE6F9 !important;
  height: 18px !important;
+ border-radius: 4px !important;
+}
+.p-tag.p-tag-success{
+ background-color: #DFE6F9 !important; //본사
+ color: #8390b1 !important;
+}
+.p-tag.p-tag-info{
+ background-color: #cfeced !important; //협력사
+ color: #709b9d !important;
+}
+.p-tag.p-tag-contrast{
+ background-color: #d9ebef !important; //대리점
  color: #6B8DE0 !important;
 }
+.p-tag.p-tag-secondary{
+ background-color: #debbdd !important; //관리자
+ color: #aa7ca9 !important;
+}
+
 
 
 /* 메인 데시보드에서만 사이드바 숨김처리 */

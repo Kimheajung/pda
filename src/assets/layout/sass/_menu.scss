@@ -157,15 +157,14 @@
       background-color: #eee;
     }
 
-
     li:first-child::after {
       content: '';
       position: absolute;
       left: 0.75rem;
       top: 0;
-      height: 40%;
+      height: 16px;
       width: 1px;
-      background-color: white; 
+      background-color: #fff; 
     }
 
     li {
@@ -191,6 +190,11 @@
         background-color: red;
       }
 
+      &:hover::before {
+       // background-color: red !important; // 원하는 색상
+        background-color: var(--primary-color) !important;
+        transform: scale(1.3) !important;
+      }
 
       > .layout-menuitem-root-text {
         cursor: pointer;
@@ -206,7 +210,9 @@
 
         &:hover {
           background: var(--surface-hover);
+          color: #333 !important;
         }
+
       }
 
       ul {
@@ -234,6 +240,8 @@
       background-color: #fff; 
     }
   }
+
+
 
   .layout-submenu-wrapper-enter {
     max-height: 0;
