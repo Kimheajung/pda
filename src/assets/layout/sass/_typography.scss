@@ -24,7 +24,7 @@ h2 {
     text-overflow: ellipsis !important;
     //max-width: 26rem !important;
     @media (max-width: 768px) {
-        width:280px !important;
+        max-width:280px !important;
     }
 }
 
