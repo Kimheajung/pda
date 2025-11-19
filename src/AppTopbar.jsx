@@ -14,7 +14,7 @@ export const AppTopbar = (props) => {
 const topMenus = [
   { label: "01.컴포넌트", path: "/example02" },
   { label: "02.레이아웃", path: "/layout01" },
-  { label: "03.path목록", path: "/layout07" },   // 혜정의 path 목록 페이지
+  { label: "03.path목록", path: "/layout07" },   
   { label: "04.그리드샘플", path: "/sample00" }
 ];
 
@@ -24,7 +24,7 @@ const topMenus = [
   //oerlay 패널
   const op = useRef(null);
 
-// ✅ 메가메뉴 관련 상태 추가
+//  메가메뉴 관련 상태 추가
  const [megaMenuVisible, setMegaMenuVisible] = useState(false); 
   const menuData = [
   {
@@ -302,11 +302,9 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                 </div>
             </CSSTransition>
             )}
-
+            
 
         </div>
-
-
     );
 }
 

@@ -204,9 +204,19 @@ ol, ul {padding-left: 0rem !important;}
 // splitter
 .p-splitter {border: 0px solid #e5e7eb !important; border-radius: 0px !important;}
 .p-splitter-horizontal > .p-splitter-gutter {margin: 0 1rem !important;}
-.p-splitter-vertical > .p-splitter-gutter {margin: 1rem 0 !important;}
+.p-splitter-vertical > .p-splitter-gutter {margin: 1rem 0 !important; }
 .p-splitter .p-splitter-gutter .p-splitter-gutter-handle { background: #C2CAD7; }
 .p-splitter .p-splitter-gutter { background: #EFF1F5;}
+
+@media (max-width: 768px) {
+  .p-splitter.p-splitter-vertical .p-splitter-panel {
+    margin-bottom: 3rem;
+  }
+  .p-splitter.p-splitter-vertical .p-splitter-panel:last-child {
+    margin-bottom: 4rem;
+  }
+}
+
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* ag그리드 스타일 재정의 */
@@ -365,4 +375,56 @@ ol, ul {padding-left: 0rem !important;}
       }
     }
   }
+}
+
+@media (max-width: 768px) {
+
+  /* thead 완전 숨김 */
+  .table-basic thead {
+    display: none !important;
+  }
+
+  /* table을 block 형태로 전환해야 td 스타일이 먹음 */
+  .table-basic,
+  .table-basic tbody,
+  .table-basic tr {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* tr 사이 간격 */
+  .table-basic tbody tr {
+    margin-bottom: 12px !important;
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.05);
+    border: 1px solid #D5D5D5;
+  }
+
+  /* td가 block이라 왼쪽으로 쏠리는 문제 해결 → flex 양쪽 정렬 */
+  .table-basic td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 2px 6px !important;
+    font-size: 1.25rem !important;
+    width: 100%;
+    color: #333;
+    border: none !important;
+  }
+
+  
+  .table-basic td:nth-child(4),
+  .table-basic td:nth-child(5) {
+    display: none !important;
+  }
+
+  /* 오른쪽 정렬 td도 동일하게 */
+  .table-basic td.text-right {
+    justify-content: space-between !important;
+    font-size: 1rem !important;
+  }
+
+
 }
