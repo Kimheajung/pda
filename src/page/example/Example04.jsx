@@ -152,8 +152,9 @@ const Example04 = () => {
                        </div>
                      </div>
               </div>
-               <div className="flex">
-                <Button label="검색" text />
+              
+              <div className="flex search-btn-wrap">
+                <Button label="검색" text  className="search-btn"/>
               </div>
             </div>
 
@@ -185,8 +186,8 @@ const Example04 = () => {
                      </div>
 
               </div>
-               <div className="flex">
-                <Button label="검색" text />
+              <div className="flex search-btn-wrap">
+                <Button label="검색" text  className="search-btn"/>
               </div>
             </div>
             
@@ -221,8 +222,8 @@ const Example04 = () => {
                      </div>
 
               </div>
-               <div className="flex">
-                <Button label="검색" text />
+              <div className="flex search-btn-wrap">
+                <Button label="검색" text  className="search-btn"/>
               </div>
             </div>
 
@@ -262,8 +263,8 @@ const Example04 = () => {
                      </div>
 
               </div>
-               <div className="flex">
-                <Button label="검색" text />
+              <div className="flex search-btn-wrap">
+                <Button label="검색" text  className="search-btn"/>
               </div>
             </div>
 
@@ -326,8 +327,8 @@ const Example04 = () => {
                      </div>
 
               </div>
-               <div className="flex">
-                <Button label="검색" text />
+              <div className="flex search-btn-wrap">
+                <Button label="검색" text  className="search-btn"/>
               </div>
             </div>
 

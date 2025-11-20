@@ -10,6 +10,9 @@ import { Dropdown } from 'primereact/dropdown';
 import { RadioButton } from 'primereact/radiobutton';
 import { FileUpload } from 'primereact/fileupload';
 import { Dialog } from 'primereact/dialog';
+import { Editor } from 'primereact/editor';
+import { Calendar } from 'primereact/calendar';
+
 
 import CustomAgGrid from '@components/aggrid/CustomAgGrid';
 import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
@@ -17,7 +20,10 @@ import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
 
 
 const Layout03 = () => {
+  /* 달력 */
+  const [date, setDate] = useState(null);
 
+ const [text, setText] = useState('');
   /* 즐겨찾기 아이콘  */
   const [filled, setFilled] = useState(false);
 
@@ -144,7 +150,7 @@ const Layout03 = () => {
              <div className="dtv-info-grid dtv-info-grid--2col">
                 <div className="row">
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
                 <div className="row">
@@ -160,14 +166,22 @@ const Layout03 = () => {
                 <div className="row">
                   <div className="th">내용</div>
                   <div className="td">
-                    <textarea className="p-inputtextarea w-full h-[180px]" placeholder="텍스트를 입력하세요" data-pc-name="inputtextarea" data-pc-section="root"></textarea>
+                    <textarea className="p-inputtextarea w-full h-[180px]" placeholder="입력해주세요" data-pc-name="inputtextarea" data-pc-section="root"></textarea>
                   </div>
                 </div>
+
+                <div className="row">
+                   <div className="th">내용작성</div>
+                  <div className="td w-full">
+                    <Editor value={text} className="flex-wrap w-full"  onTextChange={(e) => setText(e.htmlValue)}  />
+                  </div>
+                </div>
+
                  <div className="row">
                   <div className="th">첨부파일</div>
                   <div className="td">
                     <div className='flex gap-2'>
-                      <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>
+                      <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>
                       <Button label="찾아보기" className="btn-32-intable" severity="secondary" outlined onClick={() => setVisible(true)}/> 
                       <Dialog header="공통-파일첨부" visible={visible} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => {if (!visible) return; setVisible(false); }} footer={footerContent}>
                           {/* 공통 : ag그리드  */}
@@ -190,9 +204,9 @@ const Layout03 = () => {
              <div className="dtv-info-grid dtv-info-grid--4col">
                 <div className="row">
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
                 <div className="row">
@@ -214,7 +228,7 @@ const Layout03 = () => {
 
                 <div className='row'>                  
                   <div className="th">조회수</div>
-                  <div className="td merge-3"><InputText className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td merge-3"><InputText className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
 
@@ -229,11 +243,11 @@ const Layout03 = () => {
              <div className="dtv-info-grid dtv-info-grid--6col">
                 <div className="row">
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
                 <div className="row">
@@ -252,7 +266,7 @@ const Layout03 = () => {
                       </IconField>
                   </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
               </div>
@@ -265,14 +279,14 @@ const Layout03 = () => {
              <div className="dtv-info-grid dtv-info-grid--6col">
                 <div className="row">
                   <div className="th">협력업체 기본자재코드</div>
-                  <div className="td merge-3"><InputText value={value} className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td merge-3"><InputText value={value} className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
                  <div className="row">
                   <div className="th">제목</div>
-                  <div className="td merge-5"><InputText value={value} className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td merge-5"><InputText value={value} className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
                 <div className="row">
@@ -291,7 +305,7 @@ const Layout03 = () => {
                       </IconField>
                   </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
 
@@ -307,13 +321,19 @@ const Layout03 = () => {
                 <div className="row">
                   <div className="th required">협력업체 기본자재</div>
                   <div className="td merge-3"> <div className="span">(주)금호화확기술연구소 대전지사</div>  </div>
-                  <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="th">기간</div>
+                  <div className="td">
+                     <Calendar value={date} className="w-full" onChange={(e) => setDate(e.value)} showIcon /> 
+                      <span className='p-1'> - </span>
+                    <Calendar value={date} className="w-full" onChange={(e) => setDate(e.value)} showIcon />   
+                  </div>
                 </div>
 
                  <div className="row">
                   <div className="th">제목</div>
-                  <div className="td merge-5"><InputText value={value} className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td merge-5">
+                    <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>                    
+                  </div>
                 </div>
 
                 <div className="row">
@@ -329,7 +349,7 @@ const Layout03 = () => {
                       </IconField>
                   </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  </div>
+                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
 

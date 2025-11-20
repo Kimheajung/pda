@@ -14,6 +14,8 @@ import { FileUpload } from 'primereact/fileupload';
 import { Calendar } from 'primereact/calendar';
 import { Tag } from 'primereact/tag';
 
+import CodeBox from "@/components/form/CodeBox";
+
 
 import CustomAgGrid from '@components/aggrid/CustomAgGrid';
 import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
@@ -108,6 +110,7 @@ const Example02 = () => {
       },
     ]);
 
+
   /* 다이얼로그 팝업 */
  const [visible, setVisible] = useState(false);
  const [visible2, setVisible2] = useState(false);
@@ -173,16 +176,17 @@ const Example02 = () => {
           </p>
         </Sidebar>
 
-        <div className="guidetitle mt-10">2.검색영역 정의 </div>
+        
         {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
         <div className="hugreen_grid flex-1 flex flex-wrap md:flex-row">
 
          
 
             {/* 공통 : 그리드 상단 버튼  */}
-            <div className="guidetitle mt-10">3.그리드 상단 총건수 + 버튼 </div>
+            <div className="guidetitle mt-10">2.그리드 상단 총건수 + 버튼 </div>
             <div className="hugreen_aggridbtn_hwrap">
               <div className="flex">
+                <span className="NumText"> 조회결과</span>
                 <p class="totalNumText" >총&nbsp;<span>18,203</span>건</p>
               </div>
                <div className="flex gap-2"> 
@@ -228,6 +232,26 @@ const Example02 = () => {
                       <InputText placeholder="입력해주세요" />
                   </IconField>
                 </div>
+            </div>
+
+
+            {/* 코드카피 */}
+            <div className='flex flex-wrap w-full'>
+               <CodeBox
+                code={`
+1. 기본 default
+<label for="firstname5" class="p-sr-only">기본 input </label>
+<InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  
+
+2. input + search아이콘
+<label for="firstname5" class="p-sr-only">검색아이콘 input</label>
+<IconField iconPosition="right">
+<InputIcon className="pi pi-search"> </InputIcon>
+<InputText placeholder="입력해주세요" />
+</IconField>
+
+                  `}
+              />
             </div>
 
         </div> 
@@ -337,8 +361,8 @@ const Example02 = () => {
                             </div>
                           </div>
                     </div>
-                    <div className="flex">
-                      <Button label="검색" text />
+                    <div className="flex search-btn-wrap">
+                      <Button label="검색" text  className="search-btn"/>
                     </div>
                   </div>
                   {/* 공통 : 그리드 상단 버튼  */}

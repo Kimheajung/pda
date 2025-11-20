@@ -95,6 +95,20 @@ ol, ul {padding-left: 0rem !important;}
     background-color: #fff !important;
 }
 
+.ql-toolbar.ql-snow{
+  padding: 4px !important;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.ql-container.ql-snow {
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.ql-editor{
+  height: 10rem !important;
+}
+
 .p-datepicker-trigger{
   position: absolute;
   right:0;
@@ -402,6 +416,9 @@ ol, ul {padding-left: 0rem !important;}
     }
   }
 }
+
+
+
 
 @media (max-width: 768px) {
 
