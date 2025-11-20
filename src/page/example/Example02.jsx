@@ -145,12 +145,12 @@ const Example02 = () => {
   // 검색영역 폼 
   const SearchForm = ({ value, setValue, selectedCity, setSelectedCity, cities }) => (
     <div className="flex w-full">
-      <div className="grid-searchwrap grid-searchwrap--6col">
+      <div className="grid-searchwrap grid-searchwrap--2col">
       
         <div className="row">
           <div className="th"> <label for="firstname5">오더일자</label></div>
           <div className="td">
-            <InputText value={value} onChange={(e) => setValue(e.target.value)} className="w-full" placeholder="선택해주세요"/>  
+            <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  
           </div>
         </div>
         
@@ -178,7 +178,12 @@ const Example02 = () => {
             className: " no-header",
             header: null,              // 헤더 제거
             closable: false,           // X 버튼 제거
-            message: '찾으시는 데이터가 없습니다. 그래도 그리드에 저장하시겟습니까?',
+            message: (
+              <div className="leading-relaxed text-center">
+                찾으시는 데이터가 없습니다.<br/>
+                그래도 그리드에 저장하시겠습니까?
+              </div>
+            ),
             defaultFocus: 'accept',
             accept,            
             reject,
@@ -191,7 +196,11 @@ const Example02 = () => {
             className: " no-header",
             header: null,              // 헤더 제거
             closable: false,           // X 버튼 제거
-            message: '삭제하시겠습니까 설정이 저장됩니다.',
+            message: (
+              <div className="leading-relaxed text-center">
+                삭제하시겠습니까 설정이 저장됩니다.
+              </div>
+            ),
             defaultFocus: 'reject',
             acceptClassName: 'accept',
             accept,
@@ -452,40 +461,44 @@ const Example02 = () => {
             <Dialog header="2.모달" visible={visible5} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => setVisible5(false)} footer={footerContent}>
                 {/* 공통 : ag그리드  */}
                 <div className="flex flex-wrap w-full">
-                  
-                  {/* PC (md 이상) */}
-                  <div className="hugreen_searchwrap hidden md:flex transition-all duration-300">
-                    <div className="flex">
-                    <SearchForm value={value} setValue={setValue} selectedCity={selectedCity} setSelectedCity={setSelectedCity} cities={cities} />
-                    </div>
-                    <div className="flex search-btn-wrap">
-                      <Button label="검색" text  className="search-btn"/>
-                    </div>
-                  </div>
 
-                  {/* 모바일 (sm 이하) */}
-                  <div className="w-full md:hidden">
-                    <div className="hugreen_searchwrap overflow-hidden">
-                      {/* Accordion Header */}
-                      <button
-                      type="button"
-                      className="flex m_filter_text"
-                      onClick={() => setActiveIndex(activeIndex === 0 ? -1 : 0)}>
-                      {activeIndex === 0 ? "검색필터 숨기기" : "검색필터 펼치기"}                     
-                      </button>
-    
-                      {/* Accordion Content with Smooth Animation */}
-                      <div
-                      className={`overflow-hidden transition-all duration-300  ${
-                      activeIndex === 0 ? "max-h-[500px] p-0" : "max-h-0 p-0"} `}>
-                        <div className="flex">
+                   {/* 공통 검색영역(PC+모바일대응) */}
+                   <div className="hugreen_grid flex-1 flex flex-wrap">
+                  
+                        {/* PC (md 이상) */}
+                        <div className="hugreen_searchwrap hidden md:flex transition-all duration-300">
+                          <div className="flex w-[90%]" >
                           <SearchForm value={value} setValue={setValue} selectedCity={selectedCity} setSelectedCity={setSelectedCity} cities={cities} />
+                          </div>
+                          <div className="flex search-btn-wrap">
+                            <Button label="검색" text  className="search-btn"/>
+                          </div>
                         </div>
-                        <div className="flex search-btn-wrap">
-                          <Button label="검색" text  className="search-btn"/>
+
+                        {/* 모바일 (sm 이하) */}
+                        <div className="w-full md:hidden">
+                          <div className="hugreen_searchwrap overflow-hidden">
+                            {/* Accordion Header */}
+                            <button
+                            type="button"
+                            className="flex m_filter_text"
+                            onClick={() => setActiveIndex(activeIndex === 0 ? -1 : 0)}>
+                            {activeIndex === 0 ? "검색필터 숨기기" : "검색필터 펼치기"}                     
+                            </button>
+          
+                            {/* Accordion Content with Smooth Animation */}
+                            <div
+                            className={`overflow-hidden transition-all duration-300  ${
+                            activeIndex === 0 ? "max-h-[500px] p-0" : "max-h-0 p-0"} `}>
+                              <div className="flex">
+                                <SearchForm value={value} setValue={setValue} selectedCity={selectedCity} setSelectedCity={setSelectedCity} cities={cities} />
+                              </div>
+                              <div className="flex search-btn-wrap">
+                                <Button label="검색" text  className="search-btn"/>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
                   </div>
 
                   {/* 공통 : 그리드 상단 버튼  */}

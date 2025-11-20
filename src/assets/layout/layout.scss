@@ -383,6 +383,18 @@ ol, ul {padding-left: 0rem !important;}
     display: none !important;
 }
 
+.p-fileupload .p-fileupload-buttonbar {
+    background: transparent !important; 
+    padding:  0 0 .5rem 0 !important; 
+    border: 0px solid #e5e7eb !important; 
+    justify-content:end !important;
+}
+.p-fileupload .p-fileupload-content {
+   overflow: auto !important;
+    padding: 2rem 1rem !important;
+    height: 28rem !important;
+}
+
 
 /* 페이지 탑으로 */
 .top-button {

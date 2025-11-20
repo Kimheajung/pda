@@ -200,7 +200,7 @@ const Layout03 = () => {
                       <Dialog header="공통-파일첨부" visible={visible} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => {if (!visible) return; setVisible(false); }} footer={footerContent}>
                           {/* 공통 : ag그리드  */}
                           <div className="flex flex-wrap">
-                            <FileUpload name="demo[]" className="w-full" url={'/api/upload'} multiple accept="image/*" maxFileSize={1000000} emptyTemplate={<p className="m-0"> 업로드 파일을 등록해 주세요. </p>} />
+                            <FileUpload name="demo[]" className="w-full" url={'/api/upload'} multiple accept="image/*" maxFileSize={1000000} emptyTemplate={<p className="m-0"> 여기에 파일을 드롭하거나 상단 아이콘으로 선택하세요 </p>} />
       
                           </div>
                       </Dialog>                        

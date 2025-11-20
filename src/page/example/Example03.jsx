@@ -133,7 +133,7 @@ const Example03 = () => {
             <div className="flex w-full">
              <div className="dtv-info-grid dtv-info-grid--4col">
                 <div className="row">
-                  <div className="th">등록일</div>
+                  <div className="th required">등록일</div>
                   <div className="td">
                     <div className="span">2029.000,9999</div>
                   </div>
@@ -155,7 +155,7 @@ const Example03 = () => {
                 </div>
 
                 <div className="row">
-                  <div className="th">출처</div>
+                  <div className="th required">출처</div>
                    <div className="td">
                     <div className="span">(주)금호석유화확</div>
                   </div>
