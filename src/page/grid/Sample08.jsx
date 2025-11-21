@@ -70,8 +70,8 @@ const Sample08 = () => {
             </div>
         </div>
 
-        <div className="grid_wrap flex-1 flex flex-col md:flex-row gap-4">
-             <div className="w-full h-full md:w-1/2 bg-red-100">
+        <div className="grid_wrap flex-1 flex flex-col md:flex-row gap-4 h-[79vh]">
+             <div className="w-full h-full md:w-1/2 bg-red-100  h-[79vh]">
               <CustomAgGrid
                 gridId="grid1" // 필수 입력
                 rowId="ROW_ID" // 필수 입력
