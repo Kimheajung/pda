@@ -176,7 +176,7 @@ const Layout02 = () => {
                       <Button label="검색" text  className="search-btn"/>
                     </div>
                   </div>
-
+{/* test */}
                   {/* 모바일 (sm 이하) */}
                   <div className="w-full md:hidden">
                     <div className="hugreen_searchwrap overflow-hidden">
