@@ -176,6 +176,11 @@
 /* 모바일 전용 */
 @media (max-width: 991px) {
 
+  .layout-main-container {
+    padding: 6rem 1rem 2rem 1rem !important;
+}
+
+
   .hugreen_searchwrap {
     flex-wrap: wrap !important;
   }
