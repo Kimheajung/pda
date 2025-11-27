@@ -409,7 +409,7 @@ const Example02 = () => {
                   <div className="flex align-items-center">
                       <Checkbox inputId="ingredient2" name="pizza" value="Mushroom" onChange={onIngredientsChange} checked={ingredients.includes('Mushroom')} />
                       <label htmlFor="ingredient2" className="ml-2">Mushroom</label>
-                  </div>
+                  </div>``
               </div>
             </div>  
 

@@ -120,6 +120,7 @@ export const AppConfig = (props) => {
 
   return (
     <div ref={config} className={configClassName} id={'layout-config'}>
+      이거 맞아요?
       <button
         className="layout-config-button p-link"
         id="layout-config-button"
@@ -127,6 +128,7 @@ export const AppConfig = (props) => {
       >
         <i className="pi pi-cog"></i>
       </button>
+      <span> 이거 맞냐고요 </span>
       <Button
         className="p-button-danger layout-config-close p-button-rounded p-button-text"
         icon="pi pi-times"

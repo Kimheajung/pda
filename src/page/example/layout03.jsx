@@ -144,13 +144,16 @@ const Layout03 = () => {
         </div>
 
         {/* 공통 : 업무영역에 대한 도움말 사이드바 */}
-        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
-          <h2> 업무영역별 도움말R</h2>
-          <span>이미지 + 해당화면 업무설명</span>
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
+        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="favorite-help-sidebar">
+          <h3 className="absolute top-[1.6rem]"> 업무영역별 도움말</h3>
+
+          <img src="/green/images/sample.png" alt="main" className="max-w-none"  />
+
+          <p>기능설명</p>
+          <span>
+           1. 각 업무화면의 매뉴얼 버튼을 클릭하면 해당화면의 주요기능을 설명하는 화면이 제공됩니다. <br/>
+           2. 이미지가 있으면 이미지 업로드 하게 만들면 됩니다.
+          </span>
         </Sidebar>
 
 
@@ -194,9 +197,11 @@ const Layout03 = () => {
                  <div className="row">
                   <div className="th">첨부파일</div>
                   <div className="td">
-                    <div className='flex gap-2'>
+                    <div className='flex  gap-2'>
                       <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>
                       <Button label="찾아보기" className="btn-32-intable" severity="secondary" outlined onClick={() => setVisible(true)}/> 
+                      <span className="notice point1"> * 기타 옵션이나 간단한 설명이 필요할 경우 사용</span>
+                      
                       <Dialog header="공통-파일첨부" visible={visible} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => {if (!visible) return; setVisible(false); }} footer={footerContent}>
                           {/* 공통 : ag그리드  */}
                           <div className="flex flex-wrap">
@@ -242,7 +247,12 @@ const Layout03 = () => {
 
                 <div className='row'>                  
                   <div className="th">조회수</div>
-                  <div className="td merge-3"><InputText className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
+                  <div className="td merge-3">
+                    <div className="flex flex-wrap w-full">
+                      <span className="notice"> * 기타 옵션이나 간단한 설명이 필요할 경우 사용</span>
+                      <InputText className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  
+                    </div>
+                  </div>
                 </div>
 
 
@@ -270,28 +280,32 @@ const Layout03 = () => {
                     />
                   </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
+                  <div className="td"><InputText value={value} className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
+                  <div className="td"><InputText value={value} className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
                 <div className="row">
                   <div className="th">조회수</div>
                   <div className="td">
-                     <IconField iconPosition="right">
+                    <div className="flex flex-wrap w-full">
+                      <IconField iconPosition="right">
                           <InputIcon className="pi pi-search"> </InputIcon>
-                          <InputText placeholder="입력해주세요" />
-                      </IconField>
+                          <InputText placeholder="입력해주세요" className='w-full' />
+                      </IconField>                      
+                      <span className="notice point2"> * 필요시 사용해주세요</span>
+                    </div>
+                     
                   </div>
                   <div className="th">조회수</div>
                   <div className="td">
                      <IconField iconPosition="right">
                           <InputIcon className="pi pi-search"> </InputIcon>
-                          <InputText placeholder="입력해주세요" />
+                          <InputText placeholder="입력해주세요"  className='w-full'/>
                       </IconField>
                   </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
+                  <div className="td"><InputText className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
               </div>
@@ -306,7 +320,7 @@ const Layout03 = () => {
                   <div className="th">협력업체 기본자재코드</div>
                   <div className="td merge-3"><InputText value={value} className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
+                  <div className="td"><InputText className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
                  <div className="row">
@@ -319,18 +333,18 @@ const Layout03 = () => {
                   <div className="td">
                      <IconField iconPosition="right">
                           <InputIcon className="pi pi-search"> </InputIcon>
-                          <InputText placeholder="입력해주세요" />
+                          <InputText placeholder="입력해주세요" className='w-full' />
                       </IconField>
                   </div>
                   <div className="th">조회수</div>
                   <div className="td">
                      <IconField iconPosition="right">
                           <InputIcon className="pi pi-search"> </InputIcon>
-                          <InputText placeholder="입력해주세요" />
+                          <InputText placeholder="입력해주세요" className='w-full'/>
                       </IconField>
                   </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
+                  <div className="td"><InputText value={value}  className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
 
@@ -357,7 +371,7 @@ const Layout03 = () => {
                  <div className="row">
                   <div className="th">제목</div>
                   <div className="td merge-5">
-                    <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>                    
+                    <InputText value={value} className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>                    
                   </div>
                 </div>
 
@@ -370,11 +384,11 @@ const Layout03 = () => {
                   <div className="td">
                      <IconField iconPosition="right">
                           <InputIcon className="pi pi-search"> </InputIcon>
-                          <InputText placeholder="입력해주세요" />
+                          <InputText placeholder="입력해주세요"  className='w-full'/>
                       </IconField>
                   </div>
                   <div className="th">제목</div>
-                  <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
+                  <div className="td"><InputText  className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
                 </div>
 
 

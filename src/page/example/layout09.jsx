@@ -15,10 +15,8 @@ import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
 
 
 
-const Layout08 = () => {
-      //툴팁
-  const bellRef = useRef(null);  
-  
+const Layout09 = () => {
+
   /* 모바일 검색영역 감추기 */
   const [activeIndex, setActiveIndex] = useState(null);
   const regions = [
@@ -26,6 +24,9 @@ const Layout08 = () => {
     { label: "부산", value: "busan" },
     { label: "대전", value: "daejeon" },
   ];
+
+  //툴팁
+  const bellRef = useRef(null);  
 
   /* 즐겨찾기 아이콘  */
   const [filled, setFilled] = useState(false);
@@ -52,11 +53,9 @@ const Layout08 = () => {
 
   const [selectedCity, setSelectedCity] = useState(null);
   const cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
+      { name: '제목', code: 'NY' },
+      { name: '작성자', code: 'RM' },
+      { name: '내용', code: 'LDN' }
   ];
 
 
@@ -100,28 +99,19 @@ const Layout08 = () => {
   // 검색영역 폼 
   const SearchForm = ({ value, setValue, selectedCity, setSelectedCity, cities }) => (
     <div className="flex w-full">
-      <div className="grid-searchwrap grid-searchwrap--6col">
+      <div className="grid-searchwrap grid-searchwrap--4col" >
       
         <div className="row">
-          <div className="th"> <label for="firstname5">오더일자</label></div>
-          <div className="td">
-            <InputText value={value} onChange={(e) => setValue(e.target.value)} className="w-full" placeholder="선택해주세요"/>  
+          <div className="th merge-5 gap-4">
+            <Dropdown value={selectedCity}  className="w-28" onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
+                placeholder="제목"/>
+             <IconField iconPosition="right">
+                    <InputIcon className="pi pi-search"> </InputIcon>
+                    <InputText placeholder="입력해주세요"  className="w-full"/>
+                </IconField>    
           </div>
-          <div className="th">금형</div>
-          <div className="td">
-            <div className="flex">
-              <IconField iconPosition="right">
-                  <InputIcon className="pi pi-search"> </InputIcon>
-                  <InputText placeholder="입력해주세요"  className="w-full"/>
-              </IconField>
-            </div>
-            
-          </div>
-          <div className="th">시스템명</div>
-          <div className="td">
-            <Dropdown value={selectedCity}  className="w-full" onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
-                placeholder="선택해주세요"/>
-          </div>
+         
+          
         </div>
         
       </div>
@@ -130,11 +120,11 @@ const Layout08 = () => {
 
 
   return (
-    <div className="card height-03">  
-        {/* 공통 : 타이틀영역 */}
+    <div className="card height-01">  
+     {/* 공통 : 타이틀영역 */}
         <div className="title-container">
             <div  className="flex gap-4">
-              <h2>6.PALLET 신규등록 (only 그리드만 있는 레이아웃) </h2>
+              <h2>7.공지사항 (CRUD) 레이아웃 </h2>
               <div className="flex gap-2">
               {/* 공통 : 메뉴별 새창열기 */}
               <Button
@@ -171,6 +161,7 @@ const Layout08 = () => {
         {/* 공통 : 업무영역에 대한 도움말 사이드바 */}
         <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="favorite-help-sidebar">
           <h3 className="absolute top-[1.6rem]"> 업무영역별 도움말</h3>
+
           <img src="/green/images/sample.png" alt="main" className="max-w-none"  />
 
           <p>기능설명</p>
@@ -182,16 +173,63 @@ const Layout08 = () => {
 
 
         {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
-        <div className="hugreen_grid flex-1 flex mt-4 flex-wrap md:flex-row">
+        <div className="hugreen_grid flex-1 flex flex-wrap md:flex-row">
 
-            
+             {/* 공통 검색영역(PC+모바일대응) */}
+            <div className="hugreen_grid flex-1 flex flex-wrap">
+
+                  {/* PC (md 이상) */}
+                  <div className="hugreen_searchwrap hidden md:flex transition-all duration-300">
+                    <div className="flex">
+                     <SearchForm value={value} setValue={setValue} selectedCity={selectedCity} setSelectedCity={setSelectedCity} cities={cities} />
+                    </div>
+                    <div className="flex search-btn-wrap">
+                      <Button label="검색" text  className="search-btn"/>
+                    </div>
+                  </div>
+                  
+                  {/* 모바일 (sm 이하) */}
+                  <div className="w-full md:hidden">
+                    <div className="hugreen_searchwrap overflow-hidden">
+                      {/* Accordion Header */}
+                      <button
+                      type="button"
+                      className="flex m_filter_text"
+                      onClick={() => setActiveIndex(activeIndex === 0 ? -1 : 0)}>
+                      {activeIndex === 0 ? "검색필터 숨기기" : "검색필터 펼치기"}                     
+                      </button>
+    
+                      {/* Accordion Content with Smooth Animation */}
+                      <div
+                      className={`overflow-hidden transition-all duration-300  ${
+                      activeIndex === 0 ? "max-h-[500px] p-0" : "max-h-0 p-0"} `}>
+                        <div className="flex">
+                          <SearchForm value={value} setValue={setValue} selectedCity={selectedCity} setSelectedCity={setSelectedCity} cities={cities} />
+                        </div>
+                        <div className="flex search-btn-wrap">
+                          <Button label="검색" text  className="search-btn"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
             {/* 공통 : 그리드 상단 버튼  */}
             <div className="hugreen_aggridbtn_hwrap">
                <div className="flex">
-                  <span className="InfoText"> 신규등록시 수량에 주의해서 입력해 주세요!</span>
+                  <span className="NumText"> 조회결과</span>
+                  <p class="totalNumText" >총&nbsp;<span>3</span>건</p>
                </div>
                <div className="flex gap-2"> 
-                <Button label="저장" className="btn-28-master" severity="secondary" outlined />
+                 <Link to="/layout09view"><Button label="임시-상세보기" className="btn-28-sec" severity="secondary" outlined /> </Link>
+                <Link to="/layout09write">
+                  <Button 
+                    label="등록" 
+                    className="btn-28-master" 
+                    severity="secondary" 
+                    outlined
+                  />
+                </Link>
               </div>
             </div>
             {/* 공통 : ag그리드  */}
@@ -220,4 +258,4 @@ const Layout08 = () => {
   );
 };
 
-export default Layout08;
+export default Layout09;

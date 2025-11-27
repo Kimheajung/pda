@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState, useEffect } from 'react';
 import { Button } from "primereact/button";
 import { BreadCrumb } from 'primereact/breadcrumb';
 import { Link } from 'react-router-dom';
@@ -13,13 +13,40 @@ import { Dialog } from 'primereact/dialog';
 import { FileUpload } from 'primereact/fileupload';
 import { Calendar } from 'primereact/calendar';
 import { InputSwitch } from "primereact/inputswitch";
-
+import {
+  DtPicker,
+  FormAutoComplete,
+  FormAutoCompleteMulti,
+  FormDropdown,
+  FormEditor,
+  FormInputNumber,
+  FormInputText,
+  FormPassword,
+  FormTextArea,
+  MonthPicker,
+  YearPicker,
+} from '../../components/form/UseFormControl';
 
 import CustomAgGrid from '@components/aggrid/CustomAgGrid';
 import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
 
 
 const Example04 = () => {
+
+
+  // 8. autocomplete
+  const [autoValue, setAutoValue] = useState('');
+  const [items, setItems] = useState([]);
+
+  const search = (event) => {
+    let _items = [...Array(10).keys()];
+    setItems(
+      event.query
+        ? [...Array(10).keys()].map((item) => event.query + '-' + item)
+        : _items
+    );
+  };
+
 
   const [checked, setChecked] = useState(false);
   /* 달력 */
@@ -32,7 +59,7 @@ const Example04 = () => {
   const [visibleRight, setVisibleRight] = useState(false);
 
   /* primereact - BreadCrumb */
-   const items = [
+   const items_breadcrumb = [
         { label: '여신관리' },
         {
             label: 'InputText',
@@ -129,6 +156,34 @@ const Example04 = () => {
     );
 
 
+
+  // 검색영역 테스트
+  const [isMobile, setIsMobile] = useState(false);
+  const [open, setOpen] = useState(true); // 모바일에서만 사용
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // 샘플 옵션
+  const plantOptions = [
+    { label: "서울공장", value: "seoul" },
+    { label: "부산공장", value: "busan" }
+  ];
+
+  const orderTargetOptions = [
+    { label: "주문", value: "order" },
+    { label: "납품번호", value: "delivery" }
+  ];
+
+
+
+
   return (
     <div className="card_etc">  
 
@@ -139,20 +194,50 @@ const Example04 = () => {
         {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
         <div className="hugreen_grid flex-1 flex flex-wrap md:flex-row">
 
-          {/* 공통 : 검색영역1  */}
+            <p> - 공지사항처럼 라벨text 없이  진행할 경우 </p>
+            {/* 공통 : 검색영역1  */}
             <div className="hugreen_searchwrap" >
+              <div className="flex w-[95%]">
+              {/* 공통 : 테스트용  */}
+              <div className="flex w-full">
+                <div className="grid-searchwrap grid-searchwrap--4col" >
+                
+                  <div className="row">
+                    <div className="th merge-5 gap-4">
+                      <Dropdown value={selectedCity}  className="w-28" onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
+                          placeholder="제목"/>
+                      <IconField iconPosition="right">
+                              <InputIcon className="pi pi-search"> </InputIcon>
+                              <InputText placeholder="입력해주세요"  className="w-full"/>
+                          </IconField>    
+                    </div>
+                  </div>
+                  </div>  
+                </div>
+              </div>
+              
+              <div className="flex search-btn-wrap">  
+                <Button label="검색" text  className="search-btn"/>
+              </div>
+            </div>
+
+
+            {/* 공통 : 검색영역1  */}
+            <div className="hugreen_searchwrap mt-10" >
               <div className="flex w-[95%]">
 
                  <div className="flex w-full">
                        <div className="grid-searchwrap">
                          <div className="row" >
                            <div className="th"> <label for="firstname5">오더일자1</label></div>
-                            <div className="td merge-3 gap-2">
-                             <InputText value={value}  onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>
-                              <div className="flex items-center ml-5 gap-2">    
-                                <label>부가세포함</label>
+                            <div className="td">
+                              <InputText value={value}  onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>                 
+                           </div>
+                           <div className="th merge-2">
+                             <div className="flex flex-wrap items-center gap-2">    
+                                <label >부가세포함</label>
                                 <InputSwitch checked={checked} onChange={(e) => setChecked(e.value)} />    
-                              </div>                    
+                              </div>   
                            </div>
                          </div>
                        </div>
@@ -208,7 +293,13 @@ const Example04 = () => {
                          <div className="row">
                            <div className="th"> <label for="firstname5">오더일자3</label></div>
                            <div className="td">
-                             <InputText className="w-full" value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  
+                              <FormAutoComplete
+                                value={autoValue}
+                                onChange={setAutoValue}
+                                suggestions={items}
+                                completeMethod={search}
+                                placeholder="자동완성"
+                              /> 
                            </div>
                            <div className="th">금형</div>
                            <div className="td">
@@ -339,15 +430,14 @@ const Example04 = () => {
             </div>
 
 
+            
+
 
 
 
 
 
         </div> 
-
-
-      
     </div>
     
     

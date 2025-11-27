@@ -1,15 +1,19 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
+import classNames from "classnames";
 import { MegaMenu } from 'primereact/megamenu';
 import { CSSTransition } from "react-transition-group";
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { Panel } from 'primereact/panel';
 import { useNavigate } from 'react-router-dom';
+import { Tooltip } from 'primereact/tooltip';
+import { Sidebar } from 'primereact/sidebar';
+import { Button } from 'primereact/button';
+import { Badge } from 'primereact/badge';
 
 export const AppTopbar = (props) => {
 
- const [activeMenu, setActiveMenu] = useState(' ');
+const [activeMenu, setActiveMenu] = useState(' ');
 
 const topMenus = [
   { label: "01.컴포넌트", path: "/example02" },
@@ -18,11 +22,30 @@ const topMenus = [
   { label: "04.그리드샘플", path: "/sample00" }
 ];
 
- 
+  // 툴팁
+  const bellRef = useRef(null);
+
+  // 권한별 색상 다르게
+  // 관리자:admin / 대리점:agency / 본사 : office / 협력사 :  partner
+  const role = "partner";
+  const roleLabelMap = {
+  admin: "관리자",
+  partner: "협력사",
+  agency: "대리점",
+  office: "본사",
+};
+
+  /* 업무영역 도움말 패널영역 정의 */
+  const [visibleRight, setVisibleRight] = useState(false);
+
+  // 모바일에서 버튼 클릭시오른쪽 config영역 
+  const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
   const containerRef = useRef(null);
+
   //oerlay 패널
-  const op = useRef(null);
+  const op = useRef(null);  
+  const op2 = useRef(null);
 
 //  메가메뉴 관련 상태 추가
  const [megaMenuVisible, setMegaMenuVisible] = useState(false); 
@@ -160,6 +183,8 @@ const topMenus = [
 
 const navigate = useNavigate();
 
+
+
 const handleCloseMenu = () => setMegaMenuVisible(false);
 
     return (
@@ -208,62 +233,131 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                 
                 
                 {/* 모바일 모드시 나오는 아이콘 */}
-                <button type="button" className="p-link layout-topbar-menu-button layout-topbar-button" onClick={props.onMobileTopbarMenuClick}>
+                <button type="button" className="p-link layout-topbar-menu-button layout-topbar-button" onClick={() => setMobileMenuVisible(true)}>
                     <i className="pi pi-ellipsis-v" />
                 </button>
 
+                {/* 모바일 : 오른쪽영역설정 */}
+                <Sidebar
+                      visible={mobileMenuVisible}
+                      position="right"
+                      onHide={() => setMobileMenuVisible(false)}
+                      className="mobile-topbar-sidebar lg:hidden">
+                      <h3 className="mb-3 font-bold text-xl">모바일 환경설정 메뉴</h3>
+                  </Sidebar>
+
+
                 {/* PC- 아이콘영역  */}
-                <ul className={classNames("layout-topbar-menu lg:flex origin-top", {'layout-topbar-menu-mobile-active': props.mobileTopbarMenuActive })}>
-                      <li>
-                        <button className="p-link layout-topbar-button" >
-                            <i className="pi pi-bell"/>
-                            <span>공지사항</span>
+                <ul className={classNames("layout-topbar-menu lg:flex origin-top" )}>
+                    <li>
+                        <Tooltip target=".has-tooltip" position="bottom" mouseTrack mouseTrackTop={15} />
+                        <button data-pr-tooltip="공지사항" className="p-link layout-topbar-button has-tooltip relative">
+                            <span className="relative inline-flex">
+                              <i className="pi pi-bell" />
+                              <Badge value="2" severity="danger" className="absolute -top-3 -right-3" />
+                            </span>
                         </button>
                     </li>
                     <li>
-                        <button className="p-link layout-topbar-button" onClick={(e) => op.current.toggle(e)} >
-                            <i className="pi pi-cog"/>
-                            <span>설정</span>
+                        <Tooltip target=".has-tooltip" position="bottom" mouseTrack mouseTrackTop={15} />
+                        <button data-pr-tooltip="제품코드 발번요청" className="p-link layout-topbar-button has-tooltip">
+                            <i className="pi pi-barcode" />
                         </button>
-                          <OverlayPanel ref={op}>
-                          <div classNames="card">
+                    </li>
+                    <li>
+                        <button data-pr-tooltip="설정" className="p-link layout-topbar-button has-tooltip" onClick={(e) => op.current.toggle(e)} >
+                            <i className="pi pi-cog"/>
+                        </button>
+                          <OverlayPanel ref={op} >
+                          <div className="flex flex-wrap">
                             <ul>
                               <li>
-                                <div  classNames='mb-4'><span> 환경설정 </span></div>
+                                <div  className='mb-4'><span> 주요메뉴 바로가기 </span></div>
                               </li>
                               <li>
-                                <div><span> 거래명세서 조회 </span></div>
+                                <Button unstyled className="account-overlay__item-btn" label="자료 다운로드" />
                               </li>
                               <li>
-                                <div><span> 채권채무(대리점) </span></div>
+                                <Button unstyled className="account-overlay__item-btn" label="대리점 VOC" />
                               </li>
                               <li>
-                                <div><span> 주문접수관리 </span></div>
+                                <Button unstyled className="account-overlay__item-btn" label="자유게시판" />
                               </li>
                               <li>
-                                <div><span> PO별 생산계획 조회 </span></div>
-                              </li>
-                              <li>
-                                <div><span> 구매요청등록 </span></div>
+                                <Button unstyled className="account-overlay__item-btn" label="Q & A" />
                               </li>
                             </ul>
                           </div>
                           </OverlayPanel>
                     </li>
                      <li>
-                        <button className="p-link layout-topbar-button" onClick={props.onMobileSubTopbarMenuClick}>
+                        
+                        <button data-pr-tooltip="나의 즐겨찾기 메뉴" className="p-link layout-topbar-button has-tooltip" onClick={() => setVisibleRight(true)}>
                             <i className="pi pi-bookmark"/>
-                            <span>나만의 즐겨찾기 메뉴</span>
                         </button>
                     </li>
                     <li>
-                        <button className="p-link layout-topbar-button" onClick={props.onMobileSubTopbarMenuClick}>
+                        
+                        <button data-pr-tooltip="내 정보" className="p-link layout-topbar-button has-tooltip" onClick={(e) => op2.current.toggle(e)} >
                             <i className="pi pi-user"/>
-                            <span>개인정보변경</span>
                         </button>
+                        <OverlayPanel ref={op2} >
+                        <div className="account-overlay__inner">
+                            <div className="account-overlay__item" >
+                                <div className="account-overlay__item-main">
+                                    <div className={`account-overlay__circle account-overlay__circle--${role}`}> 
+                                      {roleLabelMap[role] ?? "사용자"}
+                                    </div>
+                                <div>
+                                <span className="account-overlay__badge">(주) 금호석유화학</span>
+                                <div className="account-overlay__name">김혜정 차장 </div>
+                                </div>
+                              </div>
+                            </div>
+                            <Button unstyled className="account-overlay__item-btn" label="비밀번호변경" />
+                            <Button unstyled className="account-overlay__item-btn" label="정보변경" />   
+                            <Button unstyled className="account-overlay__item-btn" label="나만의 즐겨찾기 메뉴" />                            
+                            <Button unstyled className="account-overlay__logout" label="로그아웃" />
+                        </div>
+                        </OverlayPanel>
                     </li>
                 </ul>
             </div>
+
+            {/* 공통 : 업무영역에 대한 도움말 사이드바 */}
+            <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="favorite-sidebar">
+              <h3 className="absolute top-[1.6rem]"> 나만의 즐겨찾기 메뉴</h3>
+
+                {/* 즐겨찾기 항목이 아예 없을 때 */}
+                <div className="favorite-empty">
+                  <i className="pi pi-info-circle favorite-empty__icon"></i>
+                  <span className="favorite-empty__text">나만의 즐겨찾기 메뉴가 없습니다.</span>
+                </div>
+
+                {/* 즐겨찾기 목록 리스트 - 하드코딩 */}
+                <div className="favorite-list">
+                  <div className="favorite-item">
+                    주문입력
+                    <Button
+                      icon="pi pi-times"
+                      className="favorite-del-btn p-button-text p-button-plain no-theme"
+                      onClick={() => console.log('delete')}
+                      unstyled
+                    />
+                  </div>
+
+                  <div className="favorite-item">
+                    PALLET 재고조회
+                    <Button 
+                      icon="pi pi-times" 
+                      rounded 
+                      text 
+                      className="favorite-del-btn" 
+                      />
+                  </div>
+                </div>
+            </Sidebar>
+            
 
             {/* Dim */}
             {megaMenuVisible && (

@@ -74,7 +74,6 @@
 
         span {
             font-size: 1rem;
-            display: none;
         }
 
     }
@@ -128,135 +127,109 @@
 }
 
 
-.mdi-size {
-    width: calc(1800px - 105px);
-}
+/* AccountOverlay */
+.account-overlay {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 
-.layout-mdi {
-    position: fixed;
-    height: 3.286rem;
-    //z-index: 997;
-    left: 0;
-    top: 4rem;
-    width: 100%;
-    padding: 0 1rem;
-    background-color: var(--surface-a);
-    transition: left $transitionDuration;
+  &__trigger {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &__avatar {
+    background: #e53935;
+  }
+
+  &__inner {
+    max-width: 240px;
+  }
+
+  &__item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom:1px solid #E8EAF5;
+    gap: 8px;
+    margin-bottom:1rem;
+  }
 
-    
-.layout-topbarmdi-button.right {
-  transition: color 0.2s ease;
-  color: inherit; 
+  &__item-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__circle {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--admin {
+    background-color: #d32f2f; // 관리자
+  }
+
+  &--agency {
+    background-color: #1976d2; // 대리점
+  }
+
+  &--office {
+    background-color: #00485D; // 본사
+  }
+
+  &--partner {
+    background-color: #71bfaeff; // 협력사
+  }
 }
 
-/* 기본 hover 효과 */
-.layout-topbarmdi-button.right:hover {
-  color: #555;
-}
+  &__name {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  &__badge {
+    font-size: 12px;
+    padding: 2px 0px;
+    color: #8a8a8a;
+  }
+  &__item-btn,
+  &__logout {
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    padding: 8px;
+    font-size: 1rem;
+    cursor: pointer;
 
-/* 20개 이상일 때 */
-.layout-topbarmdi-button.right.active-limit {
-  color: #333;
-}
-
-/* 20개 이상 + hover 시 */
-.layout-topbarmdi-button.right.active-limit:hover {
-  color: #555;
-}
-
-    .layout-topbarmdi-button {
-        margin-left: 0;
-        display: flex;
-        color:#A8A8A8;
-        border-radius: 12px;
-        padding: 1rem;
-        width: 2rem;
-        height: 2rem;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.2s;
-        i {
-            font-size: 1rem;
-            margin-right: 0rem;
-        }
-
-        span {
-            font-weight: medium;
-            display: none;
-        }
-
-        &:hover {
-           color: #333;   
-        }
+    &:hover {
+      background-color: #f3f4f6;
     }
+  }
 
-        .mdi-container {
-        display: flex;
-        gap: 0.5rem;
-        overflow-x: auto;
-        scrollbar-width: none; // firefox
-        -ms-overflow-style: none; // ie 10+
-        &::-webkit-scrollbar {
-        display: none;
-        }
+  &__logout {
+    margin-top: 4px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 10px;
+    color: #dc2626;
+    text-align: center !important;
 
-        /* 개별 페이지 탭 */
-        .mdi-page {
-            display: flex;
-            align-items: center;
-            padding: 0.5rem 0rem;
-            cursor: pointer; 
-            white-space: nowrap;
-            transition: all 0.2s ease;       
-
-            span{       
-                margin-right:3rem;
-                font-size: .875rem;
-            }
-        }
-
-        /* 활성 탭 (선택된 상태) */
-        .mdi-page.active {
-            color: #364FC7;  
-            font-weight: 600; 
-        }
-
-        /* 비활성 탭 */
-        .mdi-page.inactive {
-            background-color: #f9f9f9; /* gray-300 */
-            color: #9E9E9E; /* gray-700 */
-        }
-
-        /* 비활성 탭 hover 시 글자색 green으로 */
-        .mdi-page.inactive:hover {
-            color: #364FC7; /* green-500 */
-        }
-
-        .mdi-close {
-            background: transparent;
-            border: none;
-            color: inherit;
-            cursor: pointer;
-            padding: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .mdi-close i {
-            font-size: 0.875rem; /* 14px 정도 */
-            transition: color 0.2s;
-        }
-
-        .mdi-close:hover i {
-            color: #f87171; 
-        }
-
+    &:hover {
+      background-color: #fef2f2;
     }
- }
+  }
+}
+
+
 
 /* 메가메뉴*/
 .menu-enter {

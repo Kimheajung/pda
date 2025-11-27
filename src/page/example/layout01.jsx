@@ -8,6 +8,23 @@ import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from 'primereact/dropdown';
 import { RadioButton } from 'primereact/radiobutton';
+import { Tooltip } from 'primereact/tooltip';
+import { Dialog } from 'primereact/dialog';
+import { FileUpload } from 'primereact/fileupload';
+import { Editor } from 'primereact/editor';
+import {
+  DtPicker,
+  FormAutoComplete,
+  FormAutoCompleteMulti,
+  FormDropdown,
+  FormEditor,
+  FormInputNumber,
+  FormInputText,
+  FormPassword,
+  FormTextArea,
+  MonthPicker,
+  YearPicker,
+} from '../../components/form/UseFormControl';
 
 import CustomAgGrid from '@components/aggrid/CustomAgGrid';
 import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
@@ -19,6 +36,11 @@ const Layout01 = () => {
   /* 모바일 검색영역 감추기 */
   const [activeIndex, setActiveIndex] = useState(null);
 
+    //툴팁
+  const bellRef = useRef(null);
+
+  //인풋
+ const [text, setText] = useState('');
 
   /* 즐겨찾기 아이콘  */
   const [filled, setFilled] = useState(false);
@@ -90,6 +112,32 @@ const Layout01 = () => {
     },
   ]);
 
+
+  /* 다이얼로그 팝업 */
+ const [visible3, setVisible3] = useState(false);
+ const [visible4, setVisible4] = useState(false);
+ const [visible5, setVisible5] = useState(false);
+ const footerContent = (
+        <div className="gap-2">
+            <Button label="취소"  onClick={() => setVisible(false)} outlined className='mr-2'/>
+            <Button label="적용"  onClick={() => setVisible(false)} autoFocus />
+        </div>
+    );
+
+  const footerContent4 = (
+    <div className="gap-2">
+        <Button label="취소"  onClick={() => setVisible4(false)} outlined className='mr-2'/>
+        <Button label="적용"  onClick={() => setVisible4(false)} autoFocus />
+    </div>
+  );
+  const footerContent5 = (
+    <div className="gap-2">
+        <Button label="취소"  onClick={() => setVisible5(false)} outlined className='mr-2'/>
+        <Button label="적용"  onClick={() => setVisible5(false)} autoFocus />
+    </div>
+  );
+
+
   
   // 검색영역 폼 
   const SearchForm = ({ value, setValue, selectedCity, setSelectedCity, cities }) => (
@@ -118,16 +166,16 @@ const Layout01 = () => {
                 placeholder="선택해주세요"/>
           </div>
             <div className="th">작업대상설정</div>
-          <div className="td gap-2">
+            <div className="td flex gap-2">
               <div className="flex align-items-center">
-              <RadioButton inputId="ingredient1" name="pizza" value="Cheese" onChange={(e) => setIngredient(e.value)} checked={ingredient === 'Cheese'} />
-              <label htmlFor="ingredient1">주문</label>
+                  <RadioButton inputId="ingredient1" name="pizza" value="Cheese" onChange={(e) => setIngredient(e.value)} checked={ingredient === 'Cheese'} />
+                  <label htmlFor="ingredient1">주문</label>
+                </div>
+                <div className="flex align-items-center">
+                  <RadioButton inputId="ingredient2" name="pizza" value="Mushroom" onChange={(e) => setIngredient(e.value)} checked={ingredient === 'Mushroom'} />
+                  <label htmlFor="ingredient2">납품번호</label>
+                </div>
             </div>
-            <div className="flex align-items-center">
-              <RadioButton inputId="ingredient2" name="pizza" value="Mushroom" onChange={(e) => setIngredient(e.value)} checked={ingredient === 'Mushroom'} />
-              <label htmlFor="ingredient2">납품번호</label>
-          </div>
-          </div>
         </div>
 
         
@@ -144,34 +192,94 @@ const Layout01 = () => {
     <div className="card height-01">  
         {/* 공통 : 타이틀영역 */}
         <div className="title-container">
-            <div  className="flex gap-2">
+            <div  className="flex gap-4">
               <h2>1.검색영역 + 그리드를 가진 기본 레이아웃 </h2>
+              <div className="flex gap-2">
+              {/* 공통 : 메뉴별 새창열기 */}
+              <Button
+                icon="pi pi-external-link"
+                className="layout-newwindow-button"
+                aria-label="New Windows"
+                text 
+                tooltip="윈도우 새창"
+                tooltipOptions={{ position: "bottom", mouseTrack: true, mouseTrackTop: 15 }}
+                onClick={() => window.open(window.location.href, "_blank")}
+              />
               {/* 공통 : 메뉴별 즐겿자기 */}
               <Button
                 icon={filled ? "pi pi-star-fill" : "pi pi-star"}
                 className="layout-Favorite-button"
                 onClick={() => setFilled((prev) => !prev)}
                 aria-label="Favorite"
+                tooltip="즐겨찾기 메뉴"
+                tooltipOptions={{ position: "bottom", mouseTrack: true, mouseTrackTop: 15 }}
                 text 
               />
+              </div>
             </div>          
             <div className="flex items-center" >
                <BreadCrumb model={items} home={home}  />               
                {/* 공통 : 메뉴별 도움말 */}
-               <button className="layout-BreadCrumb-button" onClick={() => setVisibleRight(true)}>
+                <Tooltip target=".has-tooltip" position="bottom" mouseTrack mouseTrackTop={15} />
+               <button className="layout-BreadCrumb-button has-tooltip" data-pr-tooltip="업무매뉴얼" onClick={() => setVisibleRight(true)}>
                   <i className="pi pi-exclamation-circle"/>
                 </button>
             </div>
         </div>
 
         {/* 공통 : 업무영역에 대한 도움말 사이드바 */}
-        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
-          <h2> 업무영역별 도움말R</h2>
-          <span>이미지 + 해당화면 업무설명</span>
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
+        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="favorite-help-sidebar">
+          <h3 className="absolute top-[1.6rem]"> 업무영역별 도움말 </h3>
+          
+          
+          <img src="/green/images/sample.png" alt="main" className="max-w-none"  />
+
+          <p>기능설명</p>
+          <span>
+           1. 각 업무화면의 매뉴얼 버튼을 클릭하면 해당화면의 주요기능을 설명하는 화면이 제공됩니다. <br/>
+           2. 이미지가 있으면 이미지 업로드 하게 만들면 됩니다.
+          </span>
+          
+          {/* 관리자-업무매뉴열 입력권한 가진 권한만 보임 */}
+          <div className="fixed bottom-4 right-0 -translate-x-1/2 z-50">
+              <Button label="매뉴얼 입력" className="btn-28-sec w-full" severity="secondary" outlined onClick={() => setVisible3(true)}/>
+              <Dialog header="업무매뉴얼 기능설명" visible={visible3} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => setVisible3(false)} footer={footerContent}>
+                
+                {/* 공통 : ag그리드  */}
+                <div className="flex w-full">
+                  <div className="grid-view">
+
+                      <div className="row">
+                        <div className="th">업무명</div>
+                        <div className="td">
+                          <InputText className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  
+                        </div>
+                      </div>
+
+                      <div className="row">
+                        <div className="th merge-2">기능설명</div>
+                      </div>
+
+                      <div className="row">
+                        <div className="th merge-2">
+                          <Editor value={text} className="flex-wrap w-full"  onTextChange={(e) => setText(e.htmlValue)}  />
+                        </div>
+                      </div>
+
+
+                       <div className="row">
+                        <div className="th">이미지 업로드</div>
+                         <div className="td w-full">
+                          <InputText className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>                        
+                         </div>
+                      </div>
+
+                      
+                    </div>
+                  </div>
+            </Dialog>
+
+          </div>
         </Sidebar>
 
 

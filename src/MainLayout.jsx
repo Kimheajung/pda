@@ -136,6 +136,7 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
         { label: '4. 좌우 레이아웃', icon: '', to: '/layout05' },
         { label: '5. 위아래 레이아웃', icon: '', to: '/layout06' },
         { label: '6. 그리드만 있는 레이아웃', icon: '', to: '/layout08' },
+        { label: '7. 공지사항(CRUD) 레이아웃', icon: '', to: '/layout09' },
       ],
     }
     // ... 필요 메뉴 그대로 복사

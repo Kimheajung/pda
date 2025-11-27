@@ -9,6 +9,7 @@ import { InputText } from "primereact/inputtext";
 import { Dropdown } from 'primereact/dropdown';
 import { RadioButton } from 'primereact/radiobutton';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
+import { Tooltip } from 'primereact/tooltip';
 
 import CustomAgGrid from '@components/aggrid/CustomAgGrid';
 import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
@@ -18,7 +19,10 @@ import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
 const Layout07 = () => {
   /* 모바일 검색영역 감추기 */
   const [activeIndex, setActiveIndex] = useState(null);
-  
+
+  //툴팁
+  const bellRef = useRef(null);
+
   /* 즐겨찾기 아이콘  */
   const [filled, setFilled] = useState(false);
 
@@ -113,6 +117,9 @@ const Layout07 = () => {
     { group: "건자재PC", title: "3.자가생산관리 > 현황등록", link: "/layout01", desc: "", status: "작업전", date: "25.11.18" },
     { group: "건자재PC", title: "4.비용관리 > 회계전표등록(이하동일 - 입력양식)", link: "/layout01", desc: "", status: "작업전", date: "25.11.18" },
     { group: "건자재PC", title: "5.현황관리 > 현장별 정산서(?)", link: "/layout01", desc: "", status: "작업전", date: "25.11.18" },
+    { group: "건자재PC", title: "6.BM > 채권채무조회서", link: "/layout01", desc: "HTML-출력", status: "작업전", date: "25.11.18" },
+    { group: "건자재PC", title: "6.BM > 납품서발행-거래명세서", link: "/layout01", desc: "HTML-출력", status: "작업전", date: "25.11.18" },
+    { group: "건자재PC", title: "6.PM > 기성실적증명서", link: "/layout01", desc: " HTML-출력-신규 ", status: "작업전", date: "25.11.18" },
   ];
 
   const getStatusClass = (status) => {
@@ -151,34 +158,52 @@ const Layout07 = () => {
     <div className="card" style={{background: "yellow"}}>  
         {/* 공통 : 타이틀영역 */}
         <div className="title-container">
-            <div  className="flex gap-2">
-              <h2>파일 Path</h2>
+            <div  className="flex gap-4">
+              <h2>파일 path </h2>
+              <div className="flex gap-2">
+              {/* 공통 : 메뉴별 새창열기 */}
+              <Button
+                icon="pi pi-external-link"
+                className="layout-newwindow-button"
+                aria-label="New Windows"
+                text 
+                tooltip="윈도우 새창"
+                tooltipOptions={{ position: "bottom", mouseTrack: true, mouseTrackTop: 15 }}
+                onClick={() => window.open(window.location.href, "_blank")}
+              />
               {/* 공통 : 메뉴별 즐겿자기 */}
               <Button
                 icon={filled ? "pi pi-star-fill" : "pi pi-star"}
                 className="layout-Favorite-button"
                 onClick={() => setFilled((prev) => !prev)}
                 aria-label="Favorite"
+                tooltip="즐겨찾기 메뉴"
+                tooltipOptions={{ position: "bottom", mouseTrack: true, mouseTrackTop: 15 }}
                 text 
               />
+              </div>
             </div>          
-            <div className="flex items-center">
-               <BreadCrumb model={items} home={home} />               
+            <div className="flex items-center" >
+               <BreadCrumb model={items} home={home}  />               
                {/* 공통 : 메뉴별 도움말 */}
-               <button className="layout-BreadCrumb-button" onClick={() => setVisibleRight(true)}>
+                <Tooltip target=".has-tooltip" position="bottom" mouseTrack mouseTrackTop={15} />
+               <button className="layout-BreadCrumb-button has-tooltip" data-pr-tooltip="업무매뉴얼" onClick={() => setVisibleRight(true)}>
                   <i className="pi pi-exclamation-circle"/>
                 </button>
             </div>
         </div>
 
         {/* 공통 : 업무영역에 대한 도움말 사이드바 */}
-        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
-          <h2> 업무영역별 도움말R</h2>
-          <span>이미지 + 해당화면 업무설명</span>
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
+        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="favorite-help-sidebar">
+          <h3 className="absolute top-[1.6rem]"> 업무영역별 도움말</h3>
+
+          <img src="/green/images/sample.png" alt="main" className="max-w-none"  />
+
+          <p>기능설명</p>
+          <span>
+           1. 각 업무화면의 매뉴얼 버튼을 클릭하면 해당화면의 주요기능을 설명하는 화면이 제공됩니다. <br/>
+           2. 이미지가 있으면 이미지 업로드 하게 만들면 됩니다.
+          </span>
         </Sidebar>
 
 

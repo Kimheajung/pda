@@ -124,7 +124,7 @@ const CustomAgGrid = forwardRef(
         resizable: true,
         sortable: true,
         filter: true,
-        floatingFilter: true,
+        floatingFilter: false,
         enableRowGroup: true,
         singleClickEdit: true,
         headerClass: 'ag-center-aligned-header h-group-center', // 모든 그리드 헤더 가운데 정렬

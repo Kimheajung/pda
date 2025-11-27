@@ -10,6 +10,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { RadioButton } from 'primereact/radiobutton';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
 import { Calendar } from 'primereact/calendar';
+import { Tooltip } from 'primereact/tooltip';
 
 import CustomAgGrid from '@components/aggrid/CustomAgGrid';
 import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
@@ -18,6 +19,9 @@ import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
 
 const Layout05 = () => {
 
+    //툴팁
+  const bellRef = useRef(null);  
+  
   /* 달력 */
   const [date, setDate] = useState(null);
   
@@ -159,28 +163,45 @@ const Layout05 = () => {
 
 
   return (
-    <div className="card height-02" >  
+    <div className="card height-02" > 
         {/* 공통 : 타이틀영역 */}
         <div className="title-container">
-            <div  className="flex gap-2">
+            <div  className="flex gap-4">
               <h2>4.레이아웃 spliter horizontal </h2>
+              <div className="flex gap-2">
+              {/* 공통 : 메뉴별 새창열기 */}
+              <Button
+                icon="pi pi-external-link"
+                className="layout-newwindow-button"
+                aria-label="New Windows"
+                text 
+                tooltip="윈도우 새창"
+                tooltipOptions={{ position: "bottom", mouseTrack: true, mouseTrackTop: 15 }}
+                onClick={() => window.open(window.location.href, "_blank")}
+              />
               {/* 공통 : 메뉴별 즐겿자기 */}
               <Button
                 icon={filled ? "pi pi-star-fill" : "pi pi-star"}
                 className="layout-Favorite-button"
                 onClick={() => setFilled((prev) => !prev)}
                 aria-label="Favorite"
+                tooltip="즐겨찾기 메뉴"
+                tooltipOptions={{ position: "bottom", mouseTrack: true, mouseTrackTop: 15 }}
                 text 
               />
+              </div>
             </div>          
-            <div className="flex items-center">
-               <BreadCrumb model={items} home={home} />               
+            <div className="flex items-center" >
+               <BreadCrumb model={items} home={home}  />               
                {/* 공통 : 메뉴별 도움말 */}
-               <button className="layout-BreadCrumb-button" onClick={() => setVisibleRight(true)}>
+                <Tooltip target=".has-tooltip" position="bottom" mouseTrack mouseTrackTop={15} />
+               <button className="layout-BreadCrumb-button has-tooltip" data-pr-tooltip="업무매뉴얼" onClick={() => setVisibleRight(true)}>
                   <i className="pi pi-exclamation-circle"/>
                 </button>
             </div>
         </div>
+
+       
 
         {/* 공통 : 업무영역에 대한 도움말 사이드바 */}
         <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>

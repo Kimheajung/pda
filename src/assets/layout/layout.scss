@@ -44,6 +44,20 @@ ol, ul {padding-left: 0rem !important;}
 .p-dropdown .p-dropdown-label {line-height: 32px;}
 
 
+.notice { font-size:12px !important; 
+  &.point1 {color: #6bbd;}
+  &.point2 {color: rgba(230, 90, 90, 0.87);}
+}
+
+.p-badge {
+  font-size: 10px !important;
+  padding: 0 6px !important;
+  min-width: 16px !important;
+  height: 16px !important;
+  line-height: 13px !important;
+  border-radius: 50% !important;
+}
+
 
 .btn-32 { border: 1px solid #bababa !important;}
 .btn-32-intable {    
@@ -95,18 +109,32 @@ ol, ul {padding-left: 0rem !important;}
     background-color: #fff !important;
 }
 
+/* 에디터 전체 영역 */
+.p-editor-container,
+.ql-container {
+  width: 100% !important;
+}
+.p-editor-container {
+  width: 100% !important;
+  height: auto !important;     /* td 안에서만 높이 결정됨 */
+}
 .ql-toolbar.ql-snow{
   padding: 4px !important;
+  width: 100% !important;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
 .ql-container.ql-snow {
+    height: 25rem !important;  
     border: 1px solid #ccc;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
 }
-.ql-editor{
-  height: 10rem !important;
+.ql-editor {
+  height: 100% !important;
+  width: 100% !important; 
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .p-datepicker-trigger{
@@ -224,6 +252,32 @@ ol, ul {padding-left: 0rem !important;}
 }
 
 
+/* AutoComplete 드롭다운 버튼  재정의 */
+.p-autocomplete-dropdown {
+  background: #d1d5db !important;
+  border: 0px solid #fff !important;
+  color: white !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  border-top-right-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+  width: 32px !important;
+  height: 32px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  .p-icon {
+    flex-shrink: 0 !important;
+    color: #fff !important;
+    width: 10px !important;
+    height: 10px !important;
+    font-size: 18px !important;
+    }
+}
+.p-autocomplete-dropdown:hover {
+    background: #1f3f73 !important;
+  }
 
 
 
@@ -307,7 +361,7 @@ ol, ul {padding-left: 0rem !important;}
 }
 
 .height-03{
-  height: calc(100vh - 12.6rem) !important;
+  height: calc(100vh - 11rem) !important;
 }
 
 
@@ -326,6 +380,126 @@ ol, ul {padding-left: 0rem !important;}
   margin-top: 56px !important; 
   height: calc(100% - 56px) !important; 
 }
+/* 즐겨찾기 전용 Sidebar -> full height */
+.favorite-sidebar, .mobile-topbar-sidebar {
+  margin-top: -56px !important;               
+  height:  calc(100% + 56px) !important;              
+  top: 0 !important;                       
+}
+
+.favorite-help-sidebar {
+  width: 28rem !important;
+
+  .p-sidebar-content {
+    width: auto !important;
+    padding: 0 1.25rem !important; // 필요 시 조정
+  }
+
+  p {
+    color: #333 !important;
+    font-weight: 800 !important;
+  }
+  
+  img {
+    display: block;
+    width: auto;      // 이미지 원본 크기 유지
+    height: auto;
+    border: 1px solid #e6e6e6 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    margin: 1rem 0 2rem 0 !important;
+  }
+}
+
+
+/* 나만의 즐겨찾기 메뉴 삭제  및 관리 */
+/* 비어 있을 때 */
+.favorite-empty {
+  padding: 4rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #9ca3af; // gray-400
+  display: flex;
+  flex-direction: column;  // 아이콘 위 / 텍스트 아래로 분리
+  align-items: center;
+  justify-content: center;
+  gap: 6px; // 위아래 간격
+}
+
+.favorite-empty__icon {
+  font-size: 2rem;  
+  opacity: 0.6; 
+  color: #9ca3af;
+}
+
+.favorite-empty__text {
+  font-size: 0.88rem;
+  color: #9ca3af;
+}
+
+/* 목록 있을때 */
+.favorite-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+
+  .favorite-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 4px;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #374151; // gray-700
+
+    &:hover {
+      background-color: #f3f4f6; // gray-100
+    }
+
+    &::before {
+      content: "";
+      width: 3px;
+      height: 3px;
+      background-color: #6b7280; // gray-500
+      border-radius: 50%;
+      margin-right: 8px;
+      display: inline-block;
+    }
+  }
+}
+
+.favorite-del-btn {
+  margin-left: auto;
+  padding: 0.25rem;
+  min-width: 24px !important;
+  height: 24px !important;
+  color: #ccc !important;
+  background: none !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 14px !important;
+    color: #9ca3af !important;   
+    transition: color 0.2s ease;
+  }
+
+  &:hover {
+    color: #333 !important;   
+  }
+}
+
+/* 공통 Tooltip 스타일 */
+.p-tooltip .p-tooltip-text {
+  font-size: 12px !important;
+  padding: 4px 6px !important;
+  line-height: 1.4 !important;
+}
+
 
 
 .hgrid{display: flex;display: block; flex-wrap: wrap;margin-top:0rem; }
