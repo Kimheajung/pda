@@ -242,10 +242,9 @@ const Page13 = () => {
 
         {/* 공통 : 그리드 상단 버튼  */}
         <div className="hugreen_aggridbtn_hwrap">
-            <div className="flex">
-            <span className="NumText"> 조회결과</span>
-            <p class="totalNumText" >총&nbsp;<span>18,203</span>건</p>
-            <span className="NumText ml-10"> 추후삭제 : 기존화면은 내역이 따로 존재하지만 에디터그리드로 사용가능 </span>
+            <div className="flex flex-wrap">
+              <span className="NumText"> 조회결과</span>
+              <p class="totalNumText" >총&nbsp;<span>18,203</span>건</p>
             </div>
             <div className="flex gap-2"> 
             <Button label="저장" className="btn-28-master" severity="secondary" outlined />

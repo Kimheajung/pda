@@ -259,7 +259,7 @@ const Page16 = () => {
             </div>
              <div className="row">
                 <div className="th">하역지</div>
-                <div className="td  gap-2">
+                <div className="td gap-2 flex flex-col md:flex-row !items-start">
                     <InputText value={value} className="w-48" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
                     <InputText value={value} className="w-full" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
                     <InputText value={value} className="w-28" onChange={(e) => setValue(e.target.value)}  placeholder=""/>

@@ -9,20 +9,16 @@ import { InputText } from "primereact/inputtext";
 import { Dropdown } from 'primereact/dropdown';
 import { RadioButton } from 'primereact/radiobutton';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
-import { Tooltip } from 'primereact/tooltip';
 
-import CustomAgGrid from '@components/aggrid/CustomAgGrid';
-import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
+import DataGrid from '@components/grid/DataGrid';
+import MOCK_DATA3 from '@components/grid/MOCK_DATA3.json';
 
 
 
 const Layout07 = () => {
   /* 모바일 검색영역 감추기 */
   const [activeIndex, setActiveIndex] = useState(null);
-
-  //툴팁
-  const bellRef = useRef(null);
-
+  
   /* 즐겨찾기 아이콘  */
   const [filled, setFilled] = useState(false);
 
@@ -121,31 +117,31 @@ const Layout07 = () => {
     { group: "건자재PC", title: "1.건설현장 > 기타견적업로드", link: "/Page02", desc: "", status: "작업완료", date: "25.12.01" },
     { group: "건자재PC", title: "2.코드관리 > 속성마스터", link: "/Page03", desc: "", status: "작업완료", date: "25.12.01" },
     { group: "건자재PC", title: "2.코드관리 > 계층정보", link: "/Page04", desc: "", status: "작업완료", date: "25.12.01" },
-    { group: "건자재PC", title: "2.코드관리 > 금형마스터", link: "/Page05", desc: "", status: "작업중", date: "25.12.01" },
-    { group: "건자재PC", title: "2.코드관리 > 제품코드생성(프로파일)", link: "/Page06", desc: "", status: "작업중", date: "25.12.02" },
-    { group: "건자재PC", title: "2.코드관리 > 제품코드생성(부자재)", link: "/Page07", desc: "", status: "작업중", date: "25.12.02" },
+    { group: "건자재PC", title: "2.코드관리 > 금형마스터", link: "/Page05", desc: "", status: "작업완료", date: "25.12.01" },
+    { group: "건자재PC", title: "2.코드관리 > 제품코드생성(프로파일)", link: "/Page06", desc: "", status: "작업완료", date: "25.12.02" },
+    { group: "건자재PC", title: "2.코드관리 > 제품코드생성(부자재)", link: "/Page07", desc: "", status: "작업완료", date: "25.12.02" },
 
-    { group: "건자재PC", title: "3.자가생산관리 > 생산접수(B)", link: "/Page08", desc: "", status: "작업중", date: "25.12.02" },
-    { group: "건자재PC", title: "3.자가생산관리 > 현황등록(B)", link: "/Page09", desc: "", status: "작업중", date: "25.12.02" },
-    { group: "건자재PC", title: "3.자가생산관리 > 생산현황(B)", link: "/Page10", desc: "", status: "작업중", date: "25.12.02" },
-    { group: "건자재PC", title: "3.자가생산관리 > 현황등록", link: "/Page11", desc: "", status: "작업중", date: "25.12.02" },
+    { group: "건자재PC", title: "3.자가생산관리 > 생산접수(B)", link: "/Page08", desc: "", status: "작업완료", date: "25.12.02" },
+    { group: "건자재PC", title: "3.자가생산관리 > 현황등록(B)", link: "/Page09", desc: "", status: "작업완료", date: "25.12.02" },
+    { group: "건자재PC", title: "3.자가생산관리 > 생산현황(B)", link: "/Page10", desc: "", status: "작업완료", date: "25.12.02" },
+    { group: "건자재PC", title: "3.자가생산관리 > 현황등록", link: "/Page11", desc: "", status: "작업완료", date: "25.12.02" },
 
-    { group: "건자재PC", title: "4.비용관리 > 회계전표등록(이하동일 - 입력양식)", link: "/Page12", desc: "", status: "작업중", date: "25.12.02" },
+    { group: "건자재PC", title: "4.비용관리 > 회계전표등록(이하동일 - 입력양식)", link: "/Page12", desc: "", status: "작업완료", date: "25.12.02" },
 
-    { group: "건자재PC", title: "5.시스템관리 > 절단길이등록", link: "/Page13", desc: "", status: "작업중", date: "25.12.03" },
-    { group: "건자재PC", title: "5.시스템관리 > 사용자조회(등록, 상세화면 모달타입으로 구현)", link: "/Page14", desc: "", status: "작업중", date: "25.12.03" },
-    { group: "건자재PC", title: "5.시스템관리 > 업체조회", link: "/Page15", desc: "", status: "작업중", date: "25.12.03" },
-
-    
-    { group: "건자재PC", title: "6.주문관리 > 주문입력", link: "/Page16", desc: "", status: "작업중", date: "25.12.03" },
-    { group: "건자재PC", title: "6.주문관리 > 주문접수현황", link: "/Page17", desc: "", status: "작업중", date: "25.12.03" },
-    { group: "건자재PC", title: "6.주문관리 > DC현황조회", link: "/Page18", desc: "", status: "작업중", date: "25.12.03" },
+    { group: "건자재PC", title: "5.시스템관리 > 절단길이등록", link: "/Page13", desc: "", status: "작업완료", date: "25.12.03" },
+    { group: "건자재PC", title: "5.시스템관리 > 사용자조회(등록, 상세화면 모달타입으로 구현)", link: "/Page14", desc: "", status: "작업완료", date: "25.12.03" },
+    { group: "건자재PC", title: "5.시스템관리 > 업체조회", link: "/Page15", desc: "", status: "작업완료", date: "25.12.03" },
 
     
-    { group: "건자재PC", title: "7.여신관리 > 여신정보조회", link: "/Page19", desc: "", status: "작업중", date: "25.12.03" },
+    { group: "건자재PC", title: "6.주문관리 > 주문입력", link: "/Page16", desc: "", status: "작업완료", date: "25.12.03" },
+    { group: "건자재PC", title: "6.주문관리 > 주문접수현황", link: "/Page17", desc: "", status: "작업완료", date: "25.12.03" },
+    { group: "건자재PC", title: "6.주문관리 > DC현황조회", link: "/Page18", desc: "", status: "작업완료", date: "25.12.03" },
 
     
-    { group: "건자재PC", title: "8.재고관리 > 기초재고등록", link: "/Page20", desc: "", status: "작업중", date: "25.12.03" },
+    { group: "건자재PC", title: "7.여신관리 > 여신정보조회", link: "/Page19", desc: "", status: "작업완료", date: "25.12.03" },
+
+    
+    { group: "건자재PC", title: "8.재고관리 > 기초재고등록", link: "/Page20", desc: "", status: "작업완료", date: "25.12.03" },
   ];
 
   const getStatusClass = (status) => {
@@ -163,12 +159,10 @@ const Layout07 = () => {
     }
   };
 
-  
-
   // 메뉴 필터링 상태
   const [selectedMenu, setSelectedMenu] = useState("건자재PC");
 
-  const menuList = ["전체", "공통업무화면", "PDA", "라벨발행", "건자재PC"];
+  const menuList = ["전체", "업데이트 공유내용", "공통업무화면", "PDA", "라벨발행", "건자재PC"];
 
   const filteredData =
     selectedMenu === "전체"
@@ -188,9 +182,9 @@ const Layout07 = () => {
     <div className="card" style={{background: "yellow"}}>  
         {/* 공통 : 타이틀영역 */}
         <div className="title-container">
-            <div  className="flex gap-4">
-              <h2>파일 path </h2>
-              <div className="flex gap-2">
+            <div  className="flex gap-2">
+              <h2>파일 Path</h2>
+              
               {/* 공통 : 메뉴별 새창열기 */}
               <Button
                 icon="pi pi-external-link"
@@ -211,29 +205,24 @@ const Layout07 = () => {
                 tooltipOptions={{ position: "bottom", mouseTrack: true, mouseTrackTop: 15 }}
                 text 
               />
-              </div>
             </div>          
-            <div className="flex items-center" >
-               <BreadCrumb model={items} home={home}  />               
+            <div className="flex items-center">
+               <BreadCrumb model={items} home={home} />               
                {/* 공통 : 메뉴별 도움말 */}
-                <Tooltip target=".has-tooltip" position="bottom" mouseTrack mouseTrackTop={15} />
-               <button className="layout-BreadCrumb-button has-tooltip" data-pr-tooltip="업무매뉴얼" onClick={() => setVisibleRight(true)}>
+               <button className="layout-BreadCrumb-button" onClick={() => setVisibleRight(true)}>
                   <i className="pi pi-exclamation-circle"/>
                 </button>
             </div>
         </div>
 
         {/* 공통 : 업무영역에 대한 도움말 사이드바 */}
-        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="favorite-help-sidebar">
-          <h3 className="absolute top-[1.6rem]"> 업무영역별 도움말</h3>
-
-          <img src="/green/images/sample.png" alt="main" className="max-w-none"  />
-
-          <p>기능설명</p>
-          <span>
-           1. 각 업무화면의 매뉴얼 버튼을 클릭하면 해당화면의 주요기능을 설명하는 화면이 제공됩니다. <br/>
-           2. 이미지가 있으면 이미지 업로드 하게 만들면 됩니다.
-          </span>
+        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
+          <h2> 업무영역별 도움말R</h2>
+          <span>이미지 + 해당화면 업무설명</span>
+          <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
         </Sidebar>
 
 

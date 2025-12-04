@@ -190,7 +190,7 @@ const Page19 = () => {
  
 
   return (
-    <div className="card height-full">
+    <div className="card height-03">
       {/* 공통 : 타이틀영역 */}
       <div className="title-container">
         <div className="flex gap-2">

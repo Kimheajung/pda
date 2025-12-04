@@ -391,7 +391,7 @@ const Page14 = () => {
                     <div className="dtv-info-grid">
                         <div className="row">
                             <div className="th">업체명</div>
-                            <div className="td merge-3 gap-2">
+                            <div className="td merge-3 gap-2 flex flex-col md:flex-row !items-start">
                                  <Dropdown value={selectedCity} className='w-28' onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
                                 placeholder="선택해주세요"/> 
                                 <Button label="업체선택" className='in' outlined />
@@ -402,7 +402,7 @@ const Page14 = () => {
 
                         <div className="row">
                             <div className="th">아이디</div>
-                            <div className="td gap-2 merge-3">
+                            <div className="td merge-3 gap-2 flex flex-col md:flex-row !items-start">
                                 <InputText value={value}  onChange={(e) => setValue(e.target.value)}  placeholder=""/>                                 
                                 <Button label="중복체크" className='in' outlined />
                             </div>

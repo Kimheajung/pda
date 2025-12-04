@@ -419,7 +419,7 @@ const Page05 = () => {
                                             <div className="dtv-info-grid dtv-info-grid--2col-etc">
                                                 <div className="row">
                                                     <div className="th">보호필름</div>
-                                                    <div className="td gap-2">
+                                                    <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  disabled="true" placeholder="평탄면"/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  disabled="true" placeholder="헤어면"/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  disabled="true" placeholder="평탄/헤어면"/>  
@@ -427,7 +427,7 @@ const Page05 = () => {
                                                 </div>
                                                 <div className="row">
                                                     <div className="th">(S)면적/m</div>
-                                                   <div className="td gap-2">
+                                                   <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
@@ -435,7 +435,7 @@ const Page05 = () => {
                                                 </div>
                                                 <div className="row">
                                                     <div className="th">(W)면적/m</div>
-                                                   <div className="td gap-2">
+                                                  <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
@@ -443,7 +443,7 @@ const Page05 = () => {
                                                 </div>
                                                 <div className="row">
                                                    <div className="th">(H)면적/m</div>
-                                                   <div className="td gap-2">
+                                                   <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
@@ -455,7 +455,7 @@ const Page05 = () => {
                                             <div className="dtv-info-grid dtv-info-grid--2col-etc">
                                                 <div className="row">
                                                     <div className="th">보호필름</div>
-                                                    <div className="td gap-2">
+                                                    <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)} disabled="true" placeholder="코너용"/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  disabled="true" placeholder="직선일면"/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  disabled="true" placeholder="직선양면"/>  
@@ -463,7 +463,7 @@ const Page05 = () => {
                                                 </div>
                                                 <div className="row">
                                                     <div className="th">(S)면적/m</div>
-                                                   <div className="td gap-2">
+                                                   <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
@@ -471,7 +471,7 @@ const Page05 = () => {
                                                 </div>
                                                 <div className="row">
                                                     <div className="th">(W)면적/m</div>
-                                                   <div className="td gap-2">
+                                                   <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
@@ -479,7 +479,7 @@ const Page05 = () => {
                                                 </div>
                                                 <div className="row">
                                                    <div className="th">(H)면적/m</div>
-                                                   <div className="td gap-2">
+                                                   <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
@@ -491,7 +491,7 @@ const Page05 = () => {
                                             <div className="dtv-info-grid dtv-info-grid--2col-etc">
                                                 <div className="row">
                                                     <div className="th">보호필름</div>
-                                                    <div className="td gap-2">
+                                                    <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  disabled="true" placeholder="고정"/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
@@ -499,7 +499,7 @@ const Page05 = () => {
                                                 </div>
                                                 <div className="row">
                                                     <div className="th">(S)면적/m</div>
-                                                   <div className="td gap-2">
+                                                   <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
@@ -507,7 +507,7 @@ const Page05 = () => {
                                                 </div>
                                                 <div className="row">
                                                     <div className="th">(W)면적/m</div>
-                                                   <div className="td gap-2">
+                                                   <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
@@ -515,7 +515,7 @@ const Page05 = () => {
                                                 </div>
                                                 <div className="row">
                                                    <div className="th">(H)면적/m</div>
-                                                   <div className="td gap-2">
+                                                   <div className="td flex flex-col md:flex-row gap-2">
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  
                                                         <InputText  className='w-38' value={value} onChange={(e) => setValue(e.target.value)}  placeholder=""/>  

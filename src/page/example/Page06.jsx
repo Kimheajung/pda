@@ -198,11 +198,11 @@ const Page05 = () => {
            
             {/* 공통 : ag그리드  */}
             <div className="hugreen_aggrid_hwrap">
-                <div class="flex gap-4 w-full flex-col h-full">
-                   <div class="h-[50%]">
+                <div class="flex gap-4 w-full flex-col h-full md:flex-col gap-4 md:flex-nowrap">
+                   <div class="flex-[0.5] md:flex-[0.5]  md:min-h-0">
                         <div className='hugreen_aggrid_hwrap'>
                             <div class="flex gap-4 w-full h-full flex-col md:flex-row">
-                                <div class="w-full flex-1 md:w-1/5" >
+                                <div class="w-full flex-1 md:!w-1/5" >
                                     {/* 공통 : 그리드 상단 버튼  */}
                                     <div className="hugreen_aggridbtn_hwrap">
                                         <div className="flex">
@@ -253,7 +253,7 @@ const Page05 = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="w-full flex-1 md:w-1/5" >
+                                <div class="w-full flex-1 md:!w-1/5" >
                                     <div className='flex-row'>
                                         <div className='flex flex-wrap'>
                                             {/* 공통 : 그리드 상단 버튼  */}
@@ -344,7 +344,7 @@ const Page05 = () => {
                                     </div>
                                 </div>
 
-                                <div class="w-full flex-2 md:w-2/5">
+                                <div class="w-full md:flex-2 md:!w-2/5 min-w-full md:min-w-0">
                                     <div className="hugreen_aggridbtn_hwrap">
                                         <div className="flex">
                                         <span className="NumTitle"> 미리보기</span>
@@ -353,12 +353,12 @@ const Page05 = () => {
                                             <Button label="코드생성" className="btn-28-sec" severity="secondary" outlined />
                                             <Button label="삽입" className="btn-28-sec" severity="secondary" outlined />
                                             <Button label="미생성정보조회" className="btn-28-sec" severity="secondary" outlined />
-                                            <Button label="초기회" className="btn-28-sec" severity="secondary" outlined />
+                                            <Button label="초기회" className="btn-28-master" severity="secondary" outlined />
                                         </div>
                                     </div>
-                                    <div className='border border-gray-200 bg-[#f9f9f9]] p-4 h-full rounded'>
+                                    <div className='flex flex-wrap block border border-gray-200 bg-[#fff] p-4 rounded'>
                                          <div className="flex w-full">
-                                            <div className="grid-view">
+                                            <div className="grid-view w-full">
                                             <div className="row">
                                                 <div className="th">LV코드</div>
                                                 <div className="td">
@@ -402,14 +402,14 @@ const Page05 = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="h-[50%]">
+                    <div class="flex-[0.5] md:flex-[0.5] min-h-[400px] md:min-h-0">
                         {/* 공통 : 그리드 상단 버튼  */}
                         <div className="hugreen_aggridbtn_hwrap">
                             <div className="flex">
                             <span className="NumTitle"> 생성코드</span>
                             </div>
                         </div>
-                        <div className='hugreen_aggrid_hwrap pb-10' >
+                        <div className='hugreen_aggrid_hwrap' >
                             <DataGrid
                             gridId="grid1" // 필수 입력
                             rowId="ROW_ID" // 필수 입력

@@ -292,13 +292,13 @@ const Page11 = () => {
 
         {/* 공통 : ag그리드  */}
         <div className="hugreen_aggrid_hwrap">
-            <div class="flex gap-4 w-full flex-col h-full">
-                <div class="h-[70%]">
+            <div className="flex gap-4 w-full flex-col h-full md:flex-col gap-4 md:flex-nowrap">
+                <div className="flex-[0.7] md:flex-[0.7]  md:min-h-0">
                  <div className="hugreen_aggrid_hwrap"> 실제 그리드 영역</div>
                 </div>
-                <div class="h-[30%]" >
-                  <div class="flex gap-4 w-full  h-full">
-                    <div class="w-1/2" >
+                <div className="flex-[0.3] md:flex-[0.3] min-h-[400px] md:min-h-0" >
+                  <div className="flex gap-4 w-full h-full flex-col md:flex-row">
+                    <div className="w-full flex-1 md:w-1/1" >
                      {/* 공통 : 그리드 상단 버튼  */}
                       <div className="hugreen_aggridbtn_hwrap">
                         <div className="flex">
@@ -316,7 +316,7 @@ const Page11 = () => {
                        <div className="hugreen_aggrid_hwrap"> 실제 그리드 영역</div>
 
                     </div>
-                    <div class="w-1/2">
+                    <div className="w-full flex-1 md:w-1/1">
                      {/* 공통 : 그리드 상단 버튼  */}
                       <div className="hugreen_aggridbtn_hwrap">
                         <div className="flex h-[28px]">

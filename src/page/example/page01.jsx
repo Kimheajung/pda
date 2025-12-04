@@ -18,7 +18,6 @@ import MOCK_DATA3 from '@components/grid/MOCK_DATA3.json';
 
 
 
-
 const Page01 = () => {
 
     //툴팁
@@ -156,12 +155,11 @@ const Page01 = () => {
               </div>
           </div>
           <div className="th"> <label for="firstname5">건설사</label></div>
-          <div className="td gap-2 merge-3">
+          <div className="td gap-2 merge-3 w-full flex md:flex-nowrap">
             <InputText value={value} className="w-38" onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>
             <Button label="검색" className='in' outlined />
             <Dropdown value={selectedCity} className='w-full' onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
-              placeholder="선택해주세요"/>    
-                                            
+              placeholder="선택해주세요"/>                  
           </div>
         </div>
         <div className="row">
@@ -190,7 +188,7 @@ const Page01 = () => {
 
 
   return (
-    <div className="card height-01"> 
+    <div className="card height"> 
         {/* 공통 : 타이틀영역 */}
         <div className="title-container">
             <div  className="flex gap-4">
@@ -500,7 +498,7 @@ const Page01 = () => {
                          {/* 공통 : 그리드 상단 버튼  */}
                         <div className="flex gap-2 justify-end mb-2"> 
                           <Button label="추가" className="btn-28-sec" severity="secondary" outlined /> 
-                          <Button label="저장" className="btn-28-sec" severity="secondary" outlined /> 
+                          <Button label="저장" className="btn-28-master" severity="secondary" outlined /> 
                         </div>
 
                         {/* 공통 : ag그리드  */}
@@ -512,7 +510,7 @@ const Page01 = () => {
                         {/* 공통 : 그리드 상단 버튼  */}
                         <div className="flex justify-end gap-2 mb-2"> 
                           <Button label="추가" className="btn-28-sec" severity="secondary" outlined /> 
-                          <Button label="저장" className="btn-28-sec" severity="secondary" outlined /> 
+                          <Button label="저장" className="btn-28-master" severity="secondary" outlined /> 
                         </div>
 
                           그리드
@@ -529,8 +527,8 @@ const Page01 = () => {
                         </div>
 
 
-                       <div class="flex gap-4 w-full">
-                          <div class="w-1/3 flex w-full">
+                       <div class="flex gap-4 w-full h-full flex-col md:flex-row">
+                          <div class="w-full flex-1 md:!w-1/2">
                              <div className="flex w-full">
                                 <div className="dtv-info-grid dtv-info-grid--2col-etc">
                                     <div className="row">
@@ -558,7 +556,7 @@ const Page01 = () => {
                                   </div>
                                 </div>
                           </div>
-                          <div class="w-2/3 border border-gray-300 p-4">
+                          <div class="w-full flex-1 md:!w-2/3 border border-gray-300 p-4">
                             <div class="favorite-list">
                                 <div class="favorite-item">(주)KR산업_KR산업 성남복정1지구 B3BL PL_[수주보고서] KR산업 성남복정(사장님 결재完).pdf
                                   <button
@@ -603,8 +601,8 @@ const Page01 = () => {
                         </div>
 
 
-                       <div class="flex gap-4 w-full">
-                          <div class="w-1/3 flex w-full">
+                       <div class="flex gap-4 w-full h-full flex-col md:flex-row">
+                          <div class="w-full flex-1 md:!w-1/3">
                              <div className="flex w-full">
                                 <div className="dtv-info-grid dtv-info-grid--2col-etc">
                                     <div className="row">
@@ -632,7 +630,7 @@ const Page01 = () => {
                                   </div>
                                 </div>
                           </div>
-                          <div class="w-2/3 border border-gray-300 p-4">
+                          <div class="w-full flex-1 md:!w-2/3 border border-gray-300 p-4">
                             <div class="favorite-list">
                                 <div class="favorite-item">(주)KR산업_KR산업 성남복정1지구 B3BL PL_[수주보고서] KR산업 성남복정(사장님 결재完).pdf
                                   <button
@@ -677,8 +675,8 @@ const Page01 = () => {
                         </div>
 
 
-                       <div class="flex gap-4 w-full">
-                          <div class="w-1/3 flex w-full">
+                       <div class="flex gap-4 w-full h-full flex-col md:flex-row">
+                          <div class="w-full flex-1 md:!w-1/3">
                              <div className="flex w-full">
                                 <div className="dtv-info-grid dtv-info-grid--2col-etc">
                                     <div className="row">
@@ -706,7 +704,7 @@ const Page01 = () => {
                                   </div>
                                 </div>
                           </div>
-                          <div class="w-2/3 border border-gray-300 p-4">
+                          <div class="w-full flex-1 md:!w-2/3 border border-gray-300 p-4">
                             <div class="favorite-list">
                                 <div class="favorite-item">(주)KR산업_KR산업 성남복정1지구 B3BL PL_[수주보고서] KR산업 성남복정(사장님 결재完).pdf
                                   <button
@@ -751,8 +749,8 @@ const Page01 = () => {
                         </div>
 
 
-                       <div class="flex gap-4 w-full">
-                          <div class="w-1/3 flex w-full">
+                       <div class="flex gap-4 w-full h-full flex-col md:flex-row">
+                          <div class="w-full flex-1 md:!w-1/3">
                              <div className="flex w-full">
                                 <div className="dtv-info-grid dtv-info-grid--2col-etc">
                                     <div className="row">
@@ -780,7 +778,7 @@ const Page01 = () => {
                                   </div>
                                 </div>
                           </div>
-                          <div class="w-2/3 border border-gray-300 p-4">
+                          <div class="w-full flex-1 md:!w-2/3 border border-gray-300 p-4">
                             <div class="favorite-list">
                                 <div class="favorite-item">KR산업 성남복정(사장님 결재完).pdf
                                   <button

@@ -1,11 +1,11 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { Button } from "primereact/button";
+import { Button } from 'primereact/button';
 import { BreadCrumb } from 'primereact/breadcrumb';
 import { Link } from 'react-router-dom';
 import { Sidebar } from 'primereact/sidebar';
-import { IconField } from "primereact/iconfield";
-import { InputIcon } from "primereact/inputicon";
-import { InputText } from "primereact/inputtext";
+import { IconField } from 'primereact/iconfield';
+import { InputIcon } from 'primereact/inputicon';
+import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { RadioButton } from 'primereact/radiobutton';
 import { FileUpload } from 'primereact/fileupload';
@@ -26,10 +26,8 @@ import {
   YearPicker,
 } from '../../components/form/UseFormControl';
 
-import CustomAgGrid from '@components/aggrid/CustomAgGrid';
-import MOCK_DATA3 from '@components/aggrid/MOCK_DATA3.json';
-
-
+import DataGrid from '@components/grid/DataGrid';
+import MOCK_DATA3 from '@components/grid/MOCK_DATA3.json';
 
 const Layout03 = () => {
   /* 달력 */
@@ -37,7 +35,7 @@ const Layout03 = () => {
   const [month, setMonth] = useState(null); // 월
   const [year, setYear] = useState(null); // 년
 
- const [text, setText] = useState('');
+  const [text, setText] = useState('');
   /* 즐겨찾기 아이콘  */
   const [filled, setFilled] = useState(false);
 
@@ -45,32 +43,31 @@ const Layout03 = () => {
   const [visibleRight, setVisibleRight] = useState(false);
 
   /* primereact - BreadCrumb */
-   const items = [
-        { label: '여신관리' },
-        {
-            label: 'InputText',
-            template: () => (
-              <Link to="/inputtext" className="p-breadcrumb_now">
-                현재페이지
-              </Link>
-            )
-        }
-    ];
-    const home = { icon: 'pi pi-home', url: 'https://primereact.org' };
+  const items = [
+    { label: '여신관리' },
+    {
+      label: 'InputText',
+      template: () => (
+        <Link to="/inputtext" className="p-breadcrumb_now">
+          현재페이지
+        </Link>
+      ),
+    },
+  ];
+  const home = { icon: 'pi pi-home', url: 'https://primereact.org' };
 
   /*input, combobox , radiobutton */
   const [value, setValue] = useState('');
   const [ingredient, setIngredient] = useState('');
-
+  const txtRef = useRef(null);
   const [selectedCity, setSelectedCity] = useState(null);
   const cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
+    { name: 'New York', code: 'NY' },
+    { name: 'Rome', code: 'RM' },
+    { name: 'London', code: 'LDN' },
+    { name: 'Istanbul', code: 'IST' },
+    { name: 'Paris', code: 'PRS' },
   ];
-
 
   /* ag그리드 예제  */
   const gridRef = useRef(null);
@@ -108,17 +105,20 @@ const Layout03 = () => {
     },
   ]);
 
-
   /* 다이얼로그 팝업 */
   const [visible, setVisible] = useState(false);
   const footerContent = (
-          <div className="gap-2">
-              <Button label="취소"  onClick={() => setVisible(false)} outlined className='mr-2'/>
-              <Button label="적용"  onClick={() => setVisible(false)} autoFocus />
-          </div>
-      );
+    <div className="gap-2">
+      <Button
+        label="취소"
+        onClick={() => setVisible(false)}
+        outlined
+        className="mr-2"
+      />
+      <Button label="적용" onClick={() => setVisible(false)} autoFocus />
+    </div>
+  );
 
-      
   return (
     <div className="card" style={{paddingbottom: "100px"}}>  
         {/* 공통 : 타이틀영역 */}
@@ -220,7 +220,7 @@ const Layout03 = () => {
               {/* 테이블 입력 형태 - case-02*/}
             <div className="guidetitle">2. 2컬럼 입력형태 </div>
             <div className="flex w-full">
-             <div className="dtv-info-grid dtv-info-grid--4col">
+             <div className="dtv-info-grid dtv-info-grid--4col-view">
                 <div className="row">
                   <div className="th">제목</div>
                   <div className="td"><InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>  </div>
@@ -370,8 +370,11 @@ const Layout03 = () => {
 
                  <div className="row">
                   <div className="th">제목</div>
-                  <div className="td merge-5">
-                    <InputText value={value} className='w-full' onChange={(e) => setValue(e.target.value)}  placeholder="입력해주세요"/>                    
+                  <div className="td gap-2 merge-5 flex flex-col md:flex-row !items-start">
+                    <InputText value={value} className="w-48" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
+                    <InputText value={value} className="w-full" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
+                    <InputText value={value} className="w-28" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
+                    <Button label="하역지변경" className='in' outlined /> 
                   </div>
                 </div>
 
