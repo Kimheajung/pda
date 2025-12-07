@@ -10,6 +10,8 @@ import { Tooltip } from 'primereact/tooltip';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { Badge } from 'primereact/badge';
+import { Avatar } from "primereact/avatar";
+import { Tag } from "primereact/tag";
 
 export const AppTopbar = (props) => {
 
@@ -287,16 +289,16 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
             className="mypage-profile__logout p-button-sm" />
         </section>
 
-        {/* 회원정보 링크 */}
-        <Button
-          type="button"
-          className="mypage-linkrow p-button-text" 
-          label="회원정보 및 비밀번호 변경"
-          icon="pi pi-chevron-right"
-          iconPos="right"
-        />
-
         {/* 메뉴 리스트 */}
+        <Button type="button" className="mypage-linkrow p-button-text"  label="회원정보 및 비밀번호 변경" icon="pi pi-chevron-right" iconPos="right" />
+        <Button type="button" className="mypage-linkrow p-button-text"  label="알림" icon="pi pi-chevron-right" iconPos="right" />
+        <Button type="button" className="mypage-linkrow p-button-text"  label="생산출하일정" icon="pi pi-chevron-right" iconPos="right" />
+        <Button type="button" className="mypage-linkrow p-button-text"  label="통합자료 다운로드" icon="pi pi-chevron-right" iconPos="right" />
+        <Button type="button" className="mypage-linkrow p-button-text"  label="대리점 VOC" icon="pi pi-chevron-right" iconPos="right" />
+        <Button type="button" className="mypage-linkrow p-button-text"  label="제품코드 발번요청" icon="pi pi-chevron-right" iconPos="right" />
+        <Button type="button" className="mypage-linkrow p-button-text"  label="설정" icon="pi pi-chevron-right" iconPos="right" />
+
+        {/* 메뉴 리스트 
         <section className="mypage-menu">
           {menuItems.map((item) => (
             <button
@@ -310,7 +312,7 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
               )}
             </button>
           ))}
-        </section>
+        </section>*/}
       </main>
     </div>
 
