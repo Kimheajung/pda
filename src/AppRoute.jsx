@@ -32,6 +32,7 @@ import Layout09write from './page/example/layout09write.jsx';
 import Layout09view from './page/example/layout09view.jsx';
 import Layout10 from './page/example/layout10.jsx';
 import Layout11 from './page/example/layout11.jsx';
+import LoginSample from "./page/example/LoginSample.jsx";
 
 import Page01 from './page/example/page01.jsx';
 import Page02 from './page/example/page02.jsx';
@@ -349,6 +350,18 @@ export default function AppRoute() {
             component={
               <MainLayout>
                 <Page20 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+      <Route
+        path="/LoginSample"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <LoginSample />
               </MainLayout>
             }
           />
