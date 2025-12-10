@@ -68,9 +68,7 @@ const Layout07 = () => {
     // 공통업무화면
     { group: "공통업무화면", title: "1.데시보드", link: "/example02", desc: "", status: "작업전", date: "25.11.18" },
     { group: "공통업무화면", title: "2.기준-레이아웃", link: "/layout01", desc: "", status: "작업완료", date: "25.11.18" },
-    { group: "공통업무화면", title: "3.로그인", link: "/example02", desc: "", status: "작업전", date: "25.11.18" },
-    { group: "공통업무화면", title: "4.데시보드", link: "/example02", desc: "", status: "작업전", date: "25.11.18" },
-    { group: "공통업무화면", title: "5.제품코드 발번요청", link: "/example02", desc: "", status: "작업전", date: "25.11.18" },
+    { group: "공통업무화면", title: "3.로그인", link: "/LoginSample", desc: "", status: "작업중", date: "25.11.18" },
 
     // PDA
     { group: "PDA", title: "********1월부터 진행예정********", link: "/", status: " ", date: " " },
