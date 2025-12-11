@@ -76,7 +76,7 @@ const [pwModal, setPwModal] = useState(false);
                     <Password
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full"
+                        className="w-full block"
                         feedback={false}
                         toggleMask
                         placeholder="비밀번호를 입력하세요"
