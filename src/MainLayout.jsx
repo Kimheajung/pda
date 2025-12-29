@@ -103,28 +103,48 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
       items: [{ label: 'Dashboard', icon: '', to: '/' }],
     },
     {
+      label: '입고',
+      items: [
+        { label: '자가생산입고(개별)', icon: '', to: '/in01' },
+        { label: '자가생산입고(일괄)', icon: '', to: '/in02' },
+        { label: '자가생산입고내역조회', icon: '', to: '/in03' },
+        { label: '외주생산입고(개별)', icon: '', to: '/in04' },
+        { label: '외주생산입고(일괄)', icon: '', to: '/in05' },
+        { label: '반품입고', icon: '', to: '/in06' },
+      ],
+    },
+    {
+      label: '출고',
+      items: [
+        { label: '생산투입대상조회', icon: '', to: '/out01' },
+        { label: '생산투입', icon: '', to: '/out02' },
+        { label: '생산투입내역조회', icon: '', to: '/out03' },
+        { label: '판매출고', icon: '', to: '/out04' },
+        { label: '판매출고내역조회', icon: '', to: '/out05' },
+      ],
+    },
+    {
+      label: '기타',
+      items: [
+        { label: '기타출고', icon: '', to: '/etc01' },
+        { label: '재고변경', icon: '', to: '/etc02' },
+        { label: '재고이동', icon: '', to: '/etc03' },
+        { label: '재고실사계획조회', icon: '', to: '/etc04' },
+        { label: '재고실사등록', icon: '', to: '/etc05' },
+        { label: '팔렛병합', icon: '', to: '/etc06' },
+        { label: '팔렛정보조회', icon: '', to: '/etc07' },
+        { label: '제품검수', icon: '', to: '/etc08' },
+      ],
+    },
+    {
       label: '컴포넌트',
       items: [
         { label: '1. 예제', icon: '', to: '/example' },
         { label: '2. 컴포넌트', icon: '', to: '/example02' },
         { label: '3. 검색영역', icon: '', to: '/example04' },
-        { label: '4. 상세 테이블', icon: '', to: '/example03' },
-        { label: '5. 입력형 테이블', icon: '', to: '/layout03' },
-      ],
-    },
-    {
-      label: '레이아웃',
-      items: [
-        { label: '페이지 목록', icon: '', to: '/layout07' },
-        { label: '1. 레이아웃', icon: '', to: '/layout01' },
-        { label: '2. 검색 + 그리드', icon: '', to: '/layout02' },
-        { label: '3. 검색+상세보기+그리드', icon: '', to: '/layout04' },
-        { label: '4. 좌우 레이아웃', icon: '', to: '/layout05' },
-        { label: '5. 위아래 레이아웃', icon: '', to: '/layout06' },
-        { label: '6. 그리드만 있는 레이아웃', icon: '', to: '/layout08' },
-        { label: '7. 공지사항(CRUD) 레이아웃', icon: '', to: '/layout09' },
-        { label: "8. 레이아웃 다중분할", icon: '', to: '/layout10' },
-        { label: "9. 레이아웃 위아래 다중분할", icon: '', to: '/layout11' },
+        { label: '4. 상세 테이블', icon: '', to: '/example03' },     
+        { label: '5. 레이아웃', icon: '', to: '/layout01' },   
+        { label: '6. 로그인', icon: '', to: '/LoginSample' },
       ],
     }
     // ... 필요 메뉴 그대로 복사
@@ -186,7 +206,7 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
         />
       </div>
 
-      <div className="layout-main-container" style={{ background: "#F5F6F9"}} >
+      <div className="layout-main-container" >
         <div className="layout-main">{children}</div>
 
         {/*  페이지 top */}

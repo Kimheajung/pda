@@ -75,8 +75,7 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
 
                 <Link to="/" className="layout-topbar-logo">
                     <span>Hugreen</span>
-                    <img src={props.layoutColorMode === 'light' ? 'assets/layout/images/logo-white.svg' : 'assets/layout/images/logo-white.svg'} alt="logo"/>
-                    <span>건자재 바코드 시스템</span>
+                    <span>&nbsp;건자재 바코드 시스템</span>
                 </Link>
 
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 layout-topbar-menu lg:flex origin-top">

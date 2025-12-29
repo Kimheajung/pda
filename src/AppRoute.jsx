@@ -7,46 +7,30 @@ import Example from './page/example/Example.jsx';
 import Example02 from './page/example/Example02.jsx';
 import Example03 from './page/example/Example03.jsx';
 import Example04 from './page/example/Example04.jsx';
-import FormLayoutDemo from './page/formLayout/FormLayoutDemo.jsx';
 import Dashboard from './page/dashboard/Dashboard.jsx';
 import Layout01 from './page/example/layout01.jsx';
-import Layout02 from './page/example/layout02.jsx';
-import Layout03 from './page/example/layout03.jsx';
-import Layout04 from './page/example/layout04.jsx';
-import Layout05 from './page/example/layout05.jsx';
-import Layout06 from './page/example/layout06.jsx';
-import Layout07 from './page/example/layout07.jsx';
-import Layout08 from './page/example/layout08.jsx';
-import Layout09 from './page/example/layout09.jsx';
-import Layout09write from './page/example/layout09write.jsx';
-import Layout09view from './page/example/layout09view.jsx';
-import Layout10 from './page/example/layout10.jsx';
-import Layout11 from './page/example/layout11.jsx';
 import LoginSample from "./page/example/LoginSample.jsx";
-
-import Page01 from './page/example/page01.jsx';
-import Page02 from './page/example/page02.jsx';
-import Page03 from './page/example/page03.jsx';
-import Page04 from './page/example/page04.jsx';
-import Page05 from './page/example/page05.jsx';
-import Page06 from './page/example/page06.jsx';
-import Page07 from './page/example/page07.jsx';
-import Page08 from './page/example/page08.jsx';
-import Page09 from './page/example/page09.jsx';
-import Page10 from './page/example/page10.jsx';
-import Page11 from './page/example/page11.jsx';
-import Page12 from './page/example/page12.jsx';
-import Page13 from './page/example/page13.jsx';
-import Page14 from './page/example/page14.jsx';
-import Page15 from './page/example/page15.jsx';
-import Page1501 from './page/example/page1501.jsx';
-import Page1502 from './page/example/page1502.jsx';
-import Page1503 from './page/example/page1503.jsx';
-import Page16 from './page/example/page16.jsx';
-import Page17 from './page/example/page17.jsx';
-import Page18 from './page/example/page18.jsx';
-import Page19 from './page/example/page19.jsx';
-import Page20 from './page/example/page20.jsx';
+import In01 from './page/example/In01.jsx';
+/*
+import In02 from './page/example/In02.jsx';
+import In03 from './page/example/In03.jsx';
+import In04 from './page/example/In04.jsx';
+import In05 from './page/example/In05.jsx';
+import In06 from './page/example/In06.jsx';
+import Out01 from './page/example/Out01.jsx';
+import Out02 from './page/example/Out02.jsx';
+import Out03 from './page/example/Out03.jsx';
+import Out04 from './page/example/Out04.jsx';
+import Out05 from './page/example/Out05.jsx';
+import Etc01 from './page/example/Etc01.jsx';
+import Etc02 from './page/example/Etc02.jsx';
+import Etc03 from './page/example/Etc03.jsx';
+import Etc04 from './page/example/Etc04.jsx';
+import Etc05 from './page/example/Etc05.jsx';
+import Etc06 from './page/example/Etc06.jsx';
+import Etc07 from './page/example/Etc07.jsx';
+import Etc08 from './page/example/Etc08.jsx';
+*/
 
 // 임시 Forbidden. 추후 인증 로직 추가 가능.
 function Forbidden({ component }) {
@@ -69,282 +53,7 @@ export default function AppRoute() {
           />
         }
       />
-      <Route
-        path="/Page01"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page01 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page02"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page02 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page03"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page03 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page04"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page04 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page05"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page05 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page06"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page06 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page07"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page07 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page08"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page08 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page09"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page09 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page10"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page10 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page11"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page11 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page12"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page12 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page13"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page13 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page14"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page14 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page15"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page15 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page1501"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page1501 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page1502"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page1502 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page1503"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page1503 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page16"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page16 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page17"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page17 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page18"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page18 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page19"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page19 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Page20"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Page20 />
-              </MainLayout>
-            }
-          />
-        }
-      />
+      
       <Route
         path="/LoginSample"
         element={
@@ -419,150 +128,20 @@ export default function AppRoute() {
           />
         }
       />
+      
       <Route
-        path="/layout02"
+        path="/in01"
         element={
           <Forbidden
             component={
               <MainLayout>
-                <Layout02 />
+                <In01 />
               </MainLayout>
             }
           />
         }
       />
-      <Route
-        path="/layout03"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout03 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/layout04"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout04 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/layout05"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout05 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/layout06"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout06 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/layout07"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout07 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/layout08"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout08 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/layout09"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout09 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/layout09write"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout09write />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/layout09view"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout09view />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/layout10"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout10 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/layout11"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout11 />
-              </MainLayout>
-            }
-          />
-        }
-      />
+     
       <Route
         path="/tailwind"
         element={
