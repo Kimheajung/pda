@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import classNames from "classnames";
 import { MegaMenu } from 'primereact/megamenu';
 import { CSSTransition } from "react-transition-group";
@@ -16,6 +16,17 @@ import { Tag } from "primereact/tag";
 export const AppTopbar = (props) => {
 
 const [activeMenu, setActiveMenu] = useState(' ');
+
+function getTitleByPath(menu, pathname) {
+  for (const group of menu) {
+    for (const item of group.items) {
+      if (item.to === pathname) {
+        return item.label;
+      }
+    }
+  }
+  return 'Hugreen 건자재 바코드 시스템'; // fallback
+}
 
 const topMenus = [
   { label: "01.컴포넌트", path: "/example02" },
@@ -54,137 +65,125 @@ const topMenus = [
 
 
 const navigate = useNavigate();
-
-
-
 const handleCloseMenu = () => setMegaMenuVisible(false);
+
+  const location = useLocation();
+  const isMain = location.pathname === '/';
+  const title = getTitleByPath(props.menu, location.pathname);
 
     return (
         <div className="layout-topbar_wrap relative">
-            <div className="layout-topbar">
+            <div className="layout-topbar" >
                
-          
+          <div className='flex'>
             {/* 모바일용 전체메뉴 버튼 */}
-            <button
+            {!isMain && (
+              <button
                 type="button"
-                className="p-link layout-menu-button layout-topbar-button block lg:hidden" onClick={props.onToggleMenuClick}>
-                <i className="pi pi-bars" />
-            </button>
+                className="p-link layout-menu-button block lg:hidden"
+                onClick={() => navigate(-1)}
+              >
+                <i className="pi pi-chevron-left" />
+              </button>
+            )}
 
-
-
-                <Link to="/" className="layout-topbar-logo">
-                    <span>Hugreen</span>
-                    <span>&nbsp;건자재 바코드 시스템</span>
-                </Link>
-
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 layout-topbar-menu lg:flex origin-top">
-                    <div className="flex nowrap">
-                         <div className="flex gap-2">
-                          {topMenus.map(menu => (
-                            <div
-                              key={menu.label}
-                              className={`top_menu_link ${activeMenu === menu.label ? "active" : ""}`}
-                              onClick={() => {
-                                setActiveMenu(menu.label);
-                                navigate(menu.path);
-                              }}
-                            >
-                              <span>{menu.label}</span>
-                            </div>
-                          ))}
-                        </div>
-                    </div>    
-                </div> 
-                
-                
-                {/* 모바일 모드시 나오는 아이콘 */}
-                <button type="button" className="p-link layout-topbar-menu-button layout-topbar-button" onClick={() => setMobileMenuVisible(true)}>
-                    <i className="pi pi-ellipsis-v" />
-                </button>
-
-               
-                 {/* 모바일 : 오른쪽영역설정 */}
-        <Sidebar
-              visible={mobileMenuVisible}
-              position="right"
-              onHide={() => setMobileMenuVisible(false)}
-              className="mobile-topbar-sidebar lg:hidden">
-
-    <div className="mypage" >
-
-      {/* 뒤로가기 + 제목 */}
-      <div className="mypage-header">
-        <Button
-          type="button"
-          className="mypage-header__back"
-          icon="pi pi-chevron-left"
-          rounded
-          text
-          onClick={() => navigate(-1)}  
-        />
-        <span className="mypage-header__title">마이페이지</span>
-      </div>
-
-      <main className="mypage-body">
-        {/* 프로필 카드 */}
-        <section className="mypage-profile">
-          <div className="mypage-profile__left gap-4">
-            <Avatar
-              label=""
-              icon="pi pi-user"
-              className="mypage-profile__avatar"
-              shape="circle"
-            />
-            <div className="mypage-profile__info">
-              <div className="mypage-profile__row">
-                <Tag
-                  value="대리점"
-                  className="mypage-profile__role"
-                  rounded />
-                <span className="mypage-profile__name">이가명님</span>
-                <i className="pi pi-chevron-right mypage-profile__arrow" />
-              </div>
-              <p className="mypage-profile__company">(주) 금호석유화학</p>
-            </div>
+            {/* 타이틀 */}
+            <Link to="/" className="layout-topbar-logo truncate">
+              <span className="font-medium" style={{ background: "green"}}>
+                {isMain ? 'Hugreen 건자재 바코드 시스템' : title}
+              </span>
+            </Link>
           </div>
-          <Button
-            label="Logout"
-            className="mypage-profile__logout p-button-sm" />
-        </section>
 
-        {/* 메뉴 리스트 */}
-        <Button type="button" className="mypage-linkrow p-button-text"  label="회원정보 및 비밀번호 변경" icon="pi pi-chevron-right" iconPos="right" />
-        <Button type="button" className="mypage-linkrow p-button-text"  label="알림" icon="pi pi-chevron-right" iconPos="right" />
-        <Button type="button" className="mypage-linkrow p-button-text"  label="생산출하일정" icon="pi pi-chevron-right" iconPos="right" />
-        <Button type="button" className="mypage-linkrow p-button-text"  label="통합자료 다운로드" icon="pi pi-chevron-right" iconPos="right" />
-        <Button type="button" className="mypage-linkrow p-button-text"  label="대리점 VOC" icon="pi pi-chevron-right" iconPos="right" />
-        <Button type="button" className="mypage-linkrow p-button-text"  label="제품코드 발번요청" icon="pi pi-chevron-right" iconPos="right" />
-        <Button type="button" className="mypage-linkrow p-button-text"  label="설정" icon="pi pi-chevron-right" iconPos="right" />
+           
 
-        {/* 메뉴 리스트 
-        <section className="mypage-menu">
-          {menuItems.map((item) => (
-            <button
-              key={item.label}
-              className="mypage-menu__item"
-              type="button"
-            >
-              <span className="mypage-menu__label">{item.label}</span>
-              {item.hasToggle && (
-                <i className="pi pi-chevron-right mypage-menu__icon" />
-              )}
+            
+            {/* 모바일 모드시 나오는 아이콘 */}
+            <button type="button" className="p-link layout-topbar-menu-button layout-topbar-button" onClick={() => setMobileMenuVisible(true)}>
+                <i className="pi pi-ellipsis-v" />
             </button>
-          ))}
-        </section>*/}
-      </main>
-    </div>
 
-          </Sidebar>
+            
+              {/* 모바일 : 오른쪽영역설정 */}
+              <Sidebar
+                  visible={mobileMenuVisible}
+                  position="right"
+                  onHide={() => setMobileMenuVisible(false)}
+                  className="mobile-topbar-sidebar lg:hidden">
 
+        <div className="mypage" >
+
+          {/* 뒤로가기 + 제목 */}
+          <div className="mypage-header">
+            <Button
+              type="button"
+              className="mypage-header__back"
+              icon="pi pi-chevron-left"
+              rounded
+              text
+              onClick={() => navigate(-1)}  
+            />
+            <span className="mypage-header__title">마이페이지</span>
+          </div>
+
+          <main className="mypage-body">
+            {/* 프로필 카드 */}
+            <section className="mypage-profile">
+              <div className="mypage-profile__left gap-4">
+                <Avatar
+                  label=""
+                  icon="pi pi-user"
+                  className="mypage-profile__avatar"
+                  shape="circle"
+                />
+                <div className="mypage-profile__info">
+                  <div className="mypage-profile__row">
+                    <Tag
+                      value="대리점"
+                      className="mypage-profile__role"
+                      rounded />
+                    <span className="mypage-profile__name">이가명님</span>
+                    <i className="pi pi-chevron-right mypage-profile__arrow" />
+                  </div>
+                  <p className="mypage-profile__company">(주) 금호석유화학</p>
+                </div>
+              </div>
+              <Button
+                label="Logout"
+                className="mypage-profile__logout p-button-sm" />
+            </section>
+
+            {/* 메뉴 리스트 */}
+            <Button type="button" className="mypage-linkrow p-button-text"  label="회원정보 및 비밀번호 변경" icon="pi pi-chevron-right" iconPos="right" />
+            <Button type="button" className="mypage-linkrow p-button-text"  label="알림" icon="pi pi-chevron-right" iconPos="right" />
+            <Button type="button" className="mypage-linkrow p-button-text"  label="생산출하일정" icon="pi pi-chevron-right" iconPos="right" />
+            <Button type="button" className="mypage-linkrow p-button-text"  label="통합자료 다운로드" icon="pi pi-chevron-right" iconPos="right" />
+            <Button type="button" className="mypage-linkrow p-button-text"  label="대리점 VOC" icon="pi pi-chevron-right" iconPos="right" />
+            <Button type="button" className="mypage-linkrow p-button-text"  label="제품코드 발번요청" icon="pi pi-chevron-right" iconPos="right" />
+            <Button type="button" className="mypage-linkrow p-button-text"  label="설정" icon="pi pi-chevron-right" iconPos="right" />
+
+            {/* 메뉴 리스트 
+            <section className="mypage-menu">
+              {menuItems.map((item) => (
+                <button
+                  key={item.label}
+                  className="mypage-menu__item"
+                  type="button"
+                >
+                  <span className="mypage-menu__label">{item.label}</span>
+                  {item.hasToggle && (
+                    <i className="pi pi-chevron-right mypage-menu__icon" />
+                  )}
+                </button>
+              ))}
+            </section>*/}
+          </main>
+        </div>
+
+              </Sidebar>
 
                
-            </div>
+         </div>
 
             {/* 공통 : 업무영역에 대한 도움말 사이드바 */}
             <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="favorite-sidebar">

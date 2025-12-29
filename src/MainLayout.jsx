@@ -189,6 +189,7 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
   return (
     <div className={wrapperClass} onClick={onWrapperClick} >
       <AppTopbar
+        menu={menu}
         onToggleMenuClick={onToggleMenuClick}
         layoutColorMode={'light'}
         mobileTopbarMenuActive={mobileTopbarMenuActive}

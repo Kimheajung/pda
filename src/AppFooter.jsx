@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const AppFooter = (props) => {
 
@@ -14,6 +15,13 @@ export const AppFooter = (props) => {
                 className="p-link layout-menu-button text-white" >
                 <i className="pi pi-truck" />
             </button>
+             <Link to="/" >
+                <button
+                type="button"
+                className="p-link layout-menu-button text-white" >
+                <i className="pi pi-home" />
+                </button>
+            </Link>
              <button
                 type="button"
                 className="p-link layout-menu-button text-white" >
@@ -21,7 +29,7 @@ export const AppFooter = (props) => {
             </button>
              <button
                 type="button"
-                className="p-link layout-menu-button text-white" >
+                className="p-link layout-menu-button text-white" onClick={props.onToggleMenuClick}>
                 <i className="pi pi-ellipsis-h" />
             </button>
         </div>
