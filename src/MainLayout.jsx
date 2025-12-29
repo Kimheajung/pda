@@ -186,7 +186,7 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
         />
       </div>
 
-      <div className="layout-main-container">
+      <div className="layout-main-container" style={{ background: "#F5F6F9"}} >
         <div className="layout-main">{children}</div>
 
         {/*  페이지 top */}
