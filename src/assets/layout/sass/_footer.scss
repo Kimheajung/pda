@@ -1,8 +1,14 @@
 .layout-footer {
-    transition: margin-left $transitionDuration;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 1rem;
-    border-top: 1px solid var(--surface-border);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;               /* footer 높이 */
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

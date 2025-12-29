@@ -7,6 +7,7 @@ import PrimeReact from 'primereact/api';
 import { AppTopbar } from './AppTopbar';
 import { AppMenu } from './AppMenu';
 import { AppConfig } from './AppConfig';
+import { AppFooter } from './AppFooter';
 
 export default function MainLayout({ children }) {
   const [layoutMode, setLayoutMode] = useState('static');
@@ -166,7 +167,7 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
   };
 
   return (
-    <div className={wrapperClass} onClick={onWrapperClick}>
+    <div className={wrapperClass} onClick={onWrapperClick} >
       <AppTopbar
         onToggleMenuClick={onToggleMenuClick}
         layoutColorMode={'light'}
@@ -198,6 +199,14 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
           </button>
         )}
       </div>
+
+       <AppFooter
+          model={menu}
+          onMenuItemClick={onMenuItemClick}
+          menuIconToggle={menuIconToggle}
+          onToggleMenuClick={onToggleMenuClick}
+          layoutColorMode={'light'}
+        />
 
       {/* 임시삭제 */}
       <AppConfig
