@@ -1,0 +1,49 @@
+.ag-root-wrapper{
+    border-radius: 0px !important;
+    border: 0px solid var(--ag-wrapper-border) !important;
+}
+
+
+
+/* 일반 헤더 가운데 정렬 */
+.ag-center-aligned-header .ag-header-cell-label {
+  justify-content: center;
+  text-align: center;
+}
+
+/* 헤더 그룹 하위 컬럼 가운데 정렬 */
+.h-group-center .ag-header-cell-comp-wrapper {
+  justify-content: center !important;
+}
+
+/* 헤더 그룹 가운데 정렬 */
+.ag-header-cell-comp-wrapper {
+  justify-content: center !important;
+}
+
+/* 필수 입력 * 표시 */
+.required-field .ag-header-cell-text::before {
+  content: '*';
+  color: #ef4444;
+  font-weight: bold;
+  margin-right: 4px;
+}
+/* 필수 입력 * 표시  헤더 가운데 정렬*/
+.required-field .ag-header-cell-label{
+  justify-content: center !important;
+}
+
+/* 필터 목록 높이 조정 */
+:where(.ag-filter-menu) .ag-set-filter-list {
+  min-height: 400px;
+}
+
+/* pinnedBottomRowData # scroll */
+/* .ag-horizontal-left-spacer {
+  overflow: auto;
+} 
+
+/* pinnedBottomRowData 오른쪽 끝 scroll */
+/* .ag-floating-bottom {
+  overflow: auto !important;
+} */

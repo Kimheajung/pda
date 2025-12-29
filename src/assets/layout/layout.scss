@@ -1,0 +1,915 @@
+@import "./_variables";
+@import "./sass/_layout";
+@import "./_overrides";
+
+/* 전체적용 - 마우스클릭시 아웃라인 제거 */
+
+.p-button:focus,
+.p-inputtext:focus,
+.p-dropdown:focus,
+.p-calendar:focus,
+.p-inputnumber:focus,
+.p-multiselect:focus,
+.p-checkbox:focus,
+.p-radio-button:focus, a:active {
+  outline: none;        /* 기본 outline 제거 */
+  box-shadow: none;     /* PrimeReact focus shadow 제거 */
+}
+
+a:focus,
+a:active {
+  outline: none;
+  box-shadow: none; /* 브라우저 기본 포커스 그림자 제거 */
+}
+
+
+ol, ul {padding-left: 0rem !important;}
+.row {--bs-gutter-x : 0rem !important}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* 휴그린 primreact 기본 컴퍼넌트 재정의 */
+.p-button {
+    height: 2.2857rem !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 4px !important;
+    //background-color: $color-primary-button;
+}
+/* 마우스 클릭 시(active) */
+.p-button:active {
+  transform: scale(0.98) !important; 
+}
+
+
+.p-button-label{font-weight: 400 !important;}
+.p-dropdown .p-dropdown-label {line-height: 32px;}
+
+
+.notice { font-size:12px !important; 
+  &.point1 {color: #6bbd;}
+  &.point2 {color: rgba(230, 90, 90, 0.87);}
+}
+
+.p-badge {
+  font-size: 10px !important;
+  padding: 0 6px !important;
+  min-width: 16px !important;
+  height: 16px !important;
+  line-height: 13px !important;
+  border-radius: 50% !important;
+}
+
+
+.btn-32 { border: 1px solid #bababa !important;}
+.btn-32-intable {    
+    background-color: #f6f6f6 !important;  
+    border: 1px solid #ddd !important;
+}
+.btn-28-master {    
+    height: 2rem !important;
+    color:#fff;
+    border:1px solid $color-primary-button;
+    background-color: $color-primary-button;
+
+    white-space: nowrap; /* 한 줄 유지 */
+    overflow: hidden;    /* 넘치는 부분 숨김 */
+    text-overflow: ellipsis; /* ... 처리 */
+    text-align: center;
+    padding: 0 0.5rem;
+}
+.btn-28-sec {    
+    height: 2rem !important;
+    background-color: #fff !important;
+    border:1px solid #bababa !important;
+    color:#888 !important;    
+    white-space: nowrap; 
+    overflow: hidden;    
+    text-overflow: ellipsis; 
+    text-align: center;
+    padding: 0 0.5rem;
+}
+.btn-28-intable {    
+    height: 2rem !important;
+    background-color: #f6f6f6 !important;  
+    border: 1px solid #ddd !important;
+     white-space: nowrap; 
+    overflow: hidden;    
+    text-overflow: ellipsis; 
+    text-align: center;
+    padding: 0 0.5rem;
+}
+
+.p-inputtext{
+    height: 2.2857rem !important;
+    padding: 0rem 1rem !important;
+}
+.p-inputtextarea{
+    border: 1px solid #ddd !important;
+    padding: 1rem !important;
+    border-radius: 6px !important;
+    background-color: #fff !important;
+}
+
+/* 에디터 전체 영역 */
+.p-editor-container,
+.ql-container {
+  width: 100% !important;
+}
+.p-editor-container {
+  width: 100% !important;
+  height: auto !important;     /* td 안에서만 높이 결정됨 */
+}
+.ql-toolbar.ql-snow{
+  padding: 4px !important;
+  width: 100% !important;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.ql-container.ql-snow {
+    height: 25rem !important;  
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.ql-editor {
+  height: 100% !important;
+  width: 100% !important; 
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.p-datepicker-trigger{
+  position: absolute;
+  right:0;
+  background-color: transparent !important;
+  border:0px solid #ddd !important;
+  width: 32px !important;
+  padding: 0px !important;
+  .p-icon{
+    width:14px !important;
+    height:14px !important;
+  }
+}
+
+.p-fileupload-choose, .p-fileupload-buttonbar{
+  .p-icon{
+    width:14px !important;
+    height:14px !important;
+    color:#fff !important;
+  }
+}
+.p-radiobutton .p-radiobutton-box, .p-checkbox .p-checkbox-box  {width: 16px !important;height: 16px !important;}
+.p-radiobutton, .p-checkbox {width: 16px !important; height: 16px !important;}
+.p-checkbox .p-checkbox-input {
+    border: 0px solid #d1d5db !important;
+    border-radius: 2px !important;
+}
+
+.p-dialog {
+    border:1px solid #D5D5D5 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12) !important;
+    background-color: #fff !important;
+}
+
+.p-dialog .p-dialog-header .p-dialog-title::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 3px solid #333;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon {scale: 1.6 !important;}
+.p-dialog .p-dialog-header {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  padding: 2rem 1.5rem .5rem 1.5rem;}
+
+
+.no-header .p-dialog-header {
+  display: none !important;
+}
+
+.no-header .p-dialog-content {
+  margin-top:4rem !important;
+  background-color: #fff !important;
+}
+
+
+.p-overlaypanel { --overlayArrowLeft: -9999px !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12) !important; 
+    border:1px solid #D5D5D5 !important;}
+
+.user-dialog {
+  width: 30vw;
+  //max-width: 800px;
+  min-width: 500px;
+
+  @media (max-width: 768px) {
+    width: 90vw !important;
+    max-width: none;
+    min-width: auto;
+  }
+
+  .p-dialog-content {
+    padding: 1.2rem;
+  }  
+}
+
+//아코디언 재정의
+.p-accordion .p-accordion-content {
+    padding: 0rem !important; 
+    border: 0px solid #e5e7eb !important; 
+    background: transparent !important; 
+    color: #9FAABA; 
+    border-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+     border-bottom-right-radius: 0px !important; 
+     border-bottom-left-radius: 0px !important; 
+}
+.p-accordion .p-accordion-header .p-accordion-header-link {
+    padding: .5rem !important;
+    border: 0px solid #e5e7eb !important;
+    color: #9FAABA;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #f9fafb;
+    font-weight: 400 !important;
+    transition: box-shadow 0.2s;
+    i {
+          font-size: 10px !important;
+          color: #888 !important;
+          margin-left: 6px;
+      }
+}
+.custom-accordion .p-accordion-header .p-accordion-toggle-icon {
+  display: none !important;
+}
+
+
+/* AutoComplete 드롭다운 버튼  재정의 */
+.p-autocomplete-dropdown {
+  background: #d1d5db !important;
+  border: 0px solid #fff !important;
+  color: white !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  border-top-right-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+  width: 32px !important;
+  height: 32px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  .p-icon {
+    flex-shrink: 0 !important;
+    color: #fff !important;
+    width: 10px !important;
+    height: 10px !important;
+    font-size: 18px !important;
+    }
+}
+.p-autocomplete-dropdown:hover {
+    background: #1f3f73 !important;
+  }
+
+
+
+// splitter
+.p-splitter {border: 0px solid #e5e7eb !important; border-radius: 0px !important;}
+.p-splitter-horizontal > .p-splitter-gutter {margin: 0 1rem !important;}
+.p-splitter-vertical > .p-splitter-gutter {margin: 1rem 0 !important; }
+.p-splitter .p-splitter-gutter .p-splitter-gutter-handle { background: #C2CAD7; }
+.p-splitter .p-splitter-gutter { background: #EFF1F5;}
+
+@media (max-width: 768px) {
+  .p-splitter.p-splitter-vertical .p-splitter-panel {
+    margin-bottom: 3rem;
+  }
+  .p-splitter.p-splitter-vertical .p-splitter-panel:last-child {
+    margin-bottom: 4rem;
+  }
+}
+
+
+.hugreen-tabview {
+  width: 100%  !important;
+
+  .p-tabview-nav {
+    padding-bottom: 0;
+    border-bottom: 0px solid transparent !important;
+  }
+
+  .p-tabview-nav-link {
+    background: transparent;    
+    border: 1px solid #d7d7d7;
+    font-size: 14px;
+    padding: 0.75rem 1.25rem;
+    margin-right:-1px !important;
+    color: #777;
+    font-weight: 500;
+    border-radius: 0px !important;
+
+    &:hover {
+      color: #000;
+    }
+  } 
+}
+  .p-tabview .p-tabview-panels {padding: 0px !important;}
+ /* 선택 탭 */
+  .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background: #2b579a !important;
+    color: #fff !important;
+    font-weight: 600;
+  }
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ag그리드 스타일 재정의 */
+.ag-header{
+    border-top: 1px solid #E2E8F0 !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    background-color: #F8FAFC !important;
+}
+.ag-body{    
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.ag-cell, .ag-full-width-row .ag-cell-wrapper.ag-row-group{line-height: 40px !important;}
+
+
+
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* 기본 스크롤바 전체 영역 - 변경금지 */
+::-webkit-scrollbar {
+  width: 6px;         /* 세로 스크롤바 두께 */
+  height: 6px;        /* 가로 스크롤바 두께 */
+}
+
+/* 스크롤바 트랙 (배경) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;  /* 스크롤 트랙 배경색 */
+  border-radius: 10px;
+}
+
+/* 스크롤바 손잡이 (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;  /* 기본 색상 */
+  border-radius: 10px;
+}
+
+/* 손잡이에 hover 시 색상 변경 */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+  cursor: pointer;
+}
+
+/* 스크롤바 모서리 (가로/세로 교차부분) */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* 공통 재정의 : 수정불가*/
+.card {
+  //height: calc(100vh - 17.6rem) !important;
+  background-color: transparent !important;
+}
+
+.height-01{
+  height: calc(100vh - 17.6rem) !important;
+}
+
+.height-02{
+  height: calc(100vh - 20rem) !important;
+}
+
+.height-03{
+  height: calc(100vh - 11rem) !important;
+}
+
+.height-04{
+  height: calc(100vh - 14rem) !important;
+  background-color: green !important;
+}
+
+.height-full{
+  height: calc(100vh - 8rem) !important;
+}
+
+
+@media (max-width: 991px) {
+    .card {
+      height: calc(100vh - 7.3rem) !important;
+    }
+
+    .p-breadcrumb {display: none !important;}
+    .layout-BreadCrumb-button{display: none !important;}
+ }
+
+ /* 공통 : sidebar 재정의 */
+.p-sidebar-visible {
+  margin-top: 56px !important; 
+  height: calc(100% - 56px) !important; 
+}
+
+/* 즐겨찾기 전용 Sidebar -> full height */
+.favorite-sidebar {
+  margin-top: -56px !important;               
+  height:  calc(100% + 56px) !important;              
+  top: 0 !important;
+}
+
+.mobile-topbar-sidebar {
+  margin-top: -56px !important;               
+  height:  calc(100% + 56px) !important;              
+  top: 0 !important;  
+  width: 80vw !important;
+}
+
+.favorite-help-sidebar {
+  width: 28rem !important;
+
+  .p-sidebar-content {
+    width: auto !important;
+    padding: 0 1.25rem !important; // 필요 시 조정
+  }
+
+  p {
+    color: #333 !important;
+    font-weight: 800 !important;
+  }
+  
+  img {
+    display: block;
+    width: auto;      // 이미지 원본 크기 유지
+    height: auto;
+    border: 1px solid #e6e6e6 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    margin: 1rem 0 2rem 0 !important;
+  }
+}
+
+
+/* 나만의 즐겨찾기 메뉴 삭제  및 관리 */
+/* 비어 있을 때 */
+.favorite-empty {
+  padding: 4rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #9ca3af; // gray-400
+  display: flex;
+  flex-direction: column;  // 아이콘 위 / 텍스트 아래로 분리
+  align-items: center;
+  justify-content: center;
+  gap: 6px; // 위아래 간격
+}
+
+.favorite-empty__icon {
+  font-size: 2rem;  
+  opacity: 0.6; 
+  color: #9ca3af;
+}
+
+.favorite-empty__text {
+  font-size: 0.88rem;
+  color: #9ca3af;
+}
+
+/* 목록 있을때 */
+.favorite-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+
+  .favorite-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 4px;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #374151; // gray-700
+
+    &:hover {
+      background-color: #f3f4f6; // gray-100
+    }
+
+    &::before {
+      content: "";
+      width: 3px;
+      height: 3px;
+      background-color: #6b7280; // gray-500
+      border-radius: 50%;
+      margin-right: 8px;
+      display: inline-block;
+    }
+  }
+}
+
+.favorite-del-btn {
+  margin-left: auto;
+  padding: 0.25rem;
+  min-width: 24px !important;
+  height: 24px !important;
+  color: #ccc !important;
+  background: none !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 14px !important;
+    color: #9ca3af !important;   
+    transition: color 0.2s ease;
+  }
+
+  &:hover {
+    color: #333 !important;   
+  }
+}
+
+/* 공통 Tooltip 스타일 */
+.p-tooltip .p-tooltip-text {
+  font-size: 12px !important;
+  padding: 4px 6px !important;
+  line-height: 1.4 !important;
+}
+
+
+
+.hgrid{display: flex;display: block; flex-wrap: wrap;margin-top:0rem; }
+
+
+
+
+
+/* 달력 재정의 */
+.p-datepicker {border:  1px solid #D5D5D5 !important;}
+.p-datepicker .p-datepicker-header {padding: 0.25rem !important;}
+.p-datepicker table { margin:0 0 !important;}
+.p-datepicker table td {padding: 0.25rem !important;}
+.p-calendar-w-btn-right .p-inputtext {
+    border-top-right-radius: 6px !important;
+    border-bottom-right-radius: 6px !important;
+}
+
+
+/* tag 재정의 */
+.p-tag{
+ height: 18px !important;
+ border-radius: 4px !important;
+}
+.p-tag.p-tag-success{
+ background-color: #DFE6F9 !important; //본사
+ color: #8390b1 !important;
+}
+.p-tag.p-tag-info{
+ background-color: #cfeced !important; //협력사
+ color: #709b9d !important;
+}
+.p-tag.p-tag-contrast{
+ background-color: #d9ebef !important; //대리점
+ color: #6B8DE0 !important;
+}
+.p-tag.p-tag-secondary{
+ background-color: #debbdd !important; //관리자
+ color: #aa7ca9 !important;
+}
+
+/* inputswitch 재정의 */
+.p-inputswitch{
+  height: 1.5rem !important;
+}
+.p-inputswitch .p-inputswitch-slider:before{
+  width: 1rem !important;
+  height: 1rem !important;
+  margin-top: -0.525rem !important;
+  left:0.35rem !important;
+}
+
+/* 메인 데시보드에서만 사이드바 숨김처리 */
+.dashboard-no-menu ~ .layout-sidebar {
+    display: none !important;
+}
+
+.p-fileupload .p-fileupload-buttonbar {
+    background: transparent !important; 
+    padding:  0 0 .5rem 0 !important; 
+    border: 0px solid #e5e7eb !important; 
+    justify-content:end !important;
+}
+.p-fileupload .p-fileupload-content {
+   overflow: auto !important;
+    padding: 2rem 1rem !important;
+    height: 28rem !important;
+}
+
+
+/* 페이지 탑으로 */
+.top-button {
+  position: fixed;
+  bottom: 1.5rem;     /* bottom-6 */
+  right: 1.5rem;      /* right-6 */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  
+  background-color: #333;
+  color: #fff;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  transition: background-color 0.2s;
+  z-index: 50;
+}
+
+.top-button:hover {
+  background-color: #22467a;
+}
+
+
+/* 가이드용  - 추후 삭제 */
+.guidetitle{font-weight: 600; display: flex !important; font-size:20px; color:green;margin-bottom:1rem;margin-top:4rem;}
+.table-basic {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #444;
+
+  thead {
+    background-color: #f9fafb; // tailwind bg-gray-50
+    border-top: 1px solid #e5e7eb; // divide-gray-200
+    border-bottom: 1px solid #e5e7eb; // divide-gray-200
+
+    th {
+      padding: 8px 16px;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 600;
+      //text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #4b5563; // text-gray-600
+
+      &.text-right {
+        text-align: right;
+      }
+    }
+  }
+
+  tbody {
+    background: #ffffff;
+
+    tr {
+      border-bottom: 1px solid #f3f4f6; // divide-gray-100
+      transition: background 0.2s;
+
+      &:hover {
+        background-color: #f9fafb; // hover:bg-gray-50;
+      }
+    }
+
+    td {
+      padding: 6px 16px;
+      font-size: 14px;
+      color: #374151; // text-gray-700
+      font-weight: 400;
+
+      &.text-right {
+        text-align: right;
+        color : #8b8b8b;
+      }
+
+      &.text-green {
+        color: #059669; // text-green-600
+        font-weight: 200;
+      }
+    }
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+
+  /* thead 완전 숨김 */
+  .table-basic thead {
+    display: none !important;
+  }
+
+  /* table을 block 형태로 전환해야 td 스타일이 먹음 */
+  .table-basic,
+  .table-basic tbody,
+  .table-basic tr {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* tr 사이 간격 */
+  .table-basic tbody tr {
+    margin-bottom: 12px !important;
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.05);
+    border: 1px solid #D5D5D5;
+  }
+
+  /* td가 block이라 왼쪽으로 쏠리는 문제 해결 → flex 양쪽 정렬 */
+  .table-basic td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 2px 6px !important;
+    font-size: 1.25rem !important;
+    width: 100%;
+    color: #333;
+    border: none !important;
+  }
+
+  
+  .table-basic td:nth-child(4),
+  .table-basic td:nth-child(5) {
+    display: none !important;
+  }
+
+  /* 오른쪽 정렬 td도 동일하게 */
+  .table-basic td.text-right {
+    justify-content: space-between !important;
+    font-size: 1rem !important;
+  }
+
+
+}
+
+
+
+//로그인
+.login-container {
+  width: 100%;
+  height: 100vh;
+  background: url("/images/visual_02.jpg") no-repeat top left;
+  background-size: cover;    //★ 핵심: 원본 비율 유지, 잘림 없음
+  background-size: 70% !important;
+  background-color: #fff;  
+
+  display: flex;
+  justify-content: end;
+  margin-right:40px !important;
+
+  align-items: center;
+  padding: 1rem !important;
+
+  @media (max-width: 768px) {
+  padding: 1rem;
+  background-position: top;
+  background: url("/images/visual_02jpg") no-repeat top left;
+  background-size: cover;  
+  background-size: 100% !important;
+  }
+}
+
+.login-box {
+  width: 430px;
+  background: #fff;
+  padding: 8rem 4rem 10rem 4rem;
+  border-radius: 12px;
+  border:1px solid #D0D0D0 !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  align-items: center !important;
+  justify-content: center !important;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 4.5rem 2rem;
+  }
+}
+
+.login-title {
+  text-align: left;
+  margin-bottom: 4rem !important;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #9FAABA;
+  
+   span {
+    display: block;   
+    line-height: 1.4;  
+  }
+}
+
+.login-input-group {
+  margin-bottom: 10px;
+
+  label {
+    display: none;
+  }
+
+  .p-inputtext,
+  .p-password {
+    border:1px solid #E2E8F0 !important;
+    border-radius: 6px !important;
+    width: 316px !important;
+    height: 40px !important;
+
+      @media (max-width: 480px) {
+        width: 256px !important;
+      }
+  }
+}
+
+.login-button {
+  background: #006666 !important;
+  border: none !important;
+  font-size: 1.1rem;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  height: 50px !important;
+
+  &:hover {
+    background: #003636 !important;
+  }
+}
+
+.login-sub-options {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .remember-area {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    .remember-label {
+      font-size: 0.85rem;
+      color: #475569;
+    }
+  }
+
+  .pw-find-button {
+    background: none;
+    border: none;
+    color: #475569;
+    font-size: 0.85rem;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.login-sub-bottom {
+  position: absolute;
+  display: flex;
+  padding-top:8rem;
+  width: 74%;
+  bottom:2rem;
+  color: #9FAABA;
+  justify-content: space-between;
+  align-items: center;
+
+  .infotext_left {
+    display: flex;
+    align-items: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+   .infotext_right {
+    display: flex;
+    align-items: end;
+    color: #555 !important;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.modal-field {
+  margin-top: 1rem;
+
+  .p-inputtext {
+    width: 100%;
+  }
+}
