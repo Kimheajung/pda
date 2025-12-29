@@ -57,6 +57,7 @@
 .title-container {
   display: flex;
   flex-wrap: wrap;
+  padding: 0 1rem !important;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem; /* Tailwind gap-2 */
@@ -82,7 +83,8 @@
 
 .hugreen_tabarea{
   display: flex !important;
-  padding: 0 1rem !important;
+  //padding: 0 1rem !important;
+  background-color: #F5F6F9;
 }
 
 

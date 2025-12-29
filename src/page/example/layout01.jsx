@@ -189,7 +189,7 @@ const Layout01 = () => {
   
 
   return (
-    <div className="card height-01">  
+    <div className="card">  
         {/* 공통 : 타이틀영역 */}
         <div className="title-container">
             <div  className="flex gap-4">
