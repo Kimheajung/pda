@@ -2,7 +2,7 @@
   "name": "kumhoproject",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://kimheajung.github.io/green",
+  "homepage": "https://kimheajung.github.io/pda",
   "type": "module",
   "scripts": {
     "dev": "vite",
