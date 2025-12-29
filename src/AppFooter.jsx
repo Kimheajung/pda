@@ -29,7 +29,7 @@ export const AppFooter = (props) => {
             </button>
              <button
                 type="button"
-                className="p-link layout-menu-button text-white" onClick={props.onToggleMenuClick}>
+                className="p-link layout-menu-button text-white">
                 <i className="pi pi-ellipsis-h" />
             </button>
         </div>
