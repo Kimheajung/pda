@@ -169,37 +169,25 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
   // TOP 버튼 노출 여부
   const [showTopBtn, setShowTopBtn] = useState(false);
 
-  // 스크롤 감지
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 200) {
-        setShowTopBtn(true);
-      } else {
-        setShowTopBtn(false);
-      }
-    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // 최상단 이동 함수
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-
-  useEffect(() => {
+//스크롤감지
+useEffect(() => {
   const handleScroll = () => {
     const currentY = window.scrollY;
 
-    // 아래로 스크롤 → footer 숨김
+    // Top 버튼
+    setShowTopBtn(currentY > 200);
+
+    // Footer: 아래로 → 숨김 / 위로 → 표시
     if (currentY > lastScrollY.current && currentY > 50) {
       setShowFooter(false);
-    }
-
-    // 위로 스크롤 → footer 표시
-    if (currentY < lastScrollY.current) {
+    } else if (currentY < lastScrollY.current) {
       setShowFooter(true);
     }
 
@@ -236,7 +224,7 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
       <div className="layout-main-container" >
         <div className="layout-main">{children}</div>
 
-        {/*  페이지 top */}
+        {/*  페이지 top*/}
         {showTopBtn && (
          <button
             onClick={scrollToTop}
@@ -244,7 +232,7 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
           >
             <i className="pi pi-arrow-up text-xl"></i>
           </button>
-        )}
+        )} 
       </div>
 
        <div

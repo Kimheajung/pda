@@ -148,7 +148,7 @@ const Example02 = () => {
       <div className="grid-searchwrap grid-searchwrap--2col">
       
         <div className="row">
-          <div className="th"> <label for="firstname5">오더일자</label></div>
+          <div className="th"> <label htmlFor="firstname5">오더일자</label></div>
           <div className="td">
             <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  
           </div>
@@ -261,7 +261,7 @@ const Example02 = () => {
             <div className="hugreen_aggridbtn_hwrap">
               <div className="flex">
                 <span className="NumText"> 조회결과</span>
-                <p class="totalNumText" >총&nbsp;<span>18,203</span>건</p>
+                <p className="totalNumText" >총&nbsp;<span>18,203</span>건</p>
               </div>
                <div className="flex gap-2"> 
                 <Button label="저장" className="btn-28-intable" severity="secondary" outlined /> 
@@ -294,18 +294,18 @@ const Example02 = () => {
         <div className=" flex flex-wrap">
            
             <div className="flex flex-wrap gap-4"> 
-              <div class="flex flex-wrap w-full items-center gap-4">
+              <div className="flex flex-wrap w-full items-center gap-4">
                 <div>
-                  <label for="firstname5" class="p-sr-only mr-4">기본 input </label>
+                  <label htmlFor="firstname5" className="p-sr-only mr-4">기본 input </label>
                   <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  
                 </div>
                  <div>
-                  <label for="firstname5" class="p-sr-only mr-4">Disable </label>
+                  <label htmlFor="firstname5" className="p-sr-only mr-4">Disable </label>
                   <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"  disabled={true}/>  
                 </div>
                 
                  <div>
-                  <label for="firstname5" class="p-sr-only mr-4">숫자만 입력 </label>
+                  <label htmlFor="firstname5" className="p-sr-only mr-4">숫자만 입력 </label>
                   <InputText
                     value={value}
                     onChange={(e) => {
@@ -316,7 +316,7 @@ const Example02 = () => {
                   />
                 </div>
                  <div className="flex relative">
-                    <label for="firstname6" class="p-sr-only mr-4">입력시 </label>
+                    <label htmlFor="firstname6" class="p-sr-only mr-4">입력시 </label>
                     <InputText
                       value={value}
                       onChange={(e) => setValue(e.target.value)}
@@ -336,8 +336,8 @@ const Example02 = () => {
 
               </div>
 
-               <div class="flex flex-wrap  w-full items-center gap-2">
-                  <label for="firstname5" class="p-sr-only  mr-4">검색아이콘 input</label>
+               <div className="flex flex-wrap  w-full items-center gap-2">
+                  <label htmlFor="firstname5" className="p-sr-only  mr-4">검색아이콘 input</label>
                   <div>
                   <IconField iconPosition="right">
                       <InputIcon className="pi pi-search"> </InputIcon>
@@ -353,11 +353,11 @@ const Example02 = () => {
                <CodeBox
                 code={`
 1. 기본 default
-<label for="firstname5" class="p-sr-only">기본 input </label>
+<label htmlFor="firstname5" class="p-sr-only">기본 input </label>
 <InputText value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  
 
 2. input + search아이콘
-<label for="firstname5" class="p-sr-only">검색아이콘 input</label>
+<label htmlFor="firstname5" class="p-sr-only">검색아이콘 input</label>
 <IconField iconPosition="right">
 <InputIcon className="pi pi-search"> </InputIcon>
 <InputText placeholder="입력해주세요" />
@@ -373,7 +373,7 @@ const Example02 = () => {
         <div className="guidetitle mt-10">6.combo 재정의 </div>
         <div className=" flex">
            <div class="h_field flex items-center gap-2">
-              <label for="firstname5" class="p-sr-only">기본 combo </label>
+              <label htmlFor="firstname5" class="p-sr-only">기본 combo </label>
                 <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
                   placeholder="선택해주세요"/>
             </div>
@@ -384,7 +384,7 @@ const Example02 = () => {
          <div className="guidetitle mt-10">7.radio & checkbox 정의</div>
         <div className=" flex">
           <div class="h_field flex items-center gap-2">
-              <label for="firstname5" class="p-sr-only">라디오버튼 검색조건 </label>
+              <label htmlFor="firstname5" class="p-sr-only">라디오버튼 검색조건 </label>
                 <div className="flex flex-wrap gap-2">
                   <div className="flex align-items-center">
                       <RadioButton inputId="ingredient1" name="pizza" value="Cheese" onChange={(e) => setIngredient(e.value)} checked={ingredient === 'Cheese'} />
@@ -399,8 +399,8 @@ const Example02 = () => {
 
         </div> 
          <div className=" flex mt-4">
-          <div class="h_field flex items-center gap-2">
-              <label for="firstname5" class="p-sr-only">체크박스 검색조건 </label>
+          <div className="h_field flex items-center gap-2">
+              <label htmlFor="firstname5" class="p-sr-only">체크박스 검색조건 </label>
                 <div className="flex flex-wrap gap-2">
                   <div className="flex align-items-center">
                       <Checkbox inputId="ingredient1" name="pizza" value="Cheese" onChange={onIngredientsChange} checked={ingredients.includes('Cheese')} />
