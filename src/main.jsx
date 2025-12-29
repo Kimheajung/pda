@@ -15,6 +15,17 @@ ModuleRegistry.registerModules([
   AllEnterpriseModule
 ]);
 
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+if (!isMobile) {
+  document.body.innerHTML = `
+    <div style="padding:40px;text-align:center">
+      본 서비스는 모바일 전용입니다.
+    </div>
+  `;
+  throw new Error('Desktop blocked'); // React 실행 중단
+}
+
 // ================================
 //  나머지 import
 // ================================

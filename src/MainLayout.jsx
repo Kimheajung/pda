@@ -102,21 +102,6 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
       items: [{ label: 'Dashboard', icon: '', to: '/' }],
     },
     {
-      label: 'Grid',
-      items: [
-        { label: 'Sample00', icon: '', to: '/sample00' },
-        { label: 'Sample01', icon: '', to: '/sample01' },
-        { label: 'Sample02', icon: '', to: '/sample02' },
-        { label: 'Sample03', icon: '', to: '/sample03' },
-        { label: 'Sample04', icon: '', to: '/sample04' },
-        { label: 'Sample05', icon: '', to: '/sample05' },
-        { label: 'Sample06', icon: '', to: '/sample06' },
-        { label: 'Sample07', icon: '', to: '/sample07' },
-        { label: 'Sample08', icon: '', to: '/sample08' },
-        { label: 'Sample09', icon: '', to: '/sample09' },
-      ],
-    },
-    {
       label: '컴포넌트',
       items: [
         { label: '1. 예제', icon: '', to: '/example' },

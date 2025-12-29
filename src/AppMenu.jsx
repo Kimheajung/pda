@@ -165,7 +165,7 @@ export const AppMenu = (props) => {
   return (
     <div className="layout-menu-container panel-style">
       <div className='flex items-cente mb-2 justify-between mt-[15px]'>
-        <h1>건자재시스템</h1>
+        <h1>건자재바코드시스템</h1>
         <div className='flex gap-4 items-center'>
            <Tag severity="contrast" value="대리점"></Tag>
           <button
