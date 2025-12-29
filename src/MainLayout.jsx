@@ -20,6 +20,8 @@ export default function MainLayout({ children }) {
   const [mobileTopbarMenuActive, setMobileTopbarMenuActive] = useState(false);
   const copyTooltipRef = useRef(null);
   const location = useLocation();
+  const [showFooter, setShowFooter] = useState(true);
+  const lastScrollY = useRef(0);
 
   PrimeReact.ripple = false;
 
@@ -186,6 +188,30 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+
+  useEffect(() => {
+  const handleScroll = () => {
+    const currentY = window.scrollY;
+
+    // 아래로 스크롤 → footer 숨김
+    if (currentY > lastScrollY.current && currentY > 50) {
+      setShowFooter(false);
+    }
+
+    // 위로 스크롤 → footer 표시
+    if (currentY < lastScrollY.current) {
+      setShowFooter(true);
+    }
+
+    lastScrollY.current = currentY;
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
+
+
   return (
     <div className={wrapperClass} onClick={onWrapperClick} >
       <AppTopbar
@@ -221,13 +247,23 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
         )}
       </div>
 
-       <AppFooter
+       <div
+        className={classNames(
+          'fixed bottom-0 left-0 w-full z-50 transition-transform duration-300',
+          {
+            'translate-y-0': showFooter,
+            'translate-y-full': !showFooter,
+          }
+        )}
+      >
+        <AppFooter
           model={menu}
           onMenuItemClick={onMenuItemClick}
           menuIconToggle={menuIconToggle}
           onToggleMenuClick={onToggleMenuClick}
           layoutColorMode={'light'}
         />
+      </div>
 
       {/* 임시삭제 */}
       <AppConfig
