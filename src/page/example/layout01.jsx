@@ -109,7 +109,7 @@ const requestCloseDialog = () => {
       <div className="grid-searchwrap grid-searchwrap--8col">
       
         <div className="row">
-          <div className="th"> <label for="firstname5">오더일자</label></div>
+          <div className="th"> <label htmlFor="firstname5">오더일자</label></div>
           <div className="td">
             <InputText value={value} onChange={(e) => setValue(e.target.value)} className="w-full" placeholder="선택해주세요"/>  
           </div>
@@ -235,7 +235,7 @@ const requestCloseDialog = () => {
             <div className="hugreen_aggridbtn_hwrap mt-4">
               <div className="flex">
                 <span className="NumText"> 조회결과</span>
-                <p class="totalNumText" >총&nbsp;<span>18,203</span>건</p>
+                <p className="totalNumText" >총&nbsp;<span>18,203</span>건</p>
               </div>
                <div className="flex gap-2"> 
                 <Button label="삭제" className="btn-28-sec" severity="secondary" outlined /> 

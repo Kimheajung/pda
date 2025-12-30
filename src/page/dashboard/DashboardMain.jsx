@@ -2,11 +2,22 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { TabView, TabPanel } from 'primereact/tabview';
-// import { ProductService } from '../service/ProductService';
+import { useSearchParams } from 'react-router-dom';
+
 
 
 
 const DashboardMain = (props) => {
+
+//탭 링크열기
+ const [searchParams] = useSearchParams();
+
+const tabParam = searchParams.get('tab');
+const tabIndex = [0, 1, 2].includes(Number(tabParam))
+  ? Number(tabParam)
+  : 0;
+
+
   return (
     <>
       {/* ← 하드코딩 CSS로 메인에만 적용 */}
@@ -33,10 +44,14 @@ const DashboardMain = (props) => {
       
       
               {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
-              <div className="hugreen_grid flex-1 flex flex-wrap md:flex-row">
+              <div className="hugreen_grid flex-1 flex flex-wrap md:flex-row" >
       
                 <div className="hugreen_mobile_wrap">
-                  <TabView className="hugreen-main-tabview" activeIndex={0}>
+                  <TabView
+                      key={tabIndex}
+                      className="hugreen-main-tabview"
+                      activeIndex={tabIndex}
+                    >
                       <TabPanel header="입고">
                           <div className="flex justify-center items-center w-full h-full">
                             <img src="/pda/images/main.png" alt="main" className="max-w-none"  />
