@@ -258,9 +258,9 @@ const closeDialogWithSlide = () => {
                 visible={visible2} modal resizable={false} 
                  footer={footerContent2}
                   closable={false}
-                className={classNames(
-                'user-dialog slide-dialog',
-                { 'slide-out-Right': dialogClosing }
+               className={classNames(
+                  'user-dialog slide-dialog',
+                  { 'slide-out-right': dialogClosing } 
                 )}
                             >
                     
