@@ -11,6 +11,7 @@
 
 .layout-main {
     flex: 1 1 auto;
+    background-color: #F5F6F9;
 }
 
 .layout-BreadCrumb-button {
@@ -221,6 +222,7 @@
 .hugreen_aggridbtn_hwrap{
     display: flex;
     width: 100%;
+    background-color: #fff !important;
     padding: 0 1rem !important;
     //height: 28px;
     margin-bottom: 5px;
@@ -269,6 +271,7 @@
 .hugreen_aggrid_hwrap{
     //display: flex;
     flex-wrap: wrap;
+    background-color: #fff !important;
     width: 100%;
     height: 100%;
     padding: 0rem 1rem !important;

@@ -56,7 +56,7 @@ const [searchParams, setSearchParams] = useSearchParams();
       
       
               {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
-              <div className="hugreen_grid  flex flex-wrap" >
+              <div className="hugreen_main  flex flex-wrap">
       
                 <div className="hugreen_wrap">
                   {/* 탭 헤더 */}
@@ -79,7 +79,7 @@ const [searchParams, setSearchParams] = useSearchParams();
                     className='h-full'
                   >
                     <SwiperSlide>
-                      <div className="flex justify-center items-center w-full h-full">
+                      <div className="flex justify-center items-center w-full h-full" >
                         <img src="/pda/images/main.png" alt="main" className="max-w-none"  />
                       </div>
                     </SwiperSlide>
