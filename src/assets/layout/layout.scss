@@ -169,7 +169,8 @@ ol, ul {padding-left: 0rem !important;}
     border-radius: 0px !important;
     //box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12) !important;
     background-color: #fff !important;
-    height: 100vh !important;
+    height: 100vh !important; 
+    max-height: 100% !important;
 }
 
 
@@ -178,7 +179,7 @@ ol, ul {padding-left: 0rem !important;}
 .p-dialog .p-dialog-header {
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
-  background-color: red;
+  //ackground-color: red;
   padding: 1rem;}
   
 .no-header .p-dialog-header {
@@ -326,6 +327,7 @@ ol, ul {padding-left: 0rem !important;}
 
 .hugreen-tabview {
   width: 100%  !important;
+  padding: 1rem 0rem  0 0rem !important;
 
   .p-tabview-nav {
     padding-bottom: 0;
@@ -333,8 +335,8 @@ ol, ul {padding-left: 0rem !important;}
   }
 
   .p-tabview-nav-link {
-    background: transparent;    
-    border: 1px solid #d7d7d7;
+    background: #F5F6F9 !important;    
+    border-bottom: 1px solid #d7d7d7;
     font-size: 14px;
     padding: 0.75rem 1.25rem;
     margin-right:-1px !important;
@@ -350,8 +352,8 @@ ol, ul {padding-left: 0rem !important;}
   .p-tabview .p-tabview-panels {padding: 0px !important;}
  /* 선택 탭 */
   .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-    background: #2b579a !important;
-    color: #fff !important;
+    //background: #2b579a !important;
+    color: #2b579a !important;
     font-weight: 600;
   }
 

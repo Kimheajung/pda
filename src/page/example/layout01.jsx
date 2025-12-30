@@ -7,6 +7,7 @@ import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from 'primereact/dropdown';
+import { TabView, TabPanel } from 'primereact/tabview';
 import { RadioButton } from 'primereact/radiobutton';
 import { Tooltip } from 'primereact/tooltip';
 import classNames from 'classnames';
@@ -170,108 +171,82 @@ const requestCloseDialog = () => {
 
   return (
     <div className="card">  
-        {/* 공통 : 타이틀영역 */}
-        <div className="title-container">
-            <div  className="flex gap-4">
-              <h2>1.검색영역 + 그리드를 가진 기본 레이아웃 </h2>
-              <div className="flex gap-2">
-              {/* 공통 : 메뉴별 새창열기 */}
-              <Button
-                icon="pi pi-external-link"
-                className="layout-newwindow-button"
-                aria-label="New Windows"
-                text 
-                tooltip="윈도우 새창"
-                tooltipOptions={{ position: "bottom", mouseTrack: true, mouseTrackTop: 15 }}
-                onClick={() => window.open(window.location.href, "_blank")}
-              />
-              {/* 공통 : 메뉴별 즐겿자기 */}
-              <Button
-                icon={filled ? "pi pi-star-fill" : "pi pi-star"}
-                className="layout-Favorite-button"
-                onClick={() => setFilled((prev) => !prev)}
-                aria-label="Favorite"
-                tooltip="즐겨찾기 메뉴"
-                tooltipOptions={{ position: "bottom", mouseTrack: true, mouseTrackTop: 15 }}
-                text 
-              />
-              </div>
-            </div>          
-            <div className="flex items-center" >
-               <BreadCrumb model={items} home={home}  />               
-               {/* 공통 : 메뉴별 도움말 */}
-                <Tooltip target=".has-tooltip" position="bottom" mouseTrack mouseTrackTop={15} />
-               <button className="layout-BreadCrumb-button has-tooltip" data-pr-tooltip="업무매뉴얼" onClick={() => setVisibleRight(true)}>
-                  <i className="pi pi-exclamation-circle"/>
-                </button>
-            </div>
-        </div>
-
-
 
 
         {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
         <div className="hugreen_grid flex-1 flex flex-wrap md:flex-row">
 
-             {/* 공통 검색영역(PC+모바일대응) */}
-            <div className="hugreen_grid flex-1 flex flex-wrap">
-              {/* PC (md 이상) */}
-              <div className="hugreen_searchwrap hidden md:flex transition-all duration-300">
-                <div className="flex">
-                  <SearchForm value={value} setValue={setValue} selectedCity={selectedCity} setSelectedCity={setSelectedCity} cities={cities} />
-                </div>
-                <div className="flex search-btn-wrap">
-                  <Button label="검색" text  className="search-btn"/>
-                </div>
-              </div>
+          <div className="hugreen_mobile_wrap">
+            <TabView className="hugreen-tabview" activeIndex={0}>
+                <TabPanel header="입고내역조회">
+                    {/* 공통 검색영역(PC+모바일대응) */}
+                    <div className="hugreen_m_search flex-1 flex flex-wrap">
+                      {/* 모바일 (sm 이하) */}
+                      <div className="w-full md:hidden">
+                        <div className="hugreen_searchwrap overflow-hidden">
+                          {/* Accordion Header */}
+                          <button
+                          type="button"
+                          className="flex m_filter_text"
+                          onClick={() => setActiveIndex(activeIndex === 0 ? -1 : 0)}>
+                          {activeIndex === 0 ? "검색필터 숨기기" : "검색필터 펼치기"}                     
+                          </button>
 
-              {/* 모바일 (sm 이하) */}
-              <div className="w-full md:hidden">
-                <div className="hugreen_searchwrap overflow-hidden">
-                  {/* Accordion Header */}
-                  <button
-                  type="button"
-                  className="flex m_filter_text"
-                  onClick={() => setActiveIndex(activeIndex === 0 ? -1 : 0)}>
-                  {activeIndex === 0 ? "검색필터 숨기기" : "검색필터 펼치기"}                     
-                  </button>
-
-                  {/* Accordion Content with Smooth Animation */}
-                  <div
-                  className={`overflow-hidden transition-all duration-300  ${
-                  activeIndex === 0 ? "max-h-[500px] p-0" : "max-h-0 p-0"} `}>
-                    <div className="flex">
-                      <SearchForm value={value} setValue={setValue} selectedCity={selectedCity} setSelectedCity={setSelectedCity} cities={cities} />
+                          {/* Accordion Content with Smooth Animation */}
+                          <div
+                          className={`overflow-hidden transition-all duration-300  ${
+                          activeIndex === 0 ? "max-h-[500px] p-0" : "max-h-0 p-0"} `}>
+                            <div className="flex">
+                              <SearchForm value={value} setValue={setValue} selectedCity={selectedCity} setSelectedCity={setSelectedCity} cities={cities} />
+                            </div>
+                            <div className="flex search-btn-wrap">
+                              <Button label="검색" text  className="search-btn"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex search-btn-wrap">
-                      <Button label="검색" text  className="search-btn"/>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </TabPanel>
+                <TabPanel header="자가생산입고(개별)">
+                    <p className="m-0">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
+                        eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
+                        enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui 
+                        ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
+                    </p>
+                </TabPanel>
+                <TabPanel header="자가생산입고(일괄)">
+                    <p className="m-0">
+                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti 
+                        quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in
+                        culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. 
+                        Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+                    </p>
+                </TabPanel>
+            </TabView>
+          </div>
+           
 
-            </div>
+            
             
 
 
             {/* 공통 : 그리드 상단 버튼  */}
-            <div className="hugreen_aggridbtn_hwrap">
+            <div className="hugreen_aggridbtn_hwrap mt-4">
               <div className="flex">
                 <span className="NumText"> 조회결과</span>
                 <p class="totalNumText" >총&nbsp;<span>18,203</span>건</p>
               </div>
                <div className="flex gap-2"> 
-                <Button label="저장" className="btn-28-intable" severity="secondary" outlined /> 
                 <Button label="삭제" className="btn-28-sec" severity="secondary" outlined /> 
-                <Button label="검색" className="btn-28-master" severity="secondary" outlined />
-                <Button label="3.모달 - 상세화면" onClick={() => setVisible2(true)} />
-               <Dialog
+                <Button label="3.모달 - 상세화면" className="btn-28-master" onClick={() => setVisible2(true)} />
+                <Dialog
                   header={dialogHeader}
                   visible={visible2}
                   modal
                   resizable={false}
                   footer={footerContent2}
-                  closable={false}
+                  closable={true}
                   className={classNames(
                     'user-dialog slide-dialog',
                     { 'slide-out-right': dialogClosing }

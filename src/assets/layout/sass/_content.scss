@@ -207,10 +207,21 @@
     line-height: 31px !important;
   }
   
+.hugreen_mobile_wrap{
+    display: flex;
+    width: 100%;
+    //padding: 0 1rem 0 1rem !important;
+    //height: 28px;
+    background-color: #F5F6F9;
+    border-bottom: 8px solid #F2F1F1;
+    padding-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
 .hugreen_aggridbtn_hwrap{
     display: flex;
     width: 100%;
-    padding: 0 1rem 0 1rem !important;
+    padding: 0 1rem !important;
     //height: 28px;
     margin-bottom: 5px;
     flex-wrap: wrap;
@@ -260,7 +271,7 @@
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    padding: 0rem 1rem 0rem 1rem !important;
+    padding: 0rem 1rem !important;
 }
 
 .hugreen_aggrid_hwrap_aggrid{
