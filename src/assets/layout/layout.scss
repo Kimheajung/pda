@@ -192,13 +192,13 @@ ol, ul {padding-left: 0rem !important;}
 
 
 /* 등장 */
-.slide-dialog {
-  animation: slideInFromRight 0.3s ease-out;
+.slide-dialog .p-dialog {
+  animation: slideInFromRight 0.3s ease-out both;
 }
 
 /* 닫힘 */
-.slide-dialog.slide-out-Right {
-  animation: slideOutToRight  0.3s ease-out;
+.slide-dialog.slide-out-right .p-dialog {
+  animation: slideOutToRight 0.3s ease-out both;
 }
 
 @keyframes slideInFromRight {

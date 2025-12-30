@@ -7,9 +7,9 @@ import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from 'primereact/dropdown';
-import classNames from 'classnames';
 import { RadioButton } from 'primereact/radiobutton';
 import { Tooltip } from 'primereact/tooltip';
+import classNames from 'classnames';
 import { Dialog } from 'primereact/dialog';
 import { FileUpload } from 'primereact/fileupload';
 import { Editor } from 'primereact/editor';
@@ -79,7 +79,8 @@ const Layout01 = () => {
 
 
   /* 다이얼로그 팝업 */
- const [visible2, setVisible2] = useState(false);
+  const [visible2, setVisible2] = useState(false); 
+const [visible3, setVisible3] = useState(false);
 const [dialogClosing, setDialogClosing] = useState(false);
   const footerContent2 = (
     <div className="gap-2">
@@ -87,13 +88,15 @@ const [dialogClosing, setDialogClosing] = useState(false);
         <Button label="적용"  onClick={() => setVisible2(false)} autoFocus />
     </div>
   );
-const closeDialogWithSlide = () => {
+const requestCloseDialog = () => {
+  if (dialogClosing) return;
+
   setDialogClosing(true);
 
   setTimeout(() => {
     setVisible2(false);
     setDialogClosing(false);
-  }, 300); 
+  }, 300); // CSS 애니메이션 시간과 동일
 };
 
 
@@ -152,7 +155,7 @@ const closeDialogWithSlide = () => {
       <button
         type="button"
         className="p-link text-gray-600"
-        onClick={closeDialogWithSlide}
+         onClick={requestCloseDialog}
       >
         <i className="pi pi-arrow-left text-mg" />
       </button>
@@ -193,10 +196,18 @@ const closeDialogWithSlide = () => {
                 text 
               />
               </div>
-            </div>   
+            </div>          
+            <div className="flex items-center" >
+               <BreadCrumb model={items} home={home}  />               
+               {/* 공통 : 메뉴별 도움말 */}
+                <Tooltip target=".has-tooltip" position="bottom" mouseTrack mouseTrackTop={15} />
+               <button className="layout-BreadCrumb-button has-tooltip" data-pr-tooltip="업무매뉴얼" onClick={() => setVisibleRight(true)}>
+                  <i className="pi pi-exclamation-circle"/>
+                </button>
+            </div>
         </div>
 
-      
+
 
 
         {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
@@ -254,15 +265,19 @@ const closeDialogWithSlide = () => {
                 <Button label="삭제" className="btn-28-sec" severity="secondary" outlined /> 
                 <Button label="검색" className="btn-28-master" severity="secondary" outlined />
                 <Button label="3.모달 - 상세화면" onClick={() => setVisible2(true)} />
-                <Dialog header={dialogHeader} 
-                visible={visible2} modal resizable={false} 
-                 footer={footerContent2}
+               <Dialog
+                  header={dialogHeader}
+                  visible={visible2}
+                  modal
+                  resizable={false}
+                  footer={footerContent2}
                   closable={false}
-               className={classNames(
-                  'user-dialog slide-dialog',
-                  { 'slide-out-right': dialogClosing } 
-                )}
-                            >
+                  className={classNames(
+                    'user-dialog slide-dialog',
+                    { 'slide-out-right': dialogClosing }
+                  )}
+                  onHide={requestCloseDialog}   // ✅ 절대 setVisible 직접 금지
+                >
                     
                     {/* 공통 : ag그리드  */}
                     <div className="flex w-full" >
