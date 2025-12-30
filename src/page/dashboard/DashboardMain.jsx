@@ -52,7 +52,7 @@ const [searchParams, setSearchParams] = useSearchParams();
         `}
       </style>
 
-       <div className="card">  
+       <div className="card_etc">  
       
       
               {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
@@ -60,7 +60,7 @@ const [searchParams, setSearchParams] = useSearchParams();
       
                 <div className="hugreen_wrap">
                   {/* 탭 헤더 */}
-                  <TabView
+                  <TabView className="hugreen-main-tabview"
                       activeIndex={activeIndex}
                       onTabChange={(e) => setSearchParams({ tab: e.index })}
                       scrollable 
@@ -76,20 +76,34 @@ const [searchParams, setSearchParams] = useSearchParams();
                     onSlideChange={(swiper) =>
                       setSearchParams({ tab: swiper.activeIndex })
                     }
-                    className='mt-4'
+                    className='h-full'
                   >
                     <SwiperSlide>
-                      <div className="flex justify-center items-center w-full">
+                      <div className="flex justify-center items-center w-full h-full">
                         <img src="/pda/images/main.png" alt="main" className="max-w-none"  />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="flex justify-center items-center w-full">
                        출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
+                       출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
+                       출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
+                       출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
+                       출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="flex justify-center items-center w-full">
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
                        기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
                       </div>
                     </SwiperSlide>
