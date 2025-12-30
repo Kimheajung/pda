@@ -536,7 +536,7 @@ const Example02 = () => {
 
 
             <Button label="3.모달 - 상세화면" onClick={() => setVisible2(true)} />
-            <Dialog header="3.상세화면" visible={visible2} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => setVisible2(false)} footer={footerContent}>
+            <Dialog header="3.상세화면" visible={visible2} modal resizable={false}  className="user-dialog" onHide={() => setVisible2(false)} footer={footerContent}>
                 
                 {/* 공통 : ag그리드  */}
                 <div className="flex w-full" style={{ height: '40vh' }}>

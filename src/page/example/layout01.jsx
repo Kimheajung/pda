@@ -1,12 +1,13 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { Button } from "primereact/button";
 import { BreadCrumb } from 'primereact/breadcrumb';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Sidebar } from 'primereact/sidebar';
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from 'primereact/dropdown';
+import classNames from 'classnames';
 import { RadioButton } from 'primereact/radiobutton';
 import { Tooltip } from 'primereact/tooltip';
 import { Dialog } from 'primereact/dialog';
@@ -76,66 +77,24 @@ const Layout01 = () => {
   ];
 
 
-  /* ag그리드 예제  */
-  const gridRef = useRef(null);
-  const [rowData] = useState(MOCK_DATA3);
-  const [colDefs] = useState([
-    {
-      field: 'date1',
-      headerName: 'date',
-      type: ['filterDate'],
-    },
-    {
-      field: 'text1',
-      headerName: 'text',
-      type: ['textField_center'],
-    },
-    {
-      field: 'text2',
-      headerName: 'textarea',
-      type: ['textField_left'],
-    },
-    {
-      field: 'number1',
-      headerName: 'number1',
-      type: ['numberField_center'],
-    },
-    {
-      field: 'number2',
-      headerName: 'number2',
-      type: ['numberField_right', 'numberFormat'],
-    },
-    {
-      field: 'yn1',
-      headerName: '체크박스',
-      type: ['checkbox'],
-    },
-  ]);
-
 
   /* 다이얼로그 팝업 */
- const [visible3, setVisible3] = useState(false);
- const [visible4, setVisible4] = useState(false);
- const [visible5, setVisible5] = useState(false);
- const footerContent = (
-        <div className="gap-2">
-            <Button label="취소"  onClick={() => setVisible(false)} outlined className='mr-2'/>
-            <Button label="적용"  onClick={() => setVisible(false)} autoFocus />
-        </div>
-    );
+ const [visible2, setVisible2] = useState(false);
+const [dialogClosing, setDialogClosing] = useState(false);
+  const footerContent2 = (
+    <div className="gap-2">
+        <Button label="취소"  onClick={() => setVisible2(false)} outlined className='mr-2'/>
+        <Button label="적용"  onClick={() => setVisible2(false)} autoFocus />
+    </div>
+  );
+const closeDialogWithSlide = () => {
+  setDialogClosing(true);
 
-  const footerContent4 = (
-    <div className="gap-2">
-        <Button label="취소"  onClick={() => setVisible4(false)} outlined className='mr-2'/>
-        <Button label="적용"  onClick={() => setVisible4(false)} autoFocus />
-    </div>
-  );
-  const footerContent5 = (
-    <div className="gap-2">
-        <Button label="취소"  onClick={() => setVisible5(false)} outlined className='mr-2'/>
-        <Button label="적용"  onClick={() => setVisible5(false)} autoFocus />
-    </div>
-  );
+  setTimeout(() => {
+    setVisible2(false);
+    setDialogClosing(false);
+  }, 300); 
+};
 
 
   
@@ -186,7 +145,25 @@ const Layout01 = () => {
 
   );
   
-  
+  //다이얼로그
+  const dialogTitle = '상세화면';
+  const dialogHeader = (
+    <div className="flex items-center gap-2">
+      <button
+        type="button"
+        className="p-link text-gray-600"
+        onClick={closeDialogWithSlide}
+      >
+        <i className="pi pi-arrow-left text-mg" />
+      </button>
+
+      <span className="font-semibold text-lg truncate" >
+        {dialogTitle}
+      </span>
+    </div>
+  );
+
+
 
   return (
     <div className="card">  
@@ -216,71 +193,10 @@ const Layout01 = () => {
                 text 
               />
               </div>
-            </div>          
-            <div className="flex items-center" >
-               <BreadCrumb model={items} home={home}  />               
-               {/* 공통 : 메뉴별 도움말 */}
-                <Tooltip target=".has-tooltip" position="bottom" mouseTrack mouseTrackTop={15} />
-               <button className="layout-BreadCrumb-button has-tooltip" data-pr-tooltip="업무매뉴얼" onClick={() => setVisibleRight(true)}>
-                  <i className="pi pi-exclamation-circle"/>
-                </button>
-            </div>
+            </div>   
         </div>
 
-        {/* 공통 : 업무영역에 대한 도움말 사이드바 */}
-        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="favorite-help-sidebar">
-          <h3 className="absolute top-[1.6rem]"> 업무영역별 도움말 </h3>
-          
-          
-          <img src="/green/images/sample.png" alt="main" className="max-w-none"  />
-
-          <p>기능설명</p>
-          <span>
-           1. 각 업무화면의 매뉴얼 버튼을 클릭하면 해당화면의 주요기능을 설명하는 화면이 제공됩니다. <br/>
-           2. 이미지가 있으면 이미지 업로드 하게 만들면 됩니다.
-          </span>
-          
-          {/* 관리자-업무매뉴열 입력권한 가진 권한만 보임 */}
-          <div className="fixed bottom-4 right-0 -translate-x-1/2 z-50">
-              <Button label="매뉴얼 입력" className="btn-28-sec w-full" severity="secondary" outlined onClick={() => setVisible3(true)}/>
-              <Dialog header="업무매뉴얼 기능설명" visible={visible3} modal={false} resizable={false} style={{ width: '50vw' }} className="user-dialog" onHide={() => setVisible3(false)} footer={footerContent}>
-                
-                {/* 공통 : ag그리드  */}
-                <div className="flex w-full">
-                  <div className="grid-view">
-
-                      <div className="row">
-                        <div className="th">업무명</div>
-                        <div className="td">
-                          <InputText className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>  
-                        </div>
-                      </div>
-
-                      <div className="row">
-                        <div className="th merge-2">기능설명</div>
-                      </div>
-
-                      <div className="row">
-                        <div className="th merge-2">
-                          <Editor value={text} className="flex-wrap w-full"  onTextChange={(e) => setText(e.htmlValue)}  />
-                        </div>
-                      </div>
-
-
-                       <div className="row">
-                        <div className="th">이미지 업로드</div>
-                         <div className="td w-full">
-                          <InputText className='w-full' value={value} onChange={(e) => setValue(e.target.value)}  placeholder="선택해주세요"/>                        
-                         </div>
-                      </div>
-
-                      
-                    </div>
-                  </div>
-            </Dialog>
-
-          </div>
-        </Sidebar>
+      
 
 
         {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
@@ -337,6 +253,43 @@ const Layout01 = () => {
                 <Button label="저장" className="btn-28-intable" severity="secondary" outlined /> 
                 <Button label="삭제" className="btn-28-sec" severity="secondary" outlined /> 
                 <Button label="검색" className="btn-28-master" severity="secondary" outlined />
+                <Button label="3.모달 - 상세화면" onClick={() => setVisible2(true)} />
+                <Dialog header={dialogHeader} 
+                visible={visible2} modal resizable={false} 
+                 footer={footerContent2}
+                  closable={false}
+                className={classNames(
+                'user-dialog slide-dialog',
+                { 'slide-out-Right': dialogClosing }
+                )}
+                            >
+                    
+                    {/* 공통 : ag그리드  */}
+                    <div className="flex w-full" >
+                        <div className="dtv-info-grid">
+                          <div className="row">
+                            <div className="th">등록일</div>
+                            <div className="td">2029.000</div>
+                            <div className="th">등록자</div>
+                            <div className="td">홍길동</div>
+                          </div>
+
+                          <div className="row">
+                            <div className="th">조회수</div>
+                            <div className="td">999</div>
+                            <div className="th">작성일자</div>
+                            <div className="td">목요일</div>
+                          </div>
+
+                          <div className="row">
+                            <div className="th">출처</div>
+                            <div className="td">금호석유화학</div>
+                            <div className="th">만들이</div>
+                            <div className="td">금화확</div>
+                          </div>
+                        </div>
+                    </div>
+                </Dialog> 
               </div>
             </div>
             {/* 공통 : ag그리드  */}

@@ -97,8 +97,8 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
 
            
             {/* 모바일 모드시 나오는 아이콘 */}
-            <button type="button" className="p-link layout-topbar-menu-button layout-topbar-button"  onClick={props.onToggleMenuClick}>
-                <i className="pi pi-bars" />
+            <button type="button" className="p-link layout-topbar-menu-button layout-topbar-button" onClick={() => setMobileMenuVisible(true)}>
+                <i className="pi pi-user" />
             </button>
             
             {/* 모바일 모드시 나오는 아이콘 
