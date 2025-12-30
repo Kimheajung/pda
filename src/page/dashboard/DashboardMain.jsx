@@ -3,20 +3,32 @@ import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { TabView, TabPanel } from 'primereact/tabview';
 import { useSearchParams } from 'react-router-dom';
-
-
+import 'swiper/css';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 const DashboardMain = (props) => {
 
 //탭 링크열기
- const [searchParams] = useSearchParams();
+const [searchParams, setSearchParams] = useSearchParams();
+  const swiperRef = useRef(null);
 
-const tabParam = searchParams.get('tab');
-const tabIndex = [0, 1, 2].includes(Number(tabParam))
-  ? Number(tabParam)
-  : 0;
+  const tabParam = Number(searchParams.get('tab'));
+  const safeIndex = [0, 1, 2].includes(tabParam) ? tabParam : 0;
 
+  const [activeIndex, setActiveIndex] = useState(safeIndex);
+
+  // URL → state
+  useEffect(() => {
+    setActiveIndex(safeIndex);
+  }, [safeIndex]);
+
+  // state → Swiper
+  useEffect(() => {
+    if (swiperRef.current && swiperRef.current.activeIndex !== activeIndex) {
+      swiperRef.current.slideTo(activeIndex);
+    }
+  }, [activeIndex]);
 
   return (
     <>
@@ -44,36 +56,45 @@ const tabIndex = [0, 1, 2].includes(Number(tabParam))
       
       
               {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
-              <div className="hugreen_grid flex-1 flex flex-wrap md:flex-row" >
+              <div className="hugreen_grid  flex flex-wrap" >
       
-                <div className="hugreen_mobile_wrap">
+                <div className="hugreen_wrap">
+                  {/* 탭 헤더 */}
                   <TabView
-                      key={tabIndex}
-                      className="hugreen-main-tabview"
-                      activeIndex={tabIndex}
+                      activeIndex={activeIndex}
+                      onTabChange={(e) => setSearchParams({ tab: e.index })}
+                      scrollable 
                     >
-                      <TabPanel header="입고">
-                          <div className="flex justify-center items-center w-full h-full">
-                            <img src="/pda/images/main.png" alt="main" className="max-w-none"  />
-                          </div>
-                      </TabPanel>
-                      <TabPanel header="출고">
-                          <p className="m-0">
-                              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-                              eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                              enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui 
-                              ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-                          </p>
-                      </TabPanel>
-                      <TabPanel header="기타">
-                          <p className="m-0">
-                              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti 
-                              quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in
-                              culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. 
-                              Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
-                          </p>
-                      </TabPanel>
+                    <TabPanel header="입고" />
+                    <TabPanel header="출고" />
+                    <TabPanel header="기타" />
                   </TabView>
+
+                  {/* 스와이프 콘텐츠 */}
+                 <Swiper
+                    onSwiper={(swiper) => (swiperRef.current = swiper)}
+                    onSlideChange={(swiper) =>
+                      setSearchParams({ tab: swiper.activeIndex })
+                    }
+                    className='mt-4'
+                  >
+                    <SwiperSlide>
+                      <div className="flex justify-center items-center w-full">
+                        <img src="/pda/images/main.png" alt="main" className="max-w-none"  />
+                      </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <div className="flex justify-center items-center w-full">
+                       출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
+                      </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <div className="flex justify-center items-center w-full">
+                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
+                      </div>
+                    </SwiperSlide>
+                  </Swiper>
+                  
                 </div>
                  
       
