@@ -44,25 +44,7 @@ const Layout01 = () => {
   //인풋
  const [text, setText] = useState('');
 
-  /* 즐겨찾기 아이콘  */
-  const [filled, setFilled] = useState(false);
 
-  /* 업무영역 도움말 패널영역 정의 */
-  const [visibleRight, setVisibleRight] = useState(false);
-
-  /* primereact - BreadCrumb */
-   const items = [
-        { label: '여신관리' },
-        {
-            label: 'InputText',
-            template: () => (
-              <Link to="/inputtext" className="p-breadcrumb_now">
-                현재페이지
-              </Link>
-            )
-        }
-    ];
-    const home = { icon: 'pi pi-home', url: 'https://primereact.org' };
 
   /*input, combobox , radiobutton */
   const [value, setValue] = useState('');
@@ -99,6 +81,24 @@ const requestCloseDialog = () => {
     setDialogClosing(false);
   }, 300); // CSS 애니메이션 시간과 동일
 };
+
+  //다이얼로그
+  const dialogTitle = '상세화면';
+  const dialogHeader = (
+    <div className="flex items-center gap-2">
+      <button
+        type="button"
+        className="p-link text-gray-600"
+         onClick={requestCloseDialog}
+      >
+        <i className="pi pi-arrow-left text-mg" />
+      </button>
+
+      <span className="font-semibold text-lg truncate" >
+        {dialogTitle}
+      </span>
+    </div>
+  );
 
 
   
@@ -149,23 +149,6 @@ const requestCloseDialog = () => {
 
   );
   
-  //다이얼로그
-  const dialogTitle = '상세화면';
-  const dialogHeader = (
-    <div className="flex items-center gap-2">
-      <button
-        type="button"
-        className="p-link text-gray-600"
-         onClick={requestCloseDialog}
-      >
-        <i className="pi pi-arrow-left text-mg" />
-      </button>
-
-      <span className="font-semibold text-lg truncate" >
-        {dialogTitle}
-      </span>
-    </div>
-  );
 
 
 
@@ -225,11 +208,6 @@ const requestCloseDialog = () => {
                 </TabPanel>
             </TabView>
           </div>
-           
-
-            
-            
-
 
             {/* 공통 : 그리드 상단 버튼  */}
             <div className="hugreen_aggridbtn_hwrap mt-4">
@@ -244,6 +222,7 @@ const requestCloseDialog = () => {
                   header={dialogHeader}
                   visible={visible2}
                   modal
+                  blockScroll
                   resizable={false}
                   footer={footerContent2}
                   closable={true}

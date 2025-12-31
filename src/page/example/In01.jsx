@@ -2,6 +2,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import { Button } from "primereact/button";
 import { BreadCrumb } from 'primereact/breadcrumb';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
@@ -41,26 +42,7 @@ const In01 = () => {
   //인풋
  const [text, setText] = useState('');
 
-  /* 즐겨찾기 아이콘  */
-  const [filled, setFilled] = useState(false);
-
-  /* 업무영역 도움말 패널영역 정의 */
-  const [visibleRight, setVisibleRight] = useState(false);
-
-  /* primereact - BreadCrumb */
-   const items = [
-        { label: '여신관리' },
-        {
-            label: 'InputText',
-            template: () => (
-              <Link to="/inputtext" className="p-breadcrumb_now">
-                현재페이지
-              </Link>
-            )
-        }
-    ];
-    const home = { icon: 'pi pi-home', url: 'https://primereact.org' };
-
+  
   /*input, combobox , radiobutton */
   const [value, setValue] = useState('');
   const [ingredient, setIngredient] = useState('');
@@ -75,68 +57,44 @@ const In01 = () => {
   ];
 
 
-  /* ag그리드 예제  */
-  const gridRef = useRef(null);
-  const [rowData] = useState(MOCK_DATA3);
-  const [colDefs] = useState([
-    {
-      field: 'date1',
-      headerName: 'date',
-      type: ['filterDate'],
-    },
-    {
-      field: 'text1',
-      headerName: 'text',
-      type: ['textField_center'],
-    },
-    {
-      field: 'text2',
-      headerName: 'textarea',
-      type: ['textField_left'],
-    },
-    {
-      field: 'number1',
-      headerName: 'number1',
-      type: ['numberField_center'],
-    },
-    {
-      field: 'number2',
-      headerName: 'number2',
-      type: ['numberField_right', 'numberFormat'],
-    },
-    {
-      field: 'yn1',
-      headerName: '체크박스',
-      type: ['checkbox'],
-    },
-  ]);
-
-
-  /* 다이얼로그 팝업 */
- const [visible3, setVisible3] = useState(false);
- const [visible4, setVisible4] = useState(false);
- const [visible5, setVisible5] = useState(false);
- const footerContent = (
-        <div className="gap-2">
-            <Button label="취소"  onClick={() => setVisible(false)} outlined className='mr-2'/>
-            <Button label="적용"  onClick={() => setVisible(false)} autoFocus />
-        </div>
-    );
-
-  const footerContent4 = (
-    <div className="gap-2">
-        <Button label="취소"  onClick={() => setVisible4(false)} outlined className='mr-2'/>
-        <Button label="적용"  onClick={() => setVisible4(false)} autoFocus />
+    /* 다이얼로그 팝업 */
+const [visible2, setVisible2] = useState(false); 
+const [visible3, setVisible3] = useState(false);
+const [dialogClosing, setDialogClosing] = useState(false);
+  const footerContent2 = (
+    <div className="dialog-footer-split gap-4">
+        <Button label="취소" className="dialog-footer-btn" onClick={() => setVisible2(false)} outlined/>
+        <Button label="적용" className="dialog-footer-btn" onClick={() => setVisible2(false)} autoFocus  />
     </div>
   );
-  const footerContent5 = (
-    <div className="gap-2">
-        <Button label="취소"  onClick={() => setVisible5(false)} outlined className='mr-2'/>
-        <Button label="적용"  onClick={() => setVisible5(false)} autoFocus />
+const requestCloseDialog = () => {
+  if (dialogClosing) return;
+
+  setDialogClosing(true);
+
+  setTimeout(() => {
+    setVisible2(false);
+    setDialogClosing(false);
+  }, 300); // CSS 애니메이션 시간과 동일
+};
+
+//다이얼로그
+  const dialogTitle = '자가생산입고';
+  const dialogHeader = (
+    <div className="flex items-center gap-2">
+      <button
+        type="button"
+        className="p-link text-gray-600"
+         onClick={requestCloseDialog}
+      >
+        <i className="pi pi-arrow-left text-mg" />
+      </button>
+
+      <span className="font-semibold text-lg truncate" >
+        {dialogTitle}
+      </span>
     </div>
   );
-
-
   
   // 검색영역 폼 
   const SearchForm = ({ value, setValue, selectedCity, setSelectedCity, cities }) => (
@@ -145,7 +103,7 @@ const In01 = () => {
       <div className="grid-searchwrap grid-searchwrap--8col">
       
         <div className="row">
-          <div className="th"> <label for="firstname5">오더일자</label></div>
+          <div className="th"> <label htmlFor="firstname5">오더일자</label></div>
           <div className="td">
             <InputText value={value} onChange={(e) => setValue(e.target.value)} className="w-full" placeholder="선택해주세요"/>  
           </div>
@@ -181,8 +139,6 @@ const In01 = () => {
         
       </div>
     </div>
-
-
   );
   
   
@@ -205,7 +161,7 @@ const In01 = () => {
             <div className="hugreen_aggridbtn_hwrap mt-4 mb-4">
               <div className="flex">
                 <span className="NumText"> 조회결과</span>
-                <p class="totalNumText" >총&nbsp;<span>18,203</span>건</p>
+                <p className="totalNumText" >총&nbsp;<span>18,203</span>건</p>
               </div>
                <div className="flex gap-2"> 
                 <Button label="저장" className="btn-28-intable" severity="secondary" outlined /> 
@@ -215,11 +171,95 @@ const In01 = () => {
             </div>
             {/* 공통 : ag그리드  */}
             <div className="hugreen_aggrid_hwrap">
-
                    <img src="/pda/images/mobile-02.png" alt="main" className="max-w-none"  />
 
             </div>
 
+            
+            {/* 공통 : 스캔버튼  */}
+              <button className="scan-button" onClick={() => setVisible2(true)}>
+                <i className="pi pi-barcode text-xl"></i>
+              </button>
+
+               <Dialog
+                  header={dialogHeader}
+                  visible={visible2}
+                  modal
+                  blockScroll
+                  resizable={false}
+                  footer={footerContent2}
+                  closable={true}
+                  className={classNames(
+                    'user-dialog slide-dialog',
+                    { 'slide-out-right': dialogClosing }
+                  )}
+                  onHide={requestCloseDialog}   
+                >
+                    {/* 공통 : ag그리드  */}
+                    <div className="flex w-full">
+                      <div className="grid-view">
+                        <div className='sub-scan'></div>
+                        <p className='sub-tit'>바코드 및 속성정보</p>
+                        <div className="row">
+                          <div className="th">바코드</div>
+                          <div className="td">
+                            <InputText
+                              className="w-full"
+                              value={value}
+                              onChange={(e) => setValue(e.target.value)}
+                              placeholder="선택해주세요"
+                            />
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="th">품명명</div>
+                          <div className="td">
+                            <InputText
+                              className="w-full"
+                              value={value}
+                              onChange={(e) => setValue(e.target.value)}
+                              placeholder="선택해주세요"
+                            />
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="th">규격</div>
+                           <div className="td">
+                            <InputText
+                              className="w-full"
+                              value={value}
+                              onChange={(e) => setValue(e.target.value)}
+                              placeholder="선택해주세요"
+                            />
+                          </div>
+                        </div>
+
+                        <p className='sub-tit mt-4'>업체 및 현장주소 정보</p>
+                        <div className="row">
+                          <div className="th">바코드</div>
+                          <div className="td">
+                            <InputText
+                              className="w-full"
+                              value={value}
+                              onChange={(e) => setValue(e.target.value)}
+                              placeholder="선택해주세요"
+                            />
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="th">바코드</div>
+                          <div className="td">
+                            <InputText
+                              className="w-full"
+                              value={value}
+                              onChange={(e) => setValue(e.target.value)}
+                              placeholder="선택해주세요"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </Dialog> 
 
         </div>      
     </div>

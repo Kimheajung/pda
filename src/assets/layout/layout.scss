@@ -697,7 +697,52 @@ ol, ul {padding-left: 0rem !important;}
 .top-button:hover {
   background-color: #22467a;
 }
+/* 페이지 탑으로 */
+.scan-button {
+  position: fixed;
+  bottom: 4.5rem;     /* bottom-6 */
+  right: 1.5rem;      /* right-6 */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  
+  background-color: #335391;
+  color: #fff;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  transition: background-color 0.2s;
+  z-index: 50;
+}
 
+.scan-button:hover {
+  background-color: #22467a;
+}
+
+
+/* 다이얼로그 footer 전체 */
+.dialog-footer-split {
+  display: flex;
+  width: 100%;
+  gap: 0;
+}
+
+/* 각 버튼 50% */
+.dialog-footer-btn {
+  flex: 1;
+  border-radius: 0;     /* 모바일 UX 기준 */
+  width: 50%;
+  height: 48px;
+  font-weight: 600;
+}
+
+/* 좌/우 버튼 경계선 느낌 (선택) */
+.dialog-footer-btn:first-child {
+  border-right: 1px solid #ddd;
+}
 
 /* 가이드용  - 추후 삭제 */
 .guidetitle{font-weight: 600; display: flex !important; font-size:20px; color:green;margin-bottom:1rem;margin-top:4rem;}
