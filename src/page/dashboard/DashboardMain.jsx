@@ -52,16 +52,16 @@ const [searchParams, setSearchParams] = useSearchParams();
         `}
       </style>
 
-       <div className="card_etc">  
+       <div className="card height-full">  
       
       
               {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
               <div className="hugreen_main  flex flex-wrap">
       
-                <div className="hugreen_wrap">
+                <div className="hugreen_wrap h-full">
                   {/* 탭 헤더 */}
                   <TabView className="hugreen-main-tabview"
-                      activeIndex={activeIndex}
+                      activeIndex={activeIndex}s
                       onTabChange={(e) => setSearchParams({ tab: e.index })}
                       scrollable 
                     >
@@ -79,7 +79,7 @@ const [searchParams, setSearchParams] = useSearchParams();
                     className='h-full'
                   >
                     <SwiperSlide>
-                      <div className="flex justify-center items-center w-full h-full" >
+                      <div className="flex justify-center items-start w-full h-full" >
                         <img src="/pda/images/main.png" alt="main" className="max-w-none"  />
                       </div>
                     </SwiperSlide>
