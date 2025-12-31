@@ -31,29 +31,8 @@ const [searchParams, setSearchParams] = useSearchParams();
   }, [activeIndex]);
 
   return (
-    <>
-      {/* ← 하드코딩 CSS로 메인에만 적용 */}
-      <style>
-        {`
-          /* PC(768px 이상)에서만 사이드바 제거 */
-          @media (min-width: 768px) {
-            .layout-sidebar {
-              display: none !important;
-              width: 0 !important;
-            }
-
-            .layout-main-container,
-            .layout-main {
-              margin-left: 0 !important;
-              padding-left: 0 !important;
-              width: 100% !important;
-            }
-          }
-        `}
-      </style>
-
+    
        <div className="card height-full">  
-      
       
               {/* 공통 case01 : 검색영역 + 그리드 버튼 + 그리드영역 */}
               <div className="hugreen_main  flex flex-wrap">
@@ -111,18 +90,9 @@ const [searchParams, setSearchParams] = useSearchParams();
                   
                 </div>
                  
-      
-                  
-                  
-      
-      
-                  
-                 
-      
-      
               </div>      
           </div>
-    </>
+   
   );
 };
 

@@ -101,10 +101,6 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
 
   const menu = [
     {
-      label: 'Home',
-      items: [{ label: 'Dashboard', icon: '', to: '/' }],
-    },
-    {
       label: '입고',
       items: [
         { label: '자가생산입고(개별)', icon: '', to: '/in01' },

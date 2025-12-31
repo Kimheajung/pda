@@ -28,12 +28,6 @@ function getTitleByPath(menu, pathname) {
   return 'Hugreen 건자재 바코드 시스템'; // fallback
 }
 
-const topMenus = [
-  { label: "01.컴포넌트", path: "/example02" },
-  { label: "02.레이아웃", path: "/layout01" },
-  { label: "03.path목록", path: "/layout07" },   
-  { label: "04.그리드샘플", path: "/sample00" }
-];
 
   // 툴팁
   const bellRef = useRef(null);
@@ -59,9 +53,6 @@ const topMenus = [
   //oerlay 패널
   const op = useRef(null);  
   const op2 = useRef(null);
-
-//  메가메뉴 관련 상태 추가
- const [ setMegaMenuVisible] = useState(false); 
 
 
 const navigate = useNavigate();
@@ -101,10 +92,7 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                 <i className="pi pi-user" />
             </button>
             
-            {/* 모바일 모드시 나오는 아이콘 
-            <button type="button" className="p-link layout-topbar-menu-button layout-topbar-button" onClick={() => setMobileMenuVisible(true)}>
-                <i className="pi pi-ellipsis-v" />
-            </button>*/}
+            
 
             
               {/* 모바일 : 왼쪽영역설정 */}
@@ -159,27 +147,9 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                   {/* 메뉴 리스트 */}
                   <Button type="button" className="mypage-linkrow p-button-text"  label="회원정보 및 비밀번호 변경" icon="pi pi-chevron-right" iconPos="right" />
                   <Button type="button" className="mypage-linkrow p-button-text"  label="알림" icon="pi pi-chevron-right" iconPos="right" />
-                  <Button type="button" className="mypage-linkrow p-button-text"  label="생산출하일정" icon="pi pi-chevron-right" iconPos="right" />
-                  <Button type="button" className="mypage-linkrow p-button-text"  label="통합자료 다운로드" icon="pi pi-chevron-right" iconPos="right" />
-                  <Button type="button" className="mypage-linkrow p-button-text"  label="대리점 VOC" icon="pi pi-chevron-right" iconPos="right" />
-                  <Button type="button" className="mypage-linkrow p-button-text"  label="제품코드 발번요청" icon="pi pi-chevron-right" iconPos="right" />
                   <Button type="button" className="mypage-linkrow p-button-text"  label="설정" icon="pi pi-chevron-right" iconPos="right" />
 
-                  {/* 메뉴 리스트 
-                  <section className="mypage-menu">
-                    {menuItems.map((item) => (
-                      <button
-                        key={item.label}
-                        className="mypage-menu__item"
-                        type="button"
-                      >
-                        <span className="mypage-menu__label">{item.label}</span>
-                        {item.hasToggle && (
-                          <i className="pi pi-chevron-right mypage-menu__icon" />
-                        )}
-                      </button>
-                    ))}
-                  </section>*/}
+                 
                 </main>
               </div>
 
