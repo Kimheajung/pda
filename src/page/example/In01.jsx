@@ -176,7 +176,7 @@ const requestCloseDialog = () => {
             </div>
 
             
-            {/* 공통 : 스캔버튼  */}
+             {/* 공통 : 스캔버튼  */}
               <button className="scan-button" onClick={() => setVisible2(true)}>
                 <i className="pi pi-barcode text-xl"></i>
               </button>
@@ -259,7 +259,7 @@ const requestCloseDialog = () => {
                         </div>
                       </div>
                     </div>
-                </Dialog> 
+               </Dialog> 
 
         </div>      
     </div>

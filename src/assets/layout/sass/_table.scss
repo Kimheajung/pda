@@ -158,10 +158,11 @@ $font-size-base: 1rem;
   width: 100%;
   font-size: $font-size-base;
   border-top: 0px solid $color-border;
+  background-color: #F5F6F9 !important;
 
   .row {
     display: grid;
-    grid-template-columns: 10% 20% 10% 20%;
+    grid-template-columns: 10% 40% 10% 40%;
     border-bottom: 0px solid $color-border;
 
     > div {
@@ -361,6 +362,12 @@ $font-size-base: 1rem;
   }
 }
 
+// ② 4컬럼 구조 (th,td,td)
+.grid-searchwrap--3col {
+  .row {
+    grid-template-columns: 10% 80% 10%;
+  }
+}
 // ② 4컬럼 구조 (th,td,th,td)
 .grid-searchwrap--4col {
   .row {
