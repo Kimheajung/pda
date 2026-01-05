@@ -450,7 +450,7 @@ useEffect(() => {
         const isOpen = expandedId === item.id;
 
         return (
-          <div key={item.id} className="incoming-card">
+          <div key={item.id}  className={classNames("incoming-card", { "is-open": isOpen,})}>
             {/* ===== Header ===== */}
             <div className="incoming-card__header">
               <span className="date">{item.datetime}</span>
