@@ -81,15 +81,15 @@ const [visible3, setVisible3] = useState(false);
 const [dialogClosing, setDialogClosing] = useState(false);
 const [activeDialog, setActiveDialog] = useState(null);
   const footerContent2 = (
-    <div className="gap-2">
-        <Button label="초기화"  onClick={() => setVisible2(false)} outlined className='mr-2'/>
-        <Button label="입고확정"  onClick={() => setVisible2(false)} autoFocus />
+    <div className="flex w-full gap-2">
+        <Button label="취소"  onClick={() => setVisible3(false)} outlined className="!w-1/2 h-12"/>
+        <Button label="적용"  onClick={() => setVisible3(false)} autoFocus className="!w-1/2 h-12"/>
     </div>
   );
     const footerContent3 = (
-    <div className="gap-2">
-        <Button label="취소"  onClick={() => setVisible3(false)} outlined className='mr-2'/>
-        <Button label="적용"  onClick={() => setVisible3(false)} autoFocus />
+    <div className="flex w-full gap-2">
+        <Button label="초기화"  onClick={() => setVisible2(false)} outlined className="!w-1/2 h-12"/>
+        <Button label="입고확정"  onClick={() => setVisible2(false)} autoFocus className="!w-1/2 h-12"/>
     </div>
   );
 
@@ -131,53 +131,7 @@ const requestCloseDialog = () => {
   );
 
 
-  
-  // 검색영역 폼 
-  const SearchForm = ({ value, setValue, selectedCity, setSelectedCity, cities }) => (
-    
-    <div className="flex w-full">
-      <div className="grid-searchwrap grid-searchwrap--8col">
-      
-        <div className="row">
-          <div className="th"> <label htmlFor="firstname5">오더일자</label></div>
-          <div className="td">
-            <InputText value={value} onChange={(e) => setValue(e.target.value)} className="w-full" placeholder="선택해주세요"/>  
-          </div>
-          <div className="th">금형</div>
-          <div className="td">
-            <div className="flex">
-              <IconField iconPosition="right">
-                  <InputIcon className="pi pi-search"> </InputIcon>
-                  <InputText placeholder="입력해주세요"  className="w-full"/>
-              </IconField>
-            </div>
-            
-          </div>
-          <div className="th">납품요청일</div>
-          <div className="td">
-            <Dropdown value={selectedCity}  className="w-full" onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
-                placeholder="선택해주세요"/>
-          </div>
-            <div className="th">작업대상설정</div>
-            <div className="td flex gap-2">
-              <div className="flex align-items-center">
-                  <RadioButton inputId="ingredient1" name="pizza" value="Cheese" onChange={(e) => setIngredient(e.value)} checked={ingredient === 'Cheese'} />
-                  <label htmlFor="ingredient1">주문</label>
-                </div>
-                <div className="flex align-items-center">
-                  <RadioButton inputId="ingredient2" name="pizza" value="Mushroom" onChange={(e) => setIngredient(e.value)} checked={ingredient === 'Mushroom'} />
-                  <label htmlFor="ingredient2">납품번호</label>
-                </div>
-            </div>
-        </div>
 
-        
-        
-      </div>
-    </div>
-
-
-  );
   
   //테스트
  const opRef = useRef(null);
@@ -247,6 +201,18 @@ const requestCloseDialog = () => {
   }, []);
   
 
+// 입력 포커스 -창 오픈될때 입력 항목 포커스 두기!
+const qtyInputRef = useRef(null);
+
+useEffect(() => {
+  if (visible2) {
+    setTimeout(() => {
+      qtyInputRef.current?.focus();
+    }, 0);
+  }
+}, [visible2]);
+
+
   return (
     <div className="card">  
 
@@ -260,7 +226,7 @@ const requestCloseDialog = () => {
                   {/* 공통 검색영역 */}
                   <div className="flex w-full">
                     <div className="grid-searchwrap grid-searchwrap--4col">                    
-                      <div className="row">
+                      <div className="row mb-2">
                         <div className="th"> <label htmlFor="firstname5">작업일자</label></div>
                         <div className="td merge-3 flex items-center !justify-between gap-2">
                           <Calendar
@@ -300,7 +266,6 @@ const requestCloseDialog = () => {
                       document.body.classList.remove("no-scroll"); 
                     }}
                   >
-
                     {/* 바디 */}
                     <div className="filter-overlay__body">
                       
@@ -355,13 +320,13 @@ const requestCloseDialog = () => {
                         >
                           <div className="flex w-full">
                             <div className="grid-view">
-                              <p className='sub-tit'>바코드 및 속성정보</p>
                               <div className="row">
                                 <div className="th">바코드</div>
                                 <div className="td">
                                   <InputText
                                     className="w-full"
                                     value={value}
+                                    disabled
                                     onChange={(e) => setValue(e.target.value)}
                                     placeholder="P160225015"
                                   />
@@ -373,6 +338,7 @@ const requestCloseDialog = () => {
                                   <InputText
                                     className="w-full"
                                     value={value}
+                                    disabled
                                     onChange={(e) => setValue(e.target.value)}
                                     placeholder="PBF-1208"
                                   />
@@ -384,12 +350,14 @@ const requestCloseDialog = () => {
                                   <InputText
                                     className="w-full"
                                     value={value}
+                                    disabled
                                     onChange={(e) => setValue(e.target.value)}
                                     placeholder="JN9FF, 넓은"
                                   />
                                    <InputText
-                                    className="w-38"
+                                    className="w-28"
                                     value={value}
+                                    disabled
                                     onChange={(e) => setValue(e.target.value)}
                                     placeholder="6100"
                                   />
@@ -400,6 +368,8 @@ const requestCloseDialog = () => {
                                 <div className="th">수량</div>
                                 <div className="td">
                                   <InputText
+                                    ref={qtyInputRef}
+                                    autoFocus
                                     className="w-full"
                                     value={value}
                                     onChange={(e) => setValue(e.target.value)}
@@ -413,6 +383,7 @@ const requestCloseDialog = () => {
                                   <InputText
                                     className="w-full"
                                     value={value}
+                                    disabled
                                     onChange={(e) => setValue(e.target.value)}
                                     placeholder="2026.01.09"
                                   />
@@ -424,6 +395,7 @@ const requestCloseDialog = () => {
                                   <InputText
                                     className="w-full"
                                     value={value}
+                                    disabled
                                     onChange={(e) => setValue(e.target.value)}
                                     placeholder="W01"
                                   />
@@ -435,6 +407,7 @@ const requestCloseDialog = () => {
                                   <InputText
                                     className="w-full"
                                     value={value}
+                                    disabled
                                     onChange={(e) => setValue(e.target.value)}
                                     placeholder="(주)아키원"
                                   />
@@ -446,6 +419,7 @@ const requestCloseDialog = () => {
                                   <InputText
                                     className="w-full"
                                     value={value}
+                                    disabled
                                     onChange={(e) => setValue(e.target.value)}
                                     placeholder="서울 중구 수표동 23번길, 시그니처타워빌딩 4층"
                                   />
@@ -457,6 +431,7 @@ const requestCloseDialog = () => {
                                   <InputText
                                     className="w-full"
                                     value={value}
+                                    disabled
                                     onChange={(e) => setValue(e.target.value)}
                                     placeholder="(주) 아키원 18455 경기도 화성.."
                                   />
@@ -659,7 +634,7 @@ const requestCloseDialog = () => {
                   {/* 공통 검색영역 */}
                   <div className="flex w-full">
                     <div className="grid-searchwrap grid-searchwrap--4col">                    
-                      <div className="row">
+                      <div className="row  mb-2">
                         <div className="th"> <label htmlFor="firstname5">작업일자</label></div>
                         <div className="td merge-3 flex items-center !justify-between gap-2">
                           <Calendar
