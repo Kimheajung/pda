@@ -210,11 +210,19 @@ const requestCloseDialog = () => {
                       <div className="row">
                         <div className="th"> <label htmlFor="firstname5">작업일자</label></div>
                         <div className="td merge-3 flex items-center !justify-between gap-2">
-                          <InputText value={value} onChange={(e) => setValue(e.target.value)} className="w-full" placeholder="20256.01.05"/> 
+                          <Calendar
+                            value={toDate}
+                            onChange={(e) => setToDate(e.value)}
+                            dateFormat="yy.mm.dd"
+                            showIcon
+                            placeholder='2026.01.05'
+                            className="w-full"
+                          /> 
                           <Button
                             icon="pi pi-filter"
                             onClick={openFilter}
                             text
+                            security='secondary'
                           /> 
                         </div>
                       </div>
@@ -240,16 +248,6 @@ const requestCloseDialog = () => {
         showCloseIcon={false}
         dismissable
       >
-        {/* 헤더 */}
-        <div className="filter-overlay__header">
-          <span>검색필터</span>
-          <Button
-            icon="pi pi-times"
-            rounded
-            text
-            onClick={() => opRef.current.hide()}
-          />
-        </div>
 
         {/* 바디 */}
         <div className="filter-overlay__body">

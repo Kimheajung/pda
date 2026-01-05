@@ -1041,7 +1041,7 @@ ol, ul {padding-left: 0rem !important;}
   border-radius: 0px !important;
   border:0px solid transparent !important;
   background-color: #F5F6F9 !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0) !important;
 
   &::before,
   &::after {
@@ -1053,18 +1053,8 @@ ol, ul {padding-left: 0rem !important;}
   }
 }
 
-
-.filter-overlay__header {
-  padding: 14px 16px;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: 800;
-}
-
 .filter-overlay__body {
-  padding: 16px;
+  padding: 0 1rem 2rem 1rem !important;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -1098,4 +1088,5 @@ ol, ul {padding-left: 0rem !important;}
 
 .filter-overlay__search-btn {
   margin-top: auto;
+  height: 32px !important;
 }
