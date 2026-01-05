@@ -336,7 +336,7 @@ ol, ul {padding-left: 0rem !important;}
 
   .p-tabview-nav-link {
     background: #F5F6F9 !important;    
-    border-bottom: 1px solid #d7d7d7;
+    border-bottom: 1px solid #E9E9E9;
     font-size: 14px;
     padding: 0.75rem 1.25rem;
     margin-right:-1px !important;
@@ -345,7 +345,8 @@ ol, ul {padding-left: 0rem !important;}
     border-radius: 0px !important;
 
     &:hover {
-      color: #000;
+      color: #000;  
+    border-bottom: 2px solid blue;
     }
   } 
 }
@@ -1035,6 +1036,7 @@ ol, ul {padding-left: 0rem !important;}
   width: 100vw;
   max-width: 100vw;
   padding: 0;
+  top:150px !important;
   z-index: 1000; // dim 위
   max-height: 80vh !important;
   overflow: hidden !important;

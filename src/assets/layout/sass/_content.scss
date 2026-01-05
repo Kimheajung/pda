@@ -219,15 +219,21 @@
     flex-wrap: wrap;
 }
 
+.wrap{
+  display: flex-wrap;
+  height: 100vh;
+  border-top: 1px solid #D3D6E1;
+}
 .hugreen_aggridbtn_hwrap{
     display: flex;
     width: 100%;
+    border-top: 8px solid #F2F1F1;
     background-color: #fff !important;
     padding: 1.5rem 1rem  0 1rem !important;
     //height: 28px;
     //margin-bottom: 5px;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
 
     .NumText{
@@ -352,6 +358,148 @@
     }
 } 
 
+
+//카드형리스트 
+.incoming-list {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__loader {
+    height: 40px;
+  }
+}
+
+.incoming-card {
+  border: 1px solid #e3e6ea;
+  border-radius: 14px;
+  padding: 12px;
+  background: #fff;
+
+  /* ===== Header ===== */
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #999;
+    font-size: 13px;
+
+    .toggle-btn {
+      transition: transform 0.25s ease;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  /* ===== Title ===== */
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 6px 0 10px;
+  }
+
+  /* ===== Summary ===== */
+  &__summary {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+
+  /* ===== Expand Area (Animation 핵심) ===== */
+  &__expand {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-4px);
+
+    transition:
+      max-height 0.3s ease,
+      opacity 0.2s ease,
+      transform 0.25s ease;
+
+    &.is-open {
+      max-height: 360px; // 충분히 크게
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ===== Detail ===== */
+  &__detail {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    font-size: 14px;
+    margin-top: 8px;
+
+    label {
+      color: #888;
+      margin-right: 6px;
+    }
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  /* ===== Actions ===== */
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+  }
+}
+
+
+//제품 없을 경우
+.incoming-empty {
+  min-height: 320px;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+
+  &__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    border: 1px solid #e8eaee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      font-size: 24px;
+      color: #999;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #555;
+  }
+
+  &__desc {
+    font-size: 16px;
+    color: #666;
+  }
+
+  &__actions {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 260px;
+  }
+}
 
 
 
