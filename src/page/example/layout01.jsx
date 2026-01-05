@@ -82,8 +82,8 @@ const [dialogClosing, setDialogClosing] = useState(false);
 const [activeDialog, setActiveDialog] = useState(null);
   const footerContent2 = (
     <div className="gap-2">
-        <Button label="취소"  onClick={() => setVisible2(false)} outlined className='mr-2'/>
-        <Button label="적용"  onClick={() => setVisible2(false)} autoFocus />
+        <Button label="초기화"  onClick={() => setVisible2(false)} outlined className='mr-2'/>
+        <Button label="입고확정"  onClick={() => setVisible2(false)} autoFocus />
     </div>
   );
     const footerContent3 = (
@@ -187,11 +187,13 @@ const requestCloseDialog = () => {
 
   const openFilter = (e) => {
     setOpen(true);
+    document.body.classList.add("no-scroll");
     opRef.current.show(e);
   };
 
   const closeFilter = () => {
     setOpen(false);
+    document.body.classList.remove("no-scroll");
     opRef.current.hide();
   };
   
@@ -293,6 +295,10 @@ const requestCloseDialog = () => {
                     className="filter-overlay"
                     showCloseIcon={false}
                     dismissable
+                    onHide={() => {
+                      setOpen(false);
+                      document.body.classList.remove("no-scroll"); // ⭐ 중요
+                    }}
                   >
 
                     {/* 바디 */}
@@ -333,10 +339,6 @@ const requestCloseDialog = () => {
                       </div>
                       <div className="flex gap-2"> 
                         <Button label="삭제" className="btn-28-sec" severity="secondary" outlined /> 
-                        <Button label="3.모달 - 상세화면" className="btn-28-master" onClick={() => {
-                          setActiveDialog('detail');
-                          setVisible2(true);
-                        }} />
                         <Dialog
                           header={dialogHeader}
                           visible={visible2}
@@ -351,32 +353,117 @@ const requestCloseDialog = () => {
                           )}
                           onHide={requestCloseDialog}   // ✅ 절대 setVisible 직접 금지
                         >
-                            
-                            {/* 공통 : ag그리드  */}
-                            <div className="flex w-full" >
-                                <div className="dtv-info-grid">
-                                  <div className="row">
-                                    <div className="th">등록일</div>
-                                    <div className="td">2029.000</div>
-                                    <div className="th">등록자</div>
-                                    <div className="td">홍길동</div>
-                                  </div>
-
-                                  <div className="row">
-                                    <div className="th">조회수</div>
-                                    <div className="td">999</div>
-                                    <div className="th">작성일자</div>
-                                    <div className="td">목요일</div>
-                                  </div>
-
-                                  <div className="row">
-                                    <div className="th">출처</div>
-                                    <div className="td">금호석유화학</div>
-                                    <div className="th">만들이</div>
-                                    <div className="td">금화확</div>
-                                  </div>
+                          <div className="flex w-full">
+                            <div className="grid-view">
+                              <p className='sub-tit'>바코드 및 속성정보</p>
+                              <div className="row">
+                                <div className="th">바코드</div>
+                                <div className="td">
+                                  <InputText
+                                    className="w-full"
+                                    value={value}
+                                    onChange={(e) => setValue(e.target.value)}
+                                    placeholder="P160225015"
+                                  />
                                 </div>
+                              </div>
+                              <div className="row">
+                                <div className="th">품명</div>
+                                <div className="td">
+                                  <InputText
+                                    className="w-full"
+                                    value={value}
+                                    onChange={(e) => setValue(e.target.value)}
+                                    placeholder="PBF-1208"
+                                  />
+                                </div>
+                              </div>
+                              <div className="row">
+                                <div className="th">규격</div>
+                                  <div className="td  gap-2">
+                                  <InputText
+                                    className="w-full"
+                                    value={value}
+                                    onChange={(e) => setValue(e.target.value)}
+                                    placeholder="JN9FF, 넓은"
+                                  />
+                                   <InputText
+                                    className="w-38"
+                                    value={value}
+                                    onChange={(e) => setValue(e.target.value)}
+                                    placeholder="6100"
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="row">
+                                <div className="th">수량</div>
+                                <div className="td">
+                                  <InputText
+                                    className="w-full"
+                                    value={value}
+                                    onChange={(e) => setValue(e.target.value)}
+                                    placeholder="77"
+                                  />
+                                </div>
+                              </div>
+                              <div className="row">
+                                <div className="th">제조일자</div>
+                                <div className="td">
+                                  <InputText
+                                    className="w-full"
+                                    value={value}
+                                    onChange={(e) => setValue(e.target.value)}
+                                    placeholder="2026.01.09"
+                                  />
+                                </div>
+                              </div>
+                              <div className="row">
+                                <div className="th">생산호기</div>
+                                <div className="td">
+                                  <InputText
+                                    className="w-full"
+                                    value={value}
+                                    onChange={(e) => setValue(e.target.value)}
+                                    placeholder="W01"
+                                  />
+                                </div>
+                              </div>
+                              <div className="row">
+                                <div className="th">대리점</div>
+                                <div className="td">
+                                  <InputText
+                                    className="w-full"
+                                    value={value}
+                                    onChange={(e) => setValue(e.target.value)}
+                                    placeholder="(주)아키원"
+                                  />
+                                </div>
+                              </div>
+                              <div className="row">
+                                <div className="th">현장</div>
+                                <div className="td">
+                                  <InputText
+                                    className="w-full"
+                                    value={value}
+                                    onChange={(e) => setValue(e.target.value)}
+                                    placeholder="서울 중구 수표동 23번길, 시그니처타워빌딩 4층"
+                                  />
+                                </div>
+                              </div>
+                              <div className="row">
+                                <div className="th">하역지</div>
+                                <div className="td">
+                                  <InputText
+                                    className="w-full"
+                                    value={value}
+                                    onChange={(e) => setValue(e.target.value)}
+                                    placeholder="(주) 아키원 18455 경기도 화성.."
+                                  />
+                                </div>
+                              </div>
                             </div>
+                          </div>
                         </Dialog> 
                       </div>
                     </div>
@@ -404,7 +491,17 @@ const requestCloseDialog = () => {
             </div>
 
             {/* ===== Title ===== */}
-            <div className="incoming-card__title">{item.product}</div>
+            <div className="incoming-card__title">{item.product} 
+
+              <Button  
+                icon="pi pi-desktop"
+                text
+                security='secondary'
+                onClick={() => {
+                setActiveDialog('detail');
+                setVisible2(true);
+                }} />
+            </div>
 
             {/* ===== Summary ===== */}
             <div className="incoming-card__summary">

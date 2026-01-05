@@ -22,6 +22,10 @@ a:active {
   box-shadow: none; /* 브라우저 기본 포커스 그림자 제거 */
 }
 
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none; // 모바일 드래그 차단
+}
 
 ol, ul {padding-left: 0rem !important;}
 .row {--bs-gutter-x : 0rem !important}
@@ -323,6 +327,7 @@ ol, ul {padding-left: 0rem !important;}
     margin-bottom: 4rem;
   }
 }
+
 
 
 .hugreen-tabview {
@@ -1043,7 +1048,7 @@ ol, ul {padding-left: 0rem !important;}
   border-radius: 0px !important;
   border:0px solid transparent !important;
   background-color: #F5F6F9 !important;
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
 
   &::before,
   &::after {
