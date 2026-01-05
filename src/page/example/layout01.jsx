@@ -219,11 +219,11 @@ const requestCloseDialog = () => {
                             className="w-full"
                           /> 
                           <Button
-                            icon="pi pi-filter"
+                            icon="pi pi-sliders-v"
                             onClick={openFilter}
                             text
                             security='secondary'
-                          /> 
+                          />
                         </div>
                       </div>
                     </div>
@@ -251,51 +251,21 @@ const requestCloseDialog = () => {
 
         {/* 바디 */}
         <div className="filter-overlay__body">
-          <SelectButton
-            value={mode}
-            options={modes}
-            onChange={(e) => setMode(e.value)}
-            className="w-full"
-          />
-
-          <div className="filter-overlay__date-row">
-            <Calendar
-              value={fromDate}
-              onChange={(e) => setFromDate(e.value)}
-              dateFormat="yy.mm.dd"
-              showIcon
-              disabled={mode !== "기간 설정"}
-              className="w-full"
-            />
-            <div className="tilde">~</div>
-            <Calendar
-              value={toDate}
-              onChange={(e) => setToDate(e.value)}
-              dateFormat="yy.mm.dd"
-              showIcon
-              className="w-full"
-            />
-          </div>
-
-          <div className="filter-overlay__grid">
-            <div>
-              <div className="label">거래 유형</div>
-              <Dropdown
-                value={tradeType}
-                options={tradeTypeOptions}
-                onChange={(e) => setTradeType(e.value)}
-                className="w-full"
-              />
-            </div>
-
-            <div>
-              <div className="label">결제 수단</div>
-              <Dropdown
-                value={payMethod}
-                options={payMethodOptions}
-                onChange={(e) => setPayMethod(e.value)}
-                className="w-full"
-              />
+          
+          <div className="flex w-full">
+            <div className="grid-searchwrap grid-searchwrap--4col">
+            
+              <div className="row">
+                <div className="th"> <label htmlFor="firstname5">지시번호</label></div>
+                <div className="td merge-3 flex items-center !justify-between gap-2">
+                 <Dropdown
+                  value={tradeType}
+                  options={tradeTypeOptions}
+                  onChange={(e) => setTradeType(e.value)}
+                  className="w-full"
+                />
+                </div>
+              </div>
             </div>
           </div>
 
