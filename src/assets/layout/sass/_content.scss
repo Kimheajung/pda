@@ -407,7 +407,16 @@
     grid-template-columns: repeat(4, auto);
     gap: 10px;
     font-size: 14px;
-    color: #555;
+    color: #4b5563;
+
+    label {
+      color: #888;
+      margin-right: 6px;
+    }
+
+    span {
+      font-weight: 500;
+    }
   }
 
   /* ===== Expand Area (Animation 핵심) ===== */

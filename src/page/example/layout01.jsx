@@ -297,7 +297,7 @@ const requestCloseDialog = () => {
                     dismissable
                     onHide={() => {
                       setOpen(false);
-                      document.body.classList.remove("no-scroll"); // ⭐ 중요
+                      document.body.classList.remove("no-scroll"); 
                     }}
                   >
 
@@ -351,7 +351,7 @@ const requestCloseDialog = () => {
                             'user-dialog slide-dialog',
                             { 'slide-out-right': dialogClosing }
                           )}
-                          onHide={requestCloseDialog}   // ✅ 절대 setVisible 직접 금지
+                          onHide={requestCloseDialog}   
                         >
                           <div className="flex w-full">
                             <div className="grid-view">
@@ -505,12 +505,23 @@ const requestCloseDialog = () => {
 
             {/* ===== Summary ===== */}
             <div className="incoming-card__summary">
-              <span>색상 {item.color}</span>
-              <span>수량 {item.qty}</span>
-              <span>길이 {item.length}</span>
-              <span>
-                {item.deliveryDate} {item.deliveryTime}
-              </span>
+              <div>
+                <label>색상</label>
+                <span> {item.color}</span>
+              </div>
+              <div>
+                <label>수량</label>
+                <span> {item.qty}</span>
+              </div>
+              <div>
+                <label>길이</label>
+                <span> {item.length}</span>
+              </div>
+              
+              <div>
+                <span> {item.deliveryDate}</span>
+                <span> {item.deliveryTime}</span>
+              </div>
             </div>
 
             {/* ===== Expand Area (항상 렌더) ===== */}
