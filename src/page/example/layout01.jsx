@@ -13,6 +13,7 @@ import { Tooltip } from 'primereact/tooltip';
 import classNames from 'classnames';
 import { Dialog } from 'primereact/dialog';
 import { OverlayPanel } from "primereact/overlaypanel";
+import { SelectButton } from 'primereact/selectbutton';
 import { Divider } from "primereact/divider";
 import {
   DtPicker,
@@ -58,7 +59,9 @@ const Layout01 = () => {
   //인풋
  const [text, setText] = useState('');
 
-
+//토글
+ const options = ['품목별', '상세별'];
+ const [value2, setValue2] = useState(options[0]);
 
   /*input, combobox , radiobutton */
   const [value, setValue] = useState('');
@@ -83,13 +86,13 @@ const [activeDialog, setActiveDialog] = useState(null);
   const footerContent2 = (
     <div className="flex w-full gap-2">
         <Button label="취소"  onClick={() => setVisible3(false)} outlined className="!w-1/2 h-12"/>
-        <Button label="적용"  onClick={() => setVisible3(false)} autoFocus className="!w-1/2 h-12"/>
+        <Button label="적용"  onClick={() => setVisible3(false)} autoFocus className="!w-1/2 h-12 btn-28-master" />
     </div>
   );
     const footerContent3 = (
     <div className="flex w-full gap-2">
         <Button label="초기화"  onClick={() => setVisible2(false)} outlined className="!w-1/2 h-12"/>
-        <Button label="입고확정"  onClick={() => setVisible2(false)} autoFocus className="!w-1/2 h-12"/>
+        <Button label="입고확정"  onClick={() => setVisible2(false)} autoFocus className="!w-1/2 h-12  btn-28-master" />
     </div>
   );
 
@@ -241,6 +244,7 @@ useEffect(() => {
                             icon="pi pi-sliders-v"
                             onClick={openFilter}
                             text
+                            className='text-bb'
                             security='secondary'
                           />
                         </div>
@@ -299,11 +303,10 @@ useEffect(() => {
                     {/* 공통 : 그리드 상단 버튼  */}
                     <div className="hugreen_aggridbtn_hwrap">
                       <div className="flex">
-                        <span className="NumText"> 조회결과</span>
-                        <p className="totalNumText" >총&nbsp;<span>18,203</span>건</p>
+                        <p className="totalNumText" >총&nbsp;<span>08</span>건</p>
                       </div>
                       <div className="flex gap-2"> 
-                        <Button label="삭제" className="btn-28-sec" severity="secondary" outlined /> 
+                        <SelectButton value={value2} onChange={(e) => setValue2(e.value)} options={options} />
                         <Dialog
                           header={dialogHeader}
                           visible={visible2}
@@ -458,7 +461,7 @@ useEffect(() => {
                 icon="pi pi-chevron-down"
                 text
                 rounded
-                className={classNames("toggle-btn", { open: isOpen })}
+                className={classNames("toggle-btn text-bb", { open: isOpen })}
                 onClick={() =>
                   setExpandedId(isOpen ? null : item.id)
                 }
@@ -472,6 +475,7 @@ useEffect(() => {
                 icon="pi pi-desktop"
                 text
                 security='secondary'
+                className='text-bb'
                 onClick={() => {
                 setActiveDialog('detail');
                 setVisible2(true);
@@ -523,9 +527,9 @@ useEffect(() => {
               </div>
 
               <div className="incoming-card__actions">
-                <Button label="초기화" outlined />
-                <Button label="제거" outlined severity="danger" />
-                <Button label="입고확정" />
+                <Button label="초기화" outlined text />
+                <Button label="제거" outlined text />
+                <Button label="입고확정" className='btn-28-master' text />
               </div>
             </div>
           </div>
@@ -647,8 +651,9 @@ useEffect(() => {
                           /> 
                           <Button
                             icon="pi pi-sliders-v"
-                            onClick={openFilter}
+                            //onClick={openFilter}
                             text
+                            className='text-bb'
                             security='secondary'
                           />
                         </div>
