@@ -303,10 +303,12 @@ useEffect(() => {
                     {/* 공통 : 그리드 상단 버튼  */}
                     <div className="hugreen_aggridbtn_hwrap">
                       <div className="flex">
-                        <p className="totalNumText" >총&nbsp;<span>08</span>건</p>
+                        <SelectButton value={value2} onChange={(e) => setValue2(e.value)} options={options} />
                       </div>
                       <div className="flex gap-2"> 
-                        <SelectButton value={value2} onChange={(e) => setValue2(e.value)} options={options} />
+                        <Button icon="pi pi-refresh" className='text-bb' text style={{ width: "20px"}} />
+                        <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
+                        <Button label="입고확정" className='btn-28-master' text />
                         <Dialog
                           header="상세화면"
                           visible={visible2}
@@ -526,11 +528,6 @@ useEffect(() => {
                 </div>
               </div>
 
-              <div className="incoming-card__actions">
-                <Button label="초기화" outlined text />
-                <Button label="제거" outlined text />
-                <Button label="입고확정" className='btn-28-master' text />
-              </div>
             </div>
           </div>
         );
@@ -548,7 +545,7 @@ useEffect(() => {
                     setActiveDialog('barcode');
                     setVisible3(true);
                   }}>
-                    <i className="pi pi-barcode text-xl"></i>
+                    <i className="text-xl totalNumText">08건</i>
                   </button>
 
                   <Dialog
@@ -870,12 +867,281 @@ useEffect(() => {
 
                 </TabPanel>
                 <TabPanel header="자가생산입고(일괄)">
-                    <p className="m-0">
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti 
-                        quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in
-                        culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. 
-                        Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
-                    </p>
+                  {/* 공통 검색영역 */}
+                  <div className="flex w-full">
+                    <div className="grid-searchwrap grid-searchwrap--4col">                    
+                      <div className="row  mb-2">
+                        <div className="th"> <label htmlFor="firstname5">작업일자</label></div>
+                        <div className="td merge-3 flex items-center !justify-between gap-2">
+                          <Calendar
+                            value={toDate}
+                            onChange={(e) => setToDate(e.value)}
+                            dateFormat="yy.mm.dd"
+                            showIcon
+                            placeholder='2026.01.05'
+                            className="w-full"
+                          /> 
+                          <Button
+                            icon="pi pi-sliders-v"
+                            //onClick={openFilter}
+                            text
+                            className='text-bb'
+                            security='secondary'
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ===== 검색필터 Dialog ===== */}
+                  {open && (
+                    <div
+                      className="filter-dim"
+                      onClick={closeFilter}
+                      style={{ top: `${HEADER_HEIGHT_REM}rem` }}
+                    />
+                  )}
+                  <OverlayPanel
+                    ref={opRef}
+                    className="filter-overlay"
+                    showCloseIcon={false}
+                    dismissable
+                  >
+
+                    {/* 바디 */}
+                    <div className="filter-overlay__body">
+                      
+                      <div className="flex w-full">
+                        <div className="grid-searchwrap grid-searchwrap--4col">
+                        
+                          <div className="row">
+                            <div className="th"> <label htmlFor="firstname5">지시번호</label></div>
+                            <div className="td merge-3 flex items-center !justify-between gap-2">
+                            <Dropdown
+                              value={tradeType}
+                              options={tradeTypeOptions}
+                              onChange={(e) => setTradeType(e.value)}
+                              className="w-full"
+                            />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <Button
+                        label="조회"
+                        disabled={!canSearch}
+                        className="filter-overlay__search-btn"
+                        severity={canSearch ? "success" : "secondary"}
+                      />
+                    </div>
+                  </OverlayPanel>
+
+                  
+                  <div className="wrap">
+                    {/* 공통 : 그리드 상단 버튼  */}
+                    <div className="hugreen_aggridbtn_hwrap">
+                      <div className="flex w-full">
+                        <div className="grid-view">
+                          <div className="row">
+                            <div className="th">바코드</div>
+                            <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="th">품명</div>
+                            <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="th">규격</div>
+                              <div className="td gap-2">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                              <InputText
+                                className="w-28"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="6100"
+                              />
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="th">수량</div>
+                              <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="th">제조일자</div>
+                              <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="th">생산호기</div>
+                              <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="row">
+                            <div className="th">대리점</div>
+                            <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="th">현장</div>
+                            <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="th">하역지</div>
+                            <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 공통 : 스캔버튼  */}
+                  <button className="scan-button" onClick={() => {
+                    setActiveDialog('barcode');
+                    setVisible3(true);
+                  }}>
+                    <i className="pi pi-barcode text-xl"></i>
+                  </button>
+
+                  <Dialog
+                    header={dialogHeader}
+                    visible={visible3}
+                    modal
+                    blockScroll
+                    resizable={false}
+                    footer={footerContent3}
+                    closable={true}
+                    className={classNames(
+                      'user-dialog slide-dialog',
+                      { 'slide-out-right': dialogClosing }
+                    )}
+                    onHide={requestCloseDialog}   
+                  >
+                      {/* 공통 : ag그리드  */}
+                      <div className="flex w-full">
+                        <div className="grid-view">
+                          <div className='sub-scan'></div>
+                          <p className='sub-tit'>바코드 및 속성정보</p>
+                          <div className="row">
+                            <div className="th">바코드</div>
+                            <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="th">품명명</div>
+                            <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="th">규격</div>
+                              <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+
+                          <p className='sub-tit mt-4'>업체 및 현장주소 정보</p>
+                          <div className="row">
+                            <div className="th">바코드</div>
+                            <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="th">바코드</div>
+                            <div className="td">
+                              <InputText
+                                className="w-full"
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                                placeholder="선택해주세요"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </Dialog> 
+
                 </TabPanel>
             </TabView>
           </div>
