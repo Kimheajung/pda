@@ -581,13 +581,13 @@ const toggleCard = (id) => {
                               <div className="flex-1">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               </div>
-                               {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
+                               {/* 오른쪽 : 펼치기 / 숨기기 버튼
                               <Button
                                 text
                                 icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down"}
-                                disabled={!hasFilterItems}
+                                className={!hasFilterItems ? "hidden" : ""}
                                 onClick={() => setIsFilterOpen(prev => !prev)}
-                              />
+                              /> */}
                             </div>
                         </div>
                       </div>
@@ -635,13 +635,13 @@ const toggleCard = (id) => {
                               <div className="flex-1">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               </div>
-                              {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
+                              {/* 오른쪽 : 펼치기 / 숨기기 버튼
                               <Button
                                 text
                                 icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down"}
                                 disabled={!hasFilterItems}
                                 onClick={() => setIsFilterOpen(prev => !prev)}
-                              />
+                              /> */}
                             </div>
                         </div>
                       </div>
@@ -664,7 +664,7 @@ const toggleCard = (id) => {
                       {/* 공통 : 그리드 상단 버튼  */}
                       <div className="flex items-center justify-between w-full">
                         <div className="flex">
-                          
+                          <span className="NumText"> 바코드가 스캔되었습니다.</span>
                         </div>
                         <div className="flex gap-2"> 
                           <Button icon="pi pi-refresh" className='text-bb  w-[20px]' text />
@@ -672,8 +672,8 @@ const toggleCard = (id) => {
                         </div>
                       </div>
 
-                      <div className="flex w-full mt-2">
-                        <div className="grid-view">
+                      <div className="flex mt-2 scan-wrap">
+                        <div className="grid-view" >
                           <div className="row">
                             <div className="th">바코드</div>
                             <div className="td">

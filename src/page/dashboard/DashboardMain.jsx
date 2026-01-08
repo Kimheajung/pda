@@ -6,9 +6,12 @@ import { useSearchParams } from 'react-router-dom';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { InputSwitch } from 'primereact/inputswitch';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const DashboardMain = (props) => {
+  //메뉴
 
 //탭 링크열기
   const [checked, setChecked] = useState(false);
@@ -32,6 +35,29 @@ const [searchParams, setSearchParams] = useSearchParams();
     }
   }, [activeIndex]);
 
+const inMenus = [
+  {path: '/in01', lines: ['자가생산 입고','(개별)'],},
+  {path: '/in02', lines: ['외주생산 입고','(개별)'],},
+  {path: '/in03', lines: ['반품입고'],}
+];
+const outMenus = [
+  { path: '/out04', lines: ['출고 등록'] },
+  { path: '/out05', lines: ['출고 내역 조회'] },
+];
+const etcMenus = [
+  { path: '/out06', lines: ['기타출고'] },
+  { path: '/out07', lines: ['재고변경'] },
+  { path: '/out08', lines: ['제고이동'] },
+  { path: '/out09', lines: ['재고실사계획조회'] },
+  { path: '/out10', lines: ['팔렛병합'] },
+  { path: '/out11', lines: ['팔렛정보조회'] },
+  { path: '/out12', lines: ['제품검수'] },
+];
+
+const navigate = useNavigate();
+
+
+
   return (
     
        <div className="card height-full">  
@@ -42,7 +68,7 @@ const [searchParams, setSearchParams] = useSearchParams();
                 <div className="hugreen_wrap h-full">
                   {/* 탭 헤더 */}
                   <TabView className="hugreen-main-tabview"
-                      activeIndex={activeIndex}s
+                      activeIndex={activeIndex}
                       onTabChange={(e) => setSearchParams({ tab: e.index })}
                       scrollable 
                     >
@@ -56,42 +82,77 @@ const [searchParams, setSearchParams] = useSearchParams();
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
                     onSlideChange={(swiper) =>
                       setSearchParams({ tab: swiper.activeIndex })
-                    }
-                    className='h-full'
-                  >
+                    }  className='h-full' >
                     <SwiperSlide>
-                       <div className="flex flex-wrap justify-between mb-4 w-full" style={{ padding: "0 2rem"}}>    
-                          <label >메뉴고정</label>
+                       <div className="flex flex-wrap justify-between mb-4 w-full" style={{ padding: "0 1rem"}}>    
+                          <label className='text-gray-400'>자주쓰는 메뉴를 고정해주세요</label>
                           <InputSwitch checked={checked} onChange={(e) => setChecked(e.value)} />    
                         </div> 
-                      <div className="flex justify-center items-start w-full h-full" >
-                         
-                        <img src="/pda/images/main.png" alt="main" className="max-w-none"  />
-                      </div>
+
+                       {/* 카드 영역 */}
+                        <div className="dashboard-card-grid">
+                          {inMenus.map((menu, idx) => (
+                            <Card
+                              key={idx}
+                              className="dashboard-card"
+                              onClick={() => navigate(menu.path)}
+                            >
+                              <div className="dashboard-card-label">
+                                {menu.lines.map((text, i) => (
+                                  <span key={i}>{text}</span>
+                                ))}
+                              </div>
+                            </Card>
+                          ))}
+                        </div>
+
+
                     </SwiperSlide>
                     <SwiperSlide>
-                      <div className="flex justify-center items-center w-full">
-                       출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
-                       출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
-                       출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
-                       출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
-                       출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고출고
-                      </div>
+                      <div className="flex flex-wrap justify-between mb-4 w-full" style={{ padding: "0 1rem"}}>    
+                          <label className='text-gray-400'>자주쓰는 메뉴를 고정해주세요</label>
+                          <InputSwitch checked={checked} onChange={(e) => setChecked(e.value)} />    
+                        </div> 
+
+                       {/* 카드 영역 */}
+                        <div className="dashboard-card2-grid">
+                          {outMenus.map((menu, idx) => (
+                            <Card
+                              key={idx}
+                              className="dashboard-card"
+                              onClick={() => navigate(menu.path)}
+                            >
+                              <div className="dashboard-card-label">
+                                {menu.lines.map((text, i) => (
+                                  <span key={i}>{text}</span>
+                                ))}
+                              </div>
+                            </Card>
+                          ))}
+                        </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                      <div className="flex justify-center items-center w-full">
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                       기타기타기타기타기타기타기타기타기타기타기타기타기타기타기타
-                      </div>
+                      <div className="flex flex-wrap justify-between mb-4 w-full" style={{ padding: "0 1rem"}}>    
+                          <label className='text-gray-400'>자주쓰는 메뉴를 고정해주세요</label>
+                          <InputSwitch checked={checked} onChange={(e) => setChecked(e.value)} />    
+                        </div> 
+
+                       {/* 카드 영역 */}
+                        <div className="dashboard-card-grid">
+                          {etcMenus.map((menu, idx) => (
+                            <Card
+                              key={idx}
+                              className="dashboard-card"
+                              onClick={() => navigate(menu.path)}
+                            >
+                              <div className="dashboard-card-label">
+                                {menu.lines.map((text, i) => (
+                                  <span key={i}>{text}</span>
+                                ))}
+                              </div>
+                            </Card>
+                          ))}
+                        </div>
                     </SwiperSlide>
                   </Swiper>
                   
