@@ -5,11 +5,13 @@ import { TabView, TabPanel } from 'primereact/tabview';
 import { useSearchParams } from 'react-router-dom';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { InputSwitch } from 'primereact/inputswitch';
 
 
 const DashboardMain = (props) => {
 
 //탭 링크열기
+  const [checked, setChecked] = useState(false);
 const [searchParams, setSearchParams] = useSearchParams();
   const swiperRef = useRef(null);
 
@@ -58,7 +60,12 @@ const [searchParams, setSearchParams] = useSearchParams();
                     className='h-full'
                   >
                     <SwiperSlide>
+                       <div className="flex flex-wrap justify-between mb-4 w-full" style={{ padding: "0 2rem"}}>    
+                          <label >메뉴고정</label>
+                          <InputSwitch checked={checked} onChange={(e) => setChecked(e.value)} />    
+                        </div> 
                       <div className="flex justify-center items-start w-full h-full" >
+                         
                         <img src="/pda/images/main.png" alt="main" className="max-w-none"  />
                       </div>
                     </SwiperSlide>

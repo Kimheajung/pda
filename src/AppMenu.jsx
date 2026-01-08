@@ -165,16 +165,7 @@ export const AppMenu = (props) => {
   return (
     <div className="layout-menu-container panel-style">
       <div className='flex items-cente mb-2 justify-between mt-[15px]'>
-        <h1>건자재바코드시스템</h1>
-        <div className='flex gap-4 items-center'>
-           <Tag severity="contrast" value="대리점"></Tag>
-          <button
-            type="button"
-            className="p-link layout-menu-button text-gray-400 layout-topbar-button hidden lg:block"
-            onClick={props.onToggleMenuClick}>
-            <i className={props.menuIconToggle ? "pi pi-angle-left" : "pi pi-angle-right"} />
-            </button>
-        </div>       
+        <h1>건자재바코드시스템</h1>      
       </div>
       <AppSubmenu
         items={props.model}
