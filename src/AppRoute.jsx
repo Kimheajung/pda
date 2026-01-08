@@ -3,10 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import MainLayout from './MainLayout.jsx';
 import DashboardMain from './page/dashboard/DashboardMain.jsx';
 import Tailwind from './Tailwind.jsx';
-import Example from './page/example/Example.jsx';
-import Example02 from './page/example/Example02.jsx';
-import Example03 from './page/example/Example03.jsx';
-import Example04 from './page/example/Example04.jsx';
 import Dashboard from './page/dashboard/Dashboard.jsx';
 import Layout01 from './page/example/layout01.jsx';
 import LoginSample from "./page/example/LoginSample.jsx";
@@ -68,54 +64,7 @@ export default function AppRoute() {
       />
 
 
-      <Route
-        path="/example"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Example />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/example02"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Example02 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/example03"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Example03 />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/example04"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Example04 />
-              </MainLayout>
-            }
-          />
-        }
-      />
+      
       <Route
         path="/layout01"
         element={

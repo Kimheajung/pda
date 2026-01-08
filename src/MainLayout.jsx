@@ -137,10 +137,6 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
     {
       label: '컴포넌트',
       items: [
-        { label: '1. 예제', icon: '', to: '/example' },
-        { label: '2. 컴포넌트', icon: '', to: '/example02' },
-        { label: '3. 검색영역', icon: '', to: '/example04' },
-        { label: '4. 상세 테이블', icon: '', to: '/example03' },     
         { label: '5. 모바일 레이아웃 기준', icon: '', to: '/layout01' },   
         { label: '6. 로그인', icon: '', to: '/LoginSample' },
       ],

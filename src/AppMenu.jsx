@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
@@ -7,7 +7,18 @@ import { Badge } from 'primereact/badge';
 import { Tag } from 'primereact/tag';
 
 const AppSubmenu = (props) => {
+
   const [activeIndex, setActiveIndex] = useState(null);
+
+  // 전체 열기 / 닫기
+  useEffect(() => {
+    if (props.expandAll) {
+      setActiveIndex('ALL');
+    } else {
+      setActiveIndex(null);
+    }
+  }, [props.expandAll]);
+
 
   const onMenuItemClick = (event, item, index) => {
     if (item.disabled) {
@@ -96,7 +107,8 @@ const AppSubmenu = (props) => {
   const items =
     props.items &&
     props.items.map((item, i) => {
-      const active = activeIndex === i;
+      //const active = activeIndex === i;
+      const active = activeIndex === 'ALL' || activeIndex === i;
       const styleClass = classNames(item.badgeStyleClass, {
         'layout-menuitem-category': props.root,
         'active-menuitem': active,
@@ -130,6 +142,7 @@ const AppSubmenu = (props) => {
               <AppSubmenu
                 items={item.items}
                 onMenuItemClick={props.onMenuItemClick}
+                expandAll={props.expandAll}
               />
             </CSSTransition>
           </li>
@@ -162,16 +175,29 @@ const AppSubmenu = (props) => {
 };
 
 export const AppMenu = (props) => {
+    const [expandAll, setExpandAll] = useState(false)
+
+
+
   return (
     <div className="layout-menu-container panel-style">
       <div className='flex items-cente mb-2 justify-between mt-[15px]'>
-        <h1>건자재바코드시스템</h1>      
+        <h1>건자재바코드시스템</h1>
+        <div className='flex gap-4 items-center'>
+           <Tag
+            severity="contrast"
+            value={expandAll ? '메뉴전체닫기' : '메뉴전체열기'}
+            className="cursor-pointer"
+           onClick={() => setExpandAll(prev => !prev)}
+          />
+        </div>       
       </div>
       <AppSubmenu
         items={props.model}
         className="layout-menu"
         onMenuItemClick={props.onMenuItemClick}
         root={true}
+        expandAll={expandAll}
       />
     </div>
   );
