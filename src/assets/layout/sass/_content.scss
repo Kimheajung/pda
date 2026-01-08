@@ -423,6 +423,29 @@
     }
   }
 
+  &__list {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    font-size: 14px;
+    color: #4b5563;
+
+      > :nth-child(2n) {
+      text-align: right;
+      justify-self: end;
+    }
+
+    label {
+      color: #888;
+      margin-right: 6px;
+      line-height: 32px;
+    }
+
+    span {
+      font-weight: 500;
+    }
+  }
+
   /* ===== Expand Area (Animation 핵심) ===== */
   &__expand {
     overflow: hidden;
