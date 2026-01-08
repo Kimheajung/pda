@@ -36,22 +36,22 @@ const [searchParams, setSearchParams] = useSearchParams();
   }, [activeIndex]);
 
 const inMenus = [
-  {path: '/in01', lines: ['자가생산 입고','(개별)'],},
-  {path: '/in02', lines: ['외주생산 입고','(개별)'],},
-  {path: '/in03', lines: ['반품입고'],}
+  {path: '/in01', lines: ['자가생산 입고 (개별)'], icon: 'pi pi-file-import',},
+  {path: '/in02', lines: ['외주생산 입고 (개별)'], icon: 'pi pi-inbox',},
+  {path: '/in03', lines: ['반품입고'], icon: 'pi pi-shopping-cart',},
 ];
 const outMenus = [
-  { path: '/out04', lines: ['출고 등록'] },
-  { path: '/out05', lines: ['출고 내역 조회'] },
+  { path: '/out04', lines: ['출고 등록'], icon: 'pi pi-car',},
+  { path: '/out05', lines: ['출고 내역 조회'], icon: 'pi pi-desktop',},
 ];
 const etcMenus = [
-  { path: '/out06', lines: ['기타출고'] },
-  { path: '/out07', lines: ['재고변경'] },
-  { path: '/out08', lines: ['제고이동'] },
-  { path: '/out09', lines: ['재고실사계획조회'] },
-  { path: '/out10', lines: ['팔렛병합'] },
-  { path: '/out11', lines: ['팔렛정보조회'] },
-  { path: '/out12', lines: ['제품검수'] },
+  { path: '/out06', lines: ['기타출고'], icon: 'pi pi-clipboard',},
+  { path: '/out07', lines: ['재고변경'] , icon: 'pi pi-building',},
+  { path: '/out08', lines: ['제고이동'], icon: 'pi pi-building',},
+  { path: '/out09', lines: ['재고실사계획조회'] , icon: 'pi pi-briefcase',},
+  { path: '/out10', lines: ['팔렛병합'] , icon: 'pi pi-cart-arrow-down',},
+  { path: '/out11', lines: ['팔렛정보조회'] , icon: 'pi pi-cart-arrow-down',},
+  { path: '/out12', lines: ['제품검수'], icon: 'pi pi-check',},
 ];
 
 const navigate = useNavigate();
@@ -84,7 +84,7 @@ const navigate = useNavigate();
                       setSearchParams({ tab: swiper.activeIndex })
                     }  className='h-full' >
                     <SwiperSlide>
-                       <div className="flex flex-wrap justify-between mb-4 w-full" style={{ padding: "0 1rem"}}>    
+                       <div className="flex flex-wrap justify-between mb-2 w-full" style={{ padding: "0 1rem"}}>    
                           <label className='text-gray-400'>자주쓰는 메뉴를 고정해주세요</label>
                           <InputSwitch checked={checked} onChange={(e) => setChecked(e.value)} />    
                         </div> 
@@ -98,6 +98,12 @@ const navigate = useNavigate();
                               onClick={() => navigate(menu.path)}
                             >
                               <div className="dashboard-card-label">
+                                {/* 아이콘 */}
+                                {menu.icon && (
+                                  <i className={`${menu.icon}`} />
+                                )}
+
+                                {/* 텍스트 */}
                                 {menu.lines.map((text, i) => (
                                   <span key={i}>{text}</span>
                                 ))}
@@ -109,7 +115,7 @@ const navigate = useNavigate();
 
                     </SwiperSlide>
                     <SwiperSlide>
-                      <div className="flex flex-wrap justify-between mb-4 w-full" style={{ padding: "0 1rem"}}>    
+                      <div className="flex flex-wrap justify-between mb-2 w-full" style={{ padding: "0 1rem"}}>    
                           <label className='text-gray-400'>자주쓰는 메뉴를 고정해주세요</label>
                           <InputSwitch checked={checked} onChange={(e) => setChecked(e.value)} />    
                         </div> 
@@ -123,6 +129,12 @@ const navigate = useNavigate();
                               onClick={() => navigate(menu.path)}
                             >
                               <div className="dashboard-card-label">
+                                {/* 아이콘 */}
+                                {menu.icon && (
+                                  <i className={`${menu.icon}`} />
+                                )}
+
+                                {/* 텍스트 */}
                                 {menu.lines.map((text, i) => (
                                   <span key={i}>{text}</span>
                                 ))}
@@ -132,7 +144,7 @@ const navigate = useNavigate();
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                      <div className="flex flex-wrap justify-between mb-4 w-full" style={{ padding: "0 1rem"}}>    
+                      <div className="flex flex-wrap justify-between mb-2 w-full" style={{ padding: "0 1rem"}}>    
                           <label className='text-gray-400'>자주쓰는 메뉴를 고정해주세요</label>
                           <InputSwitch checked={checked} onChange={(e) => setChecked(e.value)} />    
                         </div> 
@@ -146,6 +158,12 @@ const navigate = useNavigate();
                               onClick={() => navigate(menu.path)}
                             >
                               <div className="dashboard-card-label">
+                                {/* 아이콘 */}
+                                {menu.icon && (
+                                  <i className={`${menu.icon}`} />
+                                )}
+
+                                {/* 텍스트 */}
                                 {menu.lines.map((text, i) => (
                                   <span key={i}>{text}</span>
                                 ))}
