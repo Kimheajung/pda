@@ -43,6 +43,9 @@ import {
     agency: "아키원(라인아산)",
     site: "상시",
     machine: "8호기",
+    barcode: "P1902222049",
+    status: "반영완료",
+    go: "1147513",
   }));
 
   /* 다이얼로그 타입 */
@@ -278,9 +281,9 @@ const toggleCard = (id) => {
                                 </div>
 
                                 {/* 목록내용 */}
-                                 <div className="wrap" style={{ borderTop: "0px solid #D3D6E1"}}>
+                                 <div className="wrap border-t-0 border-[#fff]">
                                   {/* 공통 : 상단버튼 + 스위치탭  */}
-                                  <div className="hugreen_aggridbtn_hwrap mt-2 p-0" style={{ borderTop: "8px solid #ffff"}}>
+                                  <div className="hugreen_aggridbtn_hwrap mt-2 p-0 border-t-[8px] border-white">
                                     <div className="flex">
                                       <span className="NumText"> 조회결과</span>
                                       <p className="totalNumText" >총&nbsp;<span>0</span>건</p>
@@ -303,7 +306,7 @@ const toggleCard = (id) => {
                                             <div className="incoming-card__list">
                                               <div>
                                                 <label>지시번호</label>
-                                                <span> {item.product}</span>
+                                                <span> {item.go}</span>
                                               </div>
 
                                               <div>
