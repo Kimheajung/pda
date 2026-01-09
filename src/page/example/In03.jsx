@@ -414,7 +414,7 @@ const IncomingListByDetail = ({
                       <div className="row">
                         <div className='th'>작업일자</div>
                         <div className='td'>
-                          <div className="flex flex-wrap items-center justify-between w-full" >
+                          <div className="flex items-center justify-between w-full" >
                               <div className="flex-1">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               </div>
