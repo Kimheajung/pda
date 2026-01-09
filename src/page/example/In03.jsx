@@ -415,13 +415,13 @@ const IncomingListByDetail = ({
                         <div className='th'>작업일자</div>
                         <div className='td'>
                           <div className="flex items-center justify-between w-full" >
-                              <div className="flex-1">
+                              <div className="flex-1 min-w-0">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               </div>
                               {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
                               <Button
                                 text
-                                icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down"}
+                                icon={isFilterOpen ? "pi pi-chevron-up shrink-0" : "pi pi-chevron-down shrink-0"}
                                 onClick={() => setIsFilterOpen(prev => !prev)}
                               />
                             </div>
@@ -710,11 +710,11 @@ const IncomingListByDetail = ({
                       <div className="row">
                         <div className='th'>작업일자</div>
                         <div className='td'>
-                          <div className="flex  items-center justify-between w-full">
-                              <div className="flex-1">
+                          <div className="flex  items-center justify-between w-full" style={{ background: "red"}}>
+                              <div className="flex-1 min-w-0">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               </div>
-                              <Button label="검색" text  className='btn-28-intable'/>
+                              <Button label="검색" text  className='btn-28-intable shrink-0'/>
                               {/* 오른쪽 : 펼치기 / 숨기기 버튼 
                               <Button
                                 text
