@@ -3,7 +3,7 @@
   "short_name": "PDA",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#F5F6F9",
   "theme_color": "#ffffff",
   "icons": [
     {

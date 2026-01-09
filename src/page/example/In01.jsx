@@ -413,6 +413,7 @@ const IncomingListByDetail = ({
                               <div className="flex-1">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               </div>
+                              <Button label="검색" text  className='btn-28-intable'/>
                               {/* 오른쪽 : 펼치기 / 숨기기 버튼
                               <Button
                                 text
@@ -576,6 +577,7 @@ const IncomingListByDetail = ({
                               <div className="flex-1">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               </div>
+                              <Button label="검색" text  className='btn-28-intable'/>
                               {/* 오른쪽 : 펼치기 / 숨기기 버튼 
                               <Button
                                 text
@@ -872,6 +874,7 @@ const IncomingListByDetail = ({
                               <div className="flex-1">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               </div>
+                              <Button label="검색" text  className='btn-28-intable'/>
                                {/* 오른쪽 : 펼치기 / 숨기기 버튼
                               <Button
                                 text

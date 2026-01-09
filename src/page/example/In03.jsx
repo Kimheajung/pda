@@ -208,6 +208,7 @@ const options2 = ['오더별', '상세별'];
 const [value2, setValue2] = useState(options[0]); // 기본: 품목별
 const [value3, setValue3] = useState(options2[0]); // 기본: 품목별
 
+//제품별
 const IncomingListByProduct = ({
   data,
   expandedId,
@@ -300,6 +301,7 @@ const IncomingListByProduct = ({
   </div>
 );
 
+//상세별
 const IncomingListByDetail = ({
   data,
   expandedId,
@@ -316,6 +318,7 @@ const IncomingListByDetail = ({
           {/* ===== Header ===== */}
           <div className="incoming-card__header" >
             <div className="flex gap-2 items-center justify-content-center">
+                <Checkbox onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
                 <span className="incoming-card__date">{item.id}</span>
                 {/*
                 <Checkbox onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
@@ -435,7 +438,7 @@ const IncomingListByDetail = ({
                           <div className="th">지시검색</div>
                           <div className="td gap-2">
                             <InputText value={value} className="w-full" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
-                            <Button label="지시검색" text  className="btn-28-master w-38" onClick={openBarcodeDialog} />
+                            <Button label="지시검색" text  className="btn-28-intable w-38" onClick={openBarcodeDialog} />
                           </div>
                           
                           <div className="flex search-btn-wrap">
@@ -711,6 +714,7 @@ const IncomingListByDetail = ({
                               <div className="flex-1">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               </div>
+                              <Button label="검색" text  className='btn-28-intable'/>
                               {/* 오른쪽 : 펼치기 / 숨기기 버튼 
                               <Button
                                 text

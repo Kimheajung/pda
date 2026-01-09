@@ -116,9 +116,10 @@ ol, ul {padding-left: 0rem !important;}
     padding: 0 0.5rem;
 }
 .btn-28-intable {    
-    height: 2rem !important;
-    background-color: #f6f6f6 !important;  
+    //height: 2rem !important;
+    background-color: #fff !important;  
     border: 1px solid #ddd !important;
+    color:#888 !important;    
      white-space: nowrap; 
     overflow: hidden;    
     text-overflow: ellipsis; 
@@ -360,7 +361,7 @@ ol, ul {padding-left: 0rem !important;}
 
   .p-tabview-nav {
     padding-bottom: 0;
-    border-bottom: 0px solid transparent !important;
+    border-bottom: 1px solid #E9E9E9 !important;
     background-color: #F5F6F9 !important;
   }
 
