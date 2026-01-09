@@ -710,7 +710,7 @@ const IncomingListByDetail = ({
                       <div className="row">
                         <div className='th'>작업일자</div>
                         <div className='td'>
-                          <div className="flex  items-center justify-between w-full" style={{ background: "red"}}>
+                          <div className="flex items-center w-full gap-2" style={{ background: "blue"}}>
                               <div className="flex-1 min-w-0">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               </div>
