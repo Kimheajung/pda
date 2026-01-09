@@ -104,11 +104,11 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
       label: '입고',
       items: [
         { label: '자가생산입고(개별)', icon: '', to: '/in01' },
-        { label: '자가생산입고(일괄)', icon: '', to: '/in02' },
-        { label: '자가생산입고내역조회', icon: '', to: '/in03' },
-        { label: '외주생산입고(개별)', icon: '', to: '/in04' },
-        { label: '외주생산입고(일괄)', icon: '', to: '/in05' },
-        { label: '반품입고', icon: '', to: '/in06' },
+        { label: '자가생산입고(일괄)', icon: '', to: '/in01' },
+        { label: '자가생산입고내역조회', icon: '', to: '/in01' },
+        { label: '외주생산입고(개별)', icon: '', to: '/in02' },
+        { label: '외주생산입고(일괄)', icon: '', to: '/in02' },
+        { label: '반품입고', icon: '', to: '/in03' },
       ],
     },
     {

@@ -7,9 +7,10 @@ import Dashboard from './page/dashboard/Dashboard.jsx';
 import Layout01 from './page/example/layout01.jsx';
 import LoginSample from "./page/example/LoginSample.jsx";
 import In01 from './page/example/In01.jsx';
+import In02 from './page/example/In02.jsx';
+import In03 from './page/example/In03.jsx';
 import In06 from './page/example/In06.jsx';
 /*
-import In02 from './page/example/In02.jsx';
 import In03 from './page/example/In03.jsx';
 import In04 from './page/example/In04.jsx';
 import In05 from './page/example/In05.jsx';
@@ -85,6 +86,30 @@ export default function AppRoute() {
             component={
               <MainLayout>
                 <In01 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+        <Route
+        path="/in02"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <In02 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+        <Route
+        path="/in03"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <In03 />
               </MainLayout>
             }
           />

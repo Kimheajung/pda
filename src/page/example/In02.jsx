@@ -55,7 +55,7 @@ const DIALOG = {
   BARCODE: 'barcode',
 };
 
-const In01 = () => {
+const In02 = () => {
 
     //툴팁
   const bellRef = useRef(null);
@@ -402,7 +402,7 @@ const IncomingListByDetail = ({
 
           <div className="hugreen_mobile_wrap">
             <TabView className="hugreen-tabview" activeIndex={0}>
-                <TabPanel header="자가생산입고(개별)">
+                <TabPanel header="외주생산입고(개별)">
                                     {/* 공통 검색영역 */}
                   <div className="hugreen_searchwrap overflow-hidden">
                     <div className="grid-searchwrap grid-searchwrap--4col">
@@ -513,17 +513,6 @@ const IncomingListByDetail = ({
                               />
                             </div>
                           </div>
-                          <div className="row">
-                            <div className="th">생산호기</div>
-                              <div className="td">
-                              <InputText
-                                className="w-full"
-                                value={value}
-                                onChange={(e) => setValue(e.target.value)}
-                                placeholder="선택해주세요"
-                              />
-                            </div>
-                          </div>
 
                           <div className="row">
                             <div className="th">대리점</div>
@@ -564,7 +553,7 @@ const IncomingListByDetail = ({
                   </div>
                   
                 </TabPanel>
-                <TabPanel header="자가생산입고(일괄)">
+                <TabPanel header="외주생산입고(일괄)">
                   
                   {/* 공통 검색영역 */}
                   <div className="hugreen_searchwrap overflow-hidden">
@@ -861,58 +850,6 @@ const IncomingListByDetail = ({
                   </button>
 
                 </TabPanel>
-                <TabPanel header="자가생산 입고내역조회">
-                  {/* 공통 검색영역 */}
-                  <div className="hugreen_searchwrap overflow-hidden">
-                    <div className="grid-searchwrap grid-searchwrap--4col">
-                      <div className="row">
-                        <div className='th'>작업일자</div>
-                        <div className='td'>
-                          <div className="flex flex-wrap items-center justify-between w-full" >
-                              <div className="flex-1">
-                                <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                              </div>
-                               {/* 오른쪽 : 펼치기 / 숨기기 버튼
-                              <Button
-                                text
-                                icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down"}
-                                className={!hasFilterItems ? "hidden" : ""}
-                                onClick={() => setIsFilterOpen(prev => !prev)}
-                              /> */}
-                            </div>
-                        </div>
-                      </div>
-                      {hasFilterItems && (
-                        <div
-                            className={classNames(
-                              "row overflow-hidden transition-all duration-300",
-                              isFilterOpen ? "max-h-[500px]" : "max-h-0"
-                            )}
-                          >
-                         
-                        </div>
-                        )}
-                    </div>
-                  </div>
-                  
-                  <div className="wrap">
-                    <div className="hugreen_aggridbtn_hwrap">
-                        {/* 공통 : 카드형 그리드  */}
-                        <div className="hugreen_aggrid_hwrap">
-                          
-                          {/* 공통 : 제품이 없을 경우  */}
-                          <div className="incoming-empty">
-                            <div className="incoming-empty__icon">
-                              <i className="pi pi-inbox" />
-                            </div>
-                            <div className="incoming-empty__title">입고된 제품이 없습니다.</div>
-                            <div className="incoming-empty__desc">제품을 스캔해주세요</div>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-
-                </TabPanel>
             </TabView>
           </div>
 
@@ -924,4 +861,4 @@ const IncomingListByDetail = ({
   );
 };
 
-export default In01;
+export default In02;

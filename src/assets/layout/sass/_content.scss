@@ -351,8 +351,10 @@
     .search-btn-wrap {width: 100% !important;margin-top:1rem;}
     .search-btn {
         width: 100% !important;
-        background-color: #00485D !important;
-        color: #fff !important;
+       // background-color: #00485D !important;
+        background-color: #ddd !important;
+        border:1px solid #dddd !important;
+        color: #888 !important;
     }
 } 
 
@@ -401,17 +403,26 @@
   &__title {
     font-size: 22px;
     font-weight: 700;
-    margin: 6px 0 10px;
+    //margin: 6px 0 10px;
     color: #707070;
+  }
+
+    &__date {
+    font-size: 22px;
+    font-weight: 400;
+    padding-right:10px;
+    //margin: 6px 0 10px;
+    color: #ddd;
   }
 
   /* ===== Summary ===== */
   &__summary {
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    gap: 10px;
+    grid-template-columns: repeat(3, auto);
+    gap: 4px;
     font-size: 14px;
     color: #4b5563;
+    padding-top:10px;
 
     label {
       color: #888;
@@ -426,7 +437,7 @@
   &__list {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 10px;
+    gap: 4px;
     font-size: 14px;
     color: #4b5563;
 
@@ -469,7 +480,7 @@
   &__detail {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 4px;
     font-size: 14px;
     margin-top: 8px;
 
