@@ -72,7 +72,7 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
               <button
                 type="button"
                 className="p-link layout-menu-button block lg:hidden"
-                onClick={() => navigate(-1)}
+                onClick={() => navigate('/') }
               >
                 <i className="pi pi-chevron-left" />
               </button>
@@ -93,13 +93,13 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
             </button>
             
             
-
-            
               {/* 모바일 : 왼쪽영역설정 */}
               <Sidebar
                   visible={mobileMenuVisible}
                   position="right"
                   onHide={() => setMobileMenuVisible(false)}
+                  showCloseIcon={false}
+                  header={null}
                   className="mobile-topbar-sidebar lg:hidden">
 
               <div className="mypage" >
@@ -130,13 +130,14 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                       <div className="mypage-profile__info">
                         <div className="mypage-profile__row">
                           <Tag
-                            value="대리점"
+                            value="사번"
                             className="mypage-profile__role"
                             rounded />
-                          <span className="mypage-profile__name">이가명님</span>
-                          <i className="pi pi-chevron-right mypage-profile__arrow" />
+                          <span className="mypage-profile__name">102872</span>
+                          <span className="mypage-profile__name">황윤경님</span>                        
+                          {/*<i className="pi pi-chevron-right mypage-profile__arrow" />  아이콘 필요시 사용 */}
                         </div>
-                        <p className="mypage-profile__company">(주) 금호석유화학</p>
+                        <p className="mypage-profile__company">소속 : (주) 금호석유화학</p>
                       </div>
                     </div>
                     <Button
@@ -156,46 +157,7 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
               </Sidebar>
 
                
-         </div>
-
-            {/* 공통 : 업무영역에 대한 도움말 사이드바 */}
-            <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)} className="favorite-sidebar">
-              <h3 className="absolute top-[1.6rem]"> 나만의 즐겨찾기 메뉴</h3>
-
-                {/* 즐겨찾기 항목이 아예 없을 때 */}
-                <div className="favorite-empty">
-                  <i className="pi pi-info-circle favorite-empty__icon"></i>
-                  <span className="favorite-empty__text">나만의 즐겨찾기 메뉴가 없습니다.</span>
-                </div>
-
-                {/* 즐겨찾기 목록 리스트 - 하드코딩 */}
-                <div className="favorite-list">
-                  <div className="favorite-item">
-                    주문입력
-                    <Button
-                      icon="pi pi-times"
-                      className="favorite-del-btn p-button-text p-button-plain no-theme"
-                      onClick={() => console.log('delete')}
-                      unstyled
-                    />
-                  </div>
-
-                  <div className="favorite-item">
-                    PALLET 재고조회
-                    <Button 
-                      icon="pi pi-times" 
-                      rounded 
-                      text 
-                      className="favorite-del-btn" 
-                      />
-                  </div>
-                </div>
-            </Sidebar>
-            
-
-
-
-
+          </div>
         </div>
     );
 }

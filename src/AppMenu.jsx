@@ -181,9 +181,9 @@ export const AppMenu = (props) => {
 
   return (
     <div className="layout-menu-container panel-style">
-      <div className='flex items-cente mb-2 justify-between mt-[15px]'>
-        <h1>건자재바코드시스템</h1>
-        <div className='flex gap-4 items-center'>
+      <div className='flex items-cente mb-2 justify-between mt-1'>
+        <h1>건자재 바코드 시스템</h1>
+        <div className='flex gap-4 items-center justify-center'>
            <Tag
             severity="contrast"
             value={expandAll ? '메뉴전체닫기' : '메뉴전체열기'}

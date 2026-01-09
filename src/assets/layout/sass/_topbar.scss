@@ -448,8 +448,10 @@
     border: none;
     background: transparent;
     margin-right: 4px;
-    padding: 4px;
+    //padding: 4px;
+    width: 20px !important;
     display: flex;
+    color: #888;
     align-items: center;
     justify-content: center;
 
@@ -464,13 +466,10 @@
   }
 }
 
-.mypage-body {
-  padding: 1rem 0;
-}
 
 /* 프로필 카드 */
 .mypage-profile {
-  padding: 1rem 0;
+  padding: .5rem 0;
   border-bottom:1px solid #ddd;
   
   flex-direction: row;
@@ -486,8 +485,8 @@
     width: 60px !important;
     height: 60px !important;
     i {
-      font-size: 18px;
-      color: #b0b0b0;
+      font-size: 48px !important;
+      color: #b0b0b0 !important;
     }
   }
 
@@ -514,7 +513,7 @@
   }
 
   &__name {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     margin-right: 4px;
     white-space: nowrap;
@@ -528,7 +527,7 @@
   &__company {
     font-size: 12px;
     color: #888;
-    margin-top:10px;
+    margin-top:4px;
   }
 
   &__logout {
