@@ -503,8 +503,9 @@ ol, ul {padding-left: 0rem !important;}
 
  /* 공통 : sidebar 재정의 */
 .p-sidebar-visible {
-  margin-top: 56px !important; 
-  height: calc(100% - 56px) !important; 
+  padding-top: 56px !important; 
+  //height: calc(100% - 56px) !important; 
+  height: 100% !important;
 }
 
 /* 즐겨찾기 전용 Sidebar -> full height */
