@@ -133,8 +133,8 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                             value="사번"
                             className="mypage-profile__role"
                             rounded />
-                          <span className="mypage-profile__name">102872</span>
-                          <span className="mypage-profile__name">황윤경님</span>                        
+                          <span className="mypage-profile__name">황윤경님</span>   
+                          <span className="mypage-profile__num">(102872)</span>                     
                           {/*<i className="pi pi-chevron-right mypage-profile__arrow" />  아이콘 필요시 사용 */}
                         </div>
                         <p className="mypage-profile__company">소속 : (주) 금호석유화학</p>

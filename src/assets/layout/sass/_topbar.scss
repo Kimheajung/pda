@@ -170,31 +170,21 @@
   height: 62px;
   border-radius: 50%;
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  &--admin {
-    background-color: #d32f2f; // 관리자
-  }
-
-  &--agency {
-    background-color: #1976d2; // 대리점
-  }
-
-  &--office {
-    background-color: #00485D; // 본사
-  }
-
-  &--partner {
-    background-color: #71bfaeff; // 협력사
-  }
 }
 
   &__name {
     font-size: 1.5rem;
     font-weight: 600;
+  }
+  &__num {
+  font-size: 16px !important;
+  font-weight: 300;
+  margin-left:10px !important;
   }
   &__badge {
     font-size: 12px;
