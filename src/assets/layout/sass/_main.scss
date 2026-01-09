@@ -24,30 +24,47 @@ a, button {
     //color: var(--primary-color);
 }
 
+//스와이프
+.swiper {
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+  transition-property: transform;
+}
+
+.swiper-slide {
+  flex-shrink: 0;
+  width: 100%;
+}
 
 //메인
 
-
+.dashboard-fav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  margin-bottom: 0.75rem;
+}
 
 /* 카드 그리드 */
 .dashboard-card-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  gap: 16px;
   padding: 0 1rem;
 }
 
-.dashboard-card2-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  padding: 0 1rem;
-}
 
 /* 카드 */
 .dashboard-card {
-  height: 150px;
+  height: 140px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  border:1px solid #ddd;
 }
 
 .dashboard-card .p-card-body {
@@ -55,26 +72,33 @@ a, button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border:1px solid #ddd;
-  border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.09) !important;
 }
 
-/* 카드 텍스트 */
+/* 카드 내용 */
 .dashboard-card-label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  font-size: 16px;
-  font-weight: 500;
+  gap: 6px;
   text-align: center;
-
-  i {
-    font-size : 26px;
-    color: #9ca3af;
-    opacity: 0.85;
-    font-weight: 100 !important;
-  }
+  font-size: 16px;
 }
 
+/* 아이콘 (얇아 보이게) */
+.dashboard-card-icon {
+  font-size: 20px;
+  color: #9ca3af; /* gray-400 */
+  opacity: 0.85;
+}
+
+/* 활성 카드 */
+.dashboard-card--active {
+  border: 2px solid var(--primary-color);
+  background-color: #f5f7ff;
+}
+
+.dashboard-card--active .dashboard-card-icon {
+  color: var(--primary-color);
+  opacity: 1;
+}

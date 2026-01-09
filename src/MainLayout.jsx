@@ -134,13 +134,6 @@ const [activeLeftMenu, setActiveLeftMenu] = useState(null);
         { label: '제품검수', icon: '', to: '/etc08' },
       ],
     },
-    {
-      label: '컴포넌트',
-      items: [
-        { label: '5. 모바일 레이아웃 기준', icon: '', to: '/layout01' },   
-        { label: '6. 로그인', icon: '', to: '/LoginSample' },
-      ],
-    }
     // ... 필요 메뉴 그대로 복사
   ];
 
