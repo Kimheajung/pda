@@ -411,7 +411,7 @@ const IncomingListByDetail = ({
                   {/* 공통 검색영역 */}
                   <div className="hugreen_searchwrap overflow-hidden">
                     <div className="grid-searchwrap grid-searchwrap--4col">
-                      <div className="row">
+                      <div className="row" style={{ background: "green"}}>
                         <div className='th'>작업일자</div>
                         <div className='td gap-2'>
                              <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
