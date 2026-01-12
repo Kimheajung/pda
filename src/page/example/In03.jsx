@@ -458,15 +458,9 @@ const IncomingListByDetail = ({
                                   <div className="grid-searchwrap grid-searchwrap--4col bg-white border border-[#ddd] rounded-lg p-2" >
                                     <div className="row">
                                       <div className='th'>지시일자</div>
-                                      <div className='td'>
-                                        <div className="flex flex-wrap items-center justify-between w-full" >
-                                            <div className="flex-1">
-                                              <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                                            </div>
-                                          </div>
-                                      </div>
-                                      <div className="flex search-btn-wrap">
-                                        <Button label="조회" text  className="search-btn"/>
+                                      <div className='td gap-2'>
+                                        <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
+                                        <Button label="검색" text  className="btn-28-intable" />
                                       </div>
                                     </div>
                                   </div>
