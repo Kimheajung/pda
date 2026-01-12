@@ -12,6 +12,12 @@ import In03 from './page/example/In03.jsx';
 import In04 from './page/example/In04.jsx';
 import In05 from './page/example/In05.jsx';
 import In06 from './page/example/In06.jsx';
+import In07 from './page/example/In07.jsx';
+import In08 from './page/example/In08.jsx';
+import In09 from './page/example/In09.jsx';
+import In10 from './page/example/In10.jsx';
+import In11 from './page/example/In11.jsx';
+import In12 from './page/example/In12.jsx';
 
 
 // 임시 Forbidden. 추후 인증 로직 추가 가능.
@@ -131,6 +137,78 @@ export default function AppRoute() {
             component={
               <MainLayout>
                 <In06 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+      <Route
+        path="/in07"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <In07 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+      <Route
+        path="/in08"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <In08 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+      <Route
+        path="/in09"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <In09 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+      <Route
+        path="/in10"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <In10 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+      <Route
+        path="/in11"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <In11 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+      <Route
+        path="/in12"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <In12 />
               </MainLayout>
             }
           />

@@ -69,13 +69,13 @@ const [favoriteMenus, setFavoriteMenus] = useState({
   ];
 
   const etcMenus = [
-    { path: '/out06', lines: ['기타출고'], icon: 'pi pi-clipboard' },
-    { path: '/out09', lines: ['재고실사계획조회'], icon: 'pi pi-briefcase' },
-    { path: '/out07', lines: ['재고변경'], icon: 'pi pi-building' },
-    { path: '/out08', lines: ['재고이동'], icon: 'pi pi-building' },
-    { path: '/out10', lines: ['팔렛병합'], icon: 'pi pi-cart-arrow-down' },
-    { path: '/out11', lines: ['팔렛정보조회'], icon: 'pi pi-cart-arrow-down' },
-    { path: '/out12', lines: ['제품검수'], icon: 'pi pi-check' },
+    { path: '/in06', lines: ['기타출고'], icon: 'pi pi-clipboard' },
+    { path: '/in07', lines: ['재고실사계획조회'], icon: 'pi pi-briefcase' },
+    { path: '/in08', lines: ['재고변경'], icon: 'pi pi-building' },
+    { path: '/in09', lines: ['재고이동'], icon: 'pi pi-building' },
+    { path: '/in10', lines: ['팔렛병합'], icon: 'pi pi-cart-arrow-down' },
+    { path: '/in11', lines: ['팔렛정보조회'], icon: 'pi pi-cart-arrow-down' },
+    { path: '/in12', lines: ['제품검수'], icon: 'pi pi-check' },
   ];
 
   /* ===============================

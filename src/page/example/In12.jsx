@@ -55,7 +55,7 @@ const DIALOG = {
   BARCODE: 'barcode',
 };
 
-const In06= () => {
+const In12= () => {
 
     //툴팁
   const bellRef = useRef(null);
@@ -421,16 +421,26 @@ const IncomingListByDetail = ({
                     <div className='th'>작업일자</div>
                     <div className='td gap-2'>
                           <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                          <Button label="출고내역" text  className="btn-28-intable2" onClick={openListDialog} />
+                            <span>~</span>
+                          <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                     </div>
                   </div>
                   <div className="row">
-                    <div className='th'>지시번호</div>
+                    <div className='th'>제품유형</div>
                     <div className='td gap-2'>
                         <InputText value={value} className="w-full" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
-                        <Button label="검색" text  className="btn-28-intable" onClick={openBarcodeDialog} />
                     </div>
                   </div>
+                  <div className="row">
+                    <div className='th'>조회옵션</div>
+                    <div className='td gap-2'>
+                       <Checkbox onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
+                       미검수만조회
+                    </div>
+                  </div>
+                    <div className="flex search-btn-wrap">
+                    <Button label="조회" text  className="search-btn"/>
+                    </div>
                   
                     <Dialog
                           header={dialogHeader}
@@ -625,12 +635,12 @@ const IncomingListByDetail = ({
                 {/* 공통 : 상단버튼 + 스위치탭  */}
                 <div className="hugreen_aggridbtn_hwrap">
                   <div className="flex">
-                    <SelectButton value={value2} onChange={(e) => setValue2(e.value)} options={options} />
+                     <span className="NumText"> 조회결과</span>
+                     <p className="totalNumText" >총&nbsp;<span>0</span>건</p>
                   </div>
                   <div className="flex gap-2"> 
-                    <Button icon="pi pi-refresh" className='text-bb' text style={{ width: "20px"}} />
-                    <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
-                    <Button label="입고확정" className='btn-28-master' text />
+                    <Button label="삭제" className='btn-28-sec' text />
+                    <Button label="저장" className='btn-28-master' text />
                   </div>
                 </div>
                 {/* 공통 : 카드형 그리드 + 상세화면  */}
@@ -789,10 +799,7 @@ const IncomingListByDetail = ({
               </div>
               
 
-              {/* 공통 : 전페페이지건수  */}
-              <button className="scan-button" text>
-                <i><span >108</span> 건</i>
-              </button>
+              
           </div>
 
           
@@ -803,4 +810,4 @@ const IncomingListByDetail = ({
   );
 };
 
-export default In06;
+export default In12;

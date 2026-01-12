@@ -463,6 +463,14 @@ $font-size-base: 1rem;
         border-radius: 50%;
         transform: translateY(-50%);
         }
+       &--required::after {
+        content: '*';
+        margin-left: 4px;
+        color: #e53935;
+        font-size: 14px;
+        font-weight: 700;
+        vertical-align: middle;
+      }     
     }
 
     .td {
