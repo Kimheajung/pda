@@ -64,8 +64,8 @@ const [favoriteMenus, setFavoriteMenus] = useState({
   ];
 
   const outMenus = [
-    { path: '/out04', lines: ['출고 등록'], icon: 'pi pi-car' },
-    { path: '/out05', lines: ['출고 내역 조회'], icon: 'pi pi-desktop' },
+    { path: '/in04', lines: ['생산투입'], icon: 'pi pi-car' },
+    { path: '/in05', lines: ['판매출고'], icon: 'pi pi-desktop' },
   ];
 
   const etcMenus = [

@@ -9,25 +9,10 @@ import LoginSample from "./page/example/LoginSample.jsx";
 import In01 from './page/example/In01.jsx';
 import In02 from './page/example/In02.jsx';
 import In03 from './page/example/In03.jsx';
-import In06 from './page/example/In06.jsx';
-/*
-import In03 from './page/example/In03.jsx';
 import In04 from './page/example/In04.jsx';
 import In05 from './page/example/In05.jsx';
-import Out01 from './page/example/Out01.jsx';
-import Out02 from './page/example/Out02.jsx';
-import Out03 from './page/example/Out03.jsx';
-import Out04 from './page/example/Out04.jsx';
-import Out05 from './page/example/Out05.jsx';
-import Etc01 from './page/example/Etc01.jsx';
-import Etc02 from './page/example/Etc02.jsx';
-import Etc03 from './page/example/Etc03.jsx';
-import Etc04 from './page/example/Etc04.jsx';
-import Etc05 from './page/example/Etc05.jsx';
-import Etc06 from './page/example/Etc06.jsx';
-import Etc07 from './page/example/Etc07.jsx';
-import Etc08 from './page/example/Etc08.jsx';
-*/
+import In06 from './page/example/In06.jsx';
+
 
 // 임시 Forbidden. 추후 인증 로직 추가 가능.
 function Forbidden({ component }) {
@@ -110,6 +95,30 @@ export default function AppRoute() {
             component={
               <MainLayout>
                 <In03 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+        <Route
+        path="/in04"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <In04 />
+              </MainLayout>
+            }
+          />
+        }
+      />
+        <Route
+        path="/in05"
+        element={
+          <Forbidden
+            component={
+              <MainLayout>
+                <In05 />
               </MainLayout>
             }
           />

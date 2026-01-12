@@ -55,7 +55,7 @@ const DIALOG = {
   BARCODE: 'barcode',
 };
 
-const In03 = () => {
+const In05 = () => {
 
     //툴팁
   const bellRef = useRef(null);
@@ -407,7 +407,7 @@ const IncomingListByDetail = ({
 
           <div className="hugreen_mobile_wrap">
             <TabView className="hugreen-tabview" activeIndex={0}>
-                 <TabPanel header="반품입고">
+                 <TabPanel header="판매출고">
                   {/* 공통 검색영역 */}
                   <div className="hugreen_searchwrap overflow-hidden">
                     <div className="grid-searchwrap grid-searchwrap--4col">
@@ -415,12 +415,7 @@ const IncomingListByDetail = ({
                         <div className='th'>작업일자</div>
                         <div className='td gap-2'>
                              <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                             {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
-                              <Button
-                                text
-                                icon={isFilterOpen ? "pi pi-chevron-up text-bb" : "pi pi-chevron-down shrink-0 text-bb"}
-                                onClick={() => setIsFilterOpen(prev => !prev)}
-                              />
+                             <Button label="검색" text  className="btn-28-intable" />
                         </div>
                       </div>
                       {hasFilterItems && (
@@ -430,90 +425,10 @@ const IncomingListByDetail = ({
                               isFilterOpen ? "max-h-[500px]" : "max-h-0"
                             )}
                           >
-                            {/*검색 버튼필요시 사용*/}
-                          <div className="th">지시검색</div>
-                          <div className="td gap-2">
-                            <InputText value={value} className="w-full" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
-                            <Button label="지시검색" text  className="btn-28-intable2" onClick={openBarcodeDialog} />
-                          </div>
                           
-                          <div className="flex search-btn-wrap">
-                            <Button label="검색" text  className="search-btn"/>
-                          </div> 
-                        </div>
+                          </div>
                         )}
-                        <Dialog
-                              header={dialogHeader}
-                              visible={visible3}
-                              modal
-                              className='w-full'
-                              blockScroll
-                              resizable={false}
-                              //footer={footerBarcode}
-                              closable={true}
-                              onHide={requestCloseDialog}   
-                            >
-                               {/* 공통 검색영역 */}
-                                <div className="hugreen_searchwrap overflow-hidden  p-0" style={{ boxShadow: "0 4px 8px rgba(0,0,0,.08)"}}>
-                                  <div className="grid-searchwrap grid-searchwrap--4col bg-white border border-[#ddd] rounded-lg p-2" >
-                                    <div className="row">
-                                      <div className='th'>지시일자</div>
-                                      <div className='td gap-2'>
-                                        <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                                        <Button label="검색" text  className="btn-28-intable" />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                {/* 목록내용 */}
-                                 <div className="wrap border-t-0 border-[#fff]">
-                                  {/* 공통 : 상단버튼 + 스위치탭  */}
-                                  <div className="hugreen_aggridbtn_hwrap mt-2 p-0 border-t-[8px] border-white">
-                                    <div className="flex">
-                                      <span className="NumText"> 조회결과</span>
-                                      <p className="totalNumText" >총&nbsp;<span>0</span>건</p>
-                                    </div>
-                                    <div className="flex gap-2"> 
-                                      <Button label="취소" className='btn-28-sec' text />
-                                      <Button label="선택" className='btn-28-master' text />
-                                    </div>
-                                  </div>
-                                  {/* 공통 : 카드형 그리드 + 상세화면  */}
-                                  <div className="hugreen_aggrid_hwrap p-0" >
-                                    <div className="incoming-list">
-                                      {MOCK_DATA.slice(0, visibleCount).map((item) => {
-                                        const isOpen = expandedId === item.id;
-
-                                        return (
-                                          <div key={item.id}  className={classNames("incoming-card", { "is-open": isOpen,})} onClick={() => toggleCard(item.id)}>
-                                                            
-                                            {/* ===== Summary ===== */}
-                                            <div className="incoming-card__list">
-                                              <div>
-                                                <label>지시번호</label>
-                                                <span> {item.go}</span>
-                                              </div>
-
-                                              <div>
-                                                <Button
-                                                  icon="pi pi-check"
-                                                  text
-                                                  className={classNames("toggle-btn", isOpen ? "text-black" : "text-bb")}
-                                                />
-                                              </div>
-                                            </div>
-                                          </div>
-                                        );
-                                      })}
-
-                                      {/* ===== Infinite Scroll Trigger ===== */}
-                                      <div ref={loaderRef} className="incoming-list__loader" />
-                                    </div>
-                                  </div>
-                                </div>
-
-                        </Dialog> 
+                       
                     </div>
                   </div>
 
@@ -524,6 +439,7 @@ const IncomingListByDetail = ({
                         <SelectButton value={value2} onChange={(e) => setValue2(e.value)} options={options} />
                       </div>
                       <div className="flex gap-2"> 
+                        <Button icon="pi pi-verified" className='text-bb' text style={{ width: "20px"}} />
                         <Button icon="pi pi-refresh" className='text-bb' text style={{ width: "20px"}} />
                         <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
                         <Button label="입고확정" className='btn-28-master' text />
@@ -692,13 +608,13 @@ const IncomingListByDetail = ({
                   </button>
 
                 </TabPanel>
-                <TabPanel header="반품입고내역">
+                <TabPanel header="판매출고 내역조회">
                   
                   {/* 공통 검색영역 */}
                   <div className="hugreen_searchwrap overflow-hidden">
                     <div className="grid-searchwrap grid-searchwrap--4col">
                       <div className="row">
-                        <div className="th">지시검색</div>
+                        <div className="th">작업일자</div>
                         <div className="td gap-2">
                             <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                             <Button label="검색" text  className="btn-28-intable" />
@@ -812,9 +728,8 @@ const IncomingListByDetail = ({
                         <SelectButton value={value3} onChange={(e) => setValue3(e.value)} options={options2} />
                       </div>
                       <div className="flex gap-2"> 
-                        <Button icon="pi pi-refresh" className='text-bb' text style={{ width: "20px"}} />
-                        <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
-                        <Button label="입고확정" className='btn-28-master' text />
+                         <Button label="취소" className='btn-28-sec' text />
+                        <Button label="삭제" className='btn-28-master' text />
                       </div>
                     </div>
                     {/* 공통 : 카드형 그리드 + 상세화면  */}
@@ -991,4 +906,4 @@ const IncomingListByDetail = ({
   );
 };
 
-export default In03;
+export default In05;
