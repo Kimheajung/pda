@@ -413,18 +413,14 @@ const IncomingListByDetail = ({
                     <div className="grid-searchwrap grid-searchwrap--4col">
                       <div className="row">
                         <div className='th'>작업일자</div>
-                        <div className='td'>
-                          <div className="flex items-center justify-between w-full" >
-                              <div className="flex-1 min-w-0">
-                                <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                              </div>
-                              {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
+                        <div className='td gap-2'>
+                             <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
+                             {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
                               <Button
                                 text
-                                icon={isFilterOpen ? "pi pi-chevron-up shrink-0" : "pi pi-chevron-down shrink-0"}
+                                icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down shrink-0"}
                                 onClick={() => setIsFilterOpen(prev => !prev)}
                               />
-                            </div>
                         </div>
                       </div>
                       {hasFilterItems && (
