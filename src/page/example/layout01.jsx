@@ -192,7 +192,7 @@ useEffect(() => {
 
 
 //필터 숨겻다 펼치기 
-const [isFilterOpen, setIsFilterOpen] = useState(false);
+const [isFilterOpen, setIsFilterOpen] = useState(true);
 const hasFilterItems = true;
 const HAS_INCOMING_FILTER = true;
 
@@ -220,14 +220,10 @@ const toggleCard = (id) => {
                         <div className='th'>작업일자</div>
                         <div className='td gap-2'>
                           <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                          {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
-                          <Button
-                            text
-                            icon={isFilterOpen ? "pi pi-chevron-up text-bb" : "pi pi-chevron-down  text-bb"}
-                            onClick={() => setIsFilterOpen(prev => !prev)}
-                          />
+                          
                         </div>
                       </div>
+                     
                       {hasFilterItems && (
                         <div
                             className={classNames(
@@ -246,6 +242,17 @@ const toggleCard = (id) => {
                           </div> */}
                         </div>
                         )}
+                          {/* 🔽 토글 버튼 (중앙 하단) */}
+                          {hasFilterItems && (
+                            <div className="filter-toggle-center">
+                              <Button
+                                text
+                                icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down"}
+                                className="text-bb"
+                                onClick={() => setIsFilterOpen(prev => !prev)}
+                              />
+                            </div>
+                          )}
                         <Dialog
                               header={dialogHeader}
                               visible={visible3}
