@@ -408,11 +408,8 @@ const IncomingListByDetail = ({
                     <div className="grid-searchwrap grid-searchwrap--4col">
                       <div className="row">
                         <div className='th'>작업일자</div>
-                        <div className='td'>
-                          <div className="flex flex-wrap items-center justify-between w-full" >
-                              <div className="flex-1">
-                                <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                              </div>
+                        <div className='td gap-2'>
+                          <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                               <Button label="검색" text  className='btn-28-intable'/>
                               {/* 오른쪽 : 펼치기 / 숨기기 버튼
                               <Button
@@ -421,7 +418,6 @@ const IncomingListByDetail = ({
                                 disabled={!hasFilterItems}
                                 onClick={() => setIsFilterOpen(prev => !prev)}
                               /> */}
-                            </div>
                         </div>
                       </div>
                         {hasFilterItems && (
@@ -572,20 +568,17 @@ const IncomingListByDetail = ({
                     <div className="grid-searchwrap grid-searchwrap--4col">
                       <div className="row">
                         <div className='th'>작업일자</div>
-                        <div className='td'>
-                          <div className="flex flex-wrap items-center justify-between w-full" >
-                              <div className="flex-1">
-                                <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                              </div>
-                              <Button label="검색" text  className='btn-28-intable'/>
-                              {/* 오른쪽 : 펼치기 / 숨기기 버튼 
-                              <Button
-                                text
-                                icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down"}
-                                onClick={() => setIsFilterOpen(prev => !prev)}
-                              />*/}
-                            </div>
-                        </div>
+                        <div className='td gap-2'>
+                            <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
+                                <Button label="검색" text  className='btn-28-intable'/>
+                                {/* 오른쪽 : 펼치기 / 숨기기 버튼
+                                <Button
+                                  text
+                                  icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down"}
+                                  disabled={!hasFilterItems}
+                                  onClick={() => setIsFilterOpen(prev => !prev)}
+                                /> */}
+                          </div>
                       </div>
                       {hasFilterItems && (
                         <div

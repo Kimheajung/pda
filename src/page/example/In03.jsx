@@ -707,7 +707,7 @@ const IncomingListByDetail = ({
                         <div className="th">지시검색</div>
                         <div className="td gap-2">
                             <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                            <Button label="검색" text  className="btn-28-intable w-28" />
+                            <Button label="검색" text  className="btn-28-intable" />
                         </div>
                         
                       </div>

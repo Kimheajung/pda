@@ -218,18 +218,14 @@ const toggleCard = (id) => {
                     <div className="grid-searchwrap grid-searchwrap--4col">
                       <div className="row">
                         <div className='th'>작업일자</div>
-                        <div className='td'>
-                          <div className="flex flex-wrap items-center justify-between w-full" >
-                              <div className="flex-1">
-                                <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                              </div>
-                              {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
-                              <Button
-                                text
-                                icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down"}
-                                onClick={() => setIsFilterOpen(prev => !prev)}
-                              />
-                            </div>
+                        <div className='td gap-2'>
+                          <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
+                          {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
+                          <Button
+                            text
+                            icon={isFilterOpen ? "pi pi-chevron-up text-bb" : "pi pi-chevron-down  text-bb"}
+                            onClick={() => setIsFilterOpen(prev => !prev)}
+                          />
                         </div>
                       </div>
                       {hasFilterItems && (
