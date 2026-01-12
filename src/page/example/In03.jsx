@@ -434,7 +434,7 @@ const IncomingListByDetail = ({
                           <div className="th">지시검색</div>
                           <div className="td gap-2">
                             <InputText value={value} className="w-full" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
-                            <Button label="지시검색" text  className="btn-28-intable w-38" onClick={openBarcodeDialog} />
+                            <Button label="지시검색" text  className="btn-28-intable2" onClick={openBarcodeDialog} />
                           </div>
                           
                           <div className="flex search-btn-wrap">
