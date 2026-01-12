@@ -411,14 +411,14 @@ const IncomingListByDetail = ({
                   {/* 공통 검색영역 */}
                   <div className="hugreen_searchwrap overflow-hidden">
                     <div className="grid-searchwrap grid-searchwrap--4col">
-                      <div className="row" style={{ background: "green"}}>
+                      <div className="row">
                         <div className='th'>작업일자</div>
                         <div className='td gap-2'>
                              <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                              {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
                               <Button
                                 text
-                                icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down shrink-0"}
+                                icon={isFilterOpen ? "pi pi-chevron-up text-bb" : "pi pi-chevron-down shrink-0 text-bb"}
                                 onClick={() => setIsFilterOpen(prev => !prev)}
                               />
                         </div>
@@ -703,11 +703,11 @@ const IncomingListByDetail = ({
                   {/* 공통 검색영역 */}
                   <div className="hugreen_searchwrap overflow-hidden">
                     <div className="grid-searchwrap grid-searchwrap--4col">
-                      <div className="row">
+                      <div className="row" style={{ background: "blue"}}>
                         <div className="th">지시검색</div>
                         <div className="td gap-2">
                             <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                            <Button label="검색" text  className="btn-28-intable w-28" onClick={openBarcodeDialog} />
+                            <Button label="검색" text  className="btn-28-intable w-28" />
                         </div>
                         
                       </div>
