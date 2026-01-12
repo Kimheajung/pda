@@ -710,10 +710,10 @@ const IncomingListByDetail = ({
                       <div className="row">
                         <div className='th'>작업일자</div>
                         <div className='td'>
-                          <div className="flex items-center w-full gap-2" style={{ background: "blue"}}>
-                              <div className="flex-1 min-w-0">
+                          <div className="grid grid-cols-[1fr_auto] w-full" style={{ background: "yellow"}}>
+                              <div className="min-w-0">
                                 <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                              </div>
+                               </div>
                               <Button label="검색" text  className='btn-28-intable shrink-0'/>
                               {/* 오른쪽 : 펼치기 / 숨기기 버튼 
                               <Button
@@ -723,6 +723,15 @@ const IncomingListByDetail = ({
                               />*/}
                             </div>
                         </div>
+                            <div className="th">지시검색</div>
+                            <div className="td gap-2">
+                                <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
+                                <Button label="검색" text  className="btn-28-intable w-28" onClick={openBarcodeDialog} />
+                            </div>
+                          
+                          <div className="flex search-btn-wrap">
+                            <Button label="검색" text  className="search-btn"/>
+                          </div> 
                       </div>
                       {hasFilterItems && (
                         <div
