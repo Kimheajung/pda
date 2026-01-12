@@ -708,26 +708,12 @@ const IncomingListByDetail = ({
                   <div className="hugreen_searchwrap overflow-hidden">
                     <div className="grid-searchwrap grid-searchwrap--4col">
                       <div className="row">
-                        <div className='th'>작업일자</div>
-                        <div className='td'>
-                          <div className="grid grid-cols-[1fr_auto] w-full" style={{ background: "yellow"}}>
-                              <div className="min-w-0">
-                                <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                               </div>
-                              <Button label="검색" text  className='btn-28-intable shrink-0'/>
-                              {/* 오른쪽 : 펼치기 / 숨기기 버튼 
-                              <Button
-                                text
-                                icon={isFilterOpen ? "pi pi-chevron-up" : "pi pi-chevron-down"}
-                                onClick={() => setIsFilterOpen(prev => !prev)}
-                              />*/}
-                            </div>
+                        
+                        <div className="th">지시검색</div>
+                        <div className="td gap-2">
+                            <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
+                            <Button label="검색" text  className="btn-28-intable w-28" onClick={openBarcodeDialog} />
                         </div>
-                            <div className="th">지시검색</div>
-                            <div className="td gap-2">
-                                <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                                <Button label="검색" text  className="btn-28-intable w-28" onClick={openBarcodeDialog} />
-                            </div>
                           
                           <div className="flex search-btn-wrap">
                             <Button label="검색" text  className="search-btn"/>
