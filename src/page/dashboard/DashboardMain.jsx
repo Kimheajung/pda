@@ -175,7 +175,7 @@ const [favoriteMenus, setFavoriteMenus] = useState({
           <Dialog header="임시용 로그인화면임." visible={visible}  style={{ width: '100vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>
             <div className='flex items-center justify-center h-full'>
 
-              <section className="login-car w-full" aria-label="로그인">
+              <section className="login-card w-full" aria-label="로그인">
                 <div className="login-card__head">
                   <div className="login-card__welcome">Welcome</div>
 

@@ -931,12 +931,14 @@ ol, ul {padding-left: 0rem !important;}
 
 }
 
-
+.p-dialog-mask {
+  background: rgba(0,0,0,0) !important;
+}
 
 //로그인
 .login-card {
   width: min(520px, 100%);
-  padding: 16px 10px;
+  padding: 0px 10px !important;
 
   &__head {
     margin-bottom: 22px;
