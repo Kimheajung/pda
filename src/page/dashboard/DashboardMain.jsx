@@ -26,6 +26,17 @@ const DashboardMain = () => {
   };
 
 
+  const cardRef = useRef(null);
+
+useEffect(() => {
+  if (visible) {
+    requestAnimationFrame(() => {
+      cardRef.current?.focus();
+    });
+  }
+}, [visible]);
+
+
   /* ===============================
      기본 훅 / 참조
   =============================== */
@@ -173,9 +184,9 @@ const [favoriteMenus, setFavoriteMenus] = useState({
 
           {/*  임시 로그인 화면  - 실제구현시 다이얼로그구현 아님! */}
           <Dialog header="임시용 로그인화면임" appendTo={document.body} dismissableMask visible={visible} modal  style={{ width: '100vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>
-            <div className='flex items-center justify-center h-full'>
+            <div className='flex items-center justify-center h-full' >
 
-              <section className="login-card w-full" aria-label="로그인">
+              <section className="login-card w-full" aria-label="로그인" tabIndex={-1} ref={cardRef}>
                 <div className="login-card__head">
                   <div className="login-card__welcome">Welcome</div>
 
