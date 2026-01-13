@@ -196,7 +196,7 @@ const [favoriteMenus, setFavoriteMenus] = useState({
                      <img src="/pda/public/images/story_logo.png" style={{ width: "140px"}}/>
                      */}                    
                     <span className="login-card__title-bold">휴그린 <img
-                      src="/pda/public/images/story_logo.png"
+                      src="images/story_logo.png"
                       alt="휴그린"
                     /></span>
                     <br />
