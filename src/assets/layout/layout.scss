@@ -931,8 +931,22 @@ ol, ul {padding-left: 0rem !important;}
 
 }
 
+
 .p-dialog-mask {
-  background: rgba(0,0,0,0) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  filter: none !important;
+}
+
+.p-dialog-mask.p-component-overlay {
+  background: rgba(0, 0, 0, 0.25) !important; /* 필요시 0.15~0.35로 조정 */
+}
+
+.p-dialog {
+  opacity: 1 !important;
+  filter: none !important;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 //로그인
