@@ -133,7 +133,7 @@ const [activeDialog, setActiveDialog] = useState(null);
 
 
    //다이얼로그 헤더
-  const dialogTitle = '바코드 입력화면';
+  const dialogTitle = '모달화면임';
   const dialogHeader = (
     <div className="flex items-center gap-2">
       <button
@@ -856,7 +856,7 @@ const IncomingListByDetail = ({
                   </button>
 
                 </TabPanel>
-                <TabPanel header="자가생산 입고내역조회">
+                <TabPanel header="제품없을경우">
                   {/* 공통 검색영역 */}
                   <div className="hugreen_searchwrap overflow-hidden">
                     <div className="grid-searchwrap grid-searchwrap--4col">

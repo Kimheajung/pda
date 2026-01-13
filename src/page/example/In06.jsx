@@ -141,7 +141,7 @@ const [activeDialog, setActiveDialog] = useState(null);
 
 
    //다이얼로그 헤더
-  const dialogTitle = '바코드 입력화면';
+  const dialogTitle = '모달화면임';
   const dialogHeader = (
     <div className="flex items-center gap-2">
       <button

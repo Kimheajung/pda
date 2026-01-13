@@ -4,7 +4,6 @@ import MainLayout from './MainLayout.jsx';
 import DashboardMain from './page/dashboard/DashboardMain.jsx';
 import Tailwind from './Tailwind.jsx';
 import Dashboard from './page/dashboard/Dashboard.jsx';
-import Layout01 from './page/example/layout01.jsx';
 import In01 from './page/example/In01.jsx';
 import In02 from './page/example/In02.jsx';
 import In03 from './page/example/In03.jsx';
@@ -35,22 +34,6 @@ export default function AppRoute() {
             component={
               <MainLayout>
                 <DashboardMain />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      
-
-
-      
-      <Route
-        path="/layout01"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Layout01 />
               </MainLayout>
             }
           />
