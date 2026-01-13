@@ -200,7 +200,7 @@ useEffect(() => {
 
 
 //필터 숨겻다 펼치기 
-const [isFilterOpen, setIsFilterOpen] = useState(false);
+const [isFilterOpen, setIsFilterOpen] = useState(true);
 const hasFilterItems = true;
 const HAS_INCOMING_FILTER = true;
 
@@ -423,24 +423,42 @@ const IncomingListByDetail = ({
                           <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                             <span>~</span>
                           <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
+                          {/* 오른쪽 : 펼치기 / 숨기기 버튼 */}
+                          <Button
+                          text
+                          icon={isFilterOpen ? "pi pi-chevron-up text-bb" : "pi pi-chevron-down shrink-0 text-bb"}
+                          onClick={() => setIsFilterOpen(prev => !prev)}
+                          />
                     </div>
                   </div>
-                  <div className="row">
-                    <div className='th'>제품유형</div>
-                    <div className='td gap-2'>
-                        <InputText value={value} className="w-full" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className='th'>조회옵션</div>
-                    <div className='td gap-2'>
-                       <Checkbox onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
-                       미검수만조회
-                    </div>
-                  </div>
-                    <div className="flex search-btn-wrap">
-                    <Button label="조회" text  className="search-btn"/>
-                    </div>
+                  {hasFilterItems && (
+                      <div
+                          className={classNames(
+                              "row overflow-hidden transition-all duration-300",
+                              isFilterOpen ? "max-h-[500px]" : "max-h-0"
+                          )}
+                          >
+                          {/*검색 버튼필요시 사용*/}
+                          <div className="row">
+                            <div className='th'>제품유형</div>
+                            <div className='td gap-2'>
+                                <InputText value={value} className="w-full" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className='th'>조회옵션</div>
+                            <div className='td gap-2'>
+                              <Checkbox onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
+                              미검수만조회
+                            </div>
+                          </div>
+                            <div className="flex search-btn-wrap">
+                            <Button label="조회" text  className="search-btn"/>
+                            </div>
+                      </div>
+                      )}
+
+                  
                   
                     <Dialog
                           header={dialogHeader}
@@ -455,7 +473,7 @@ const IncomingListByDetail = ({
                         >
                             {/* 공통 검색영역 */}
                             <div className="hugreen_searchwrap overflow-hidden  p-0" style={{ boxShadow: "0 4px 8px rgba(0,0,0,.08)"}}>
-                              <div className="grid-searchwrap grid-searchwrap--4col bg-white border border-[#ddd] rounded-lg p-2" >
+                              <div className="grid-searchwrap grid-searchwrap--4col  border border-[#ddd] rounded-lg p-2" >
                                 <div className="row">
                                   <div className='th'>지시일자</div>
                                   <div className='td gap-2'>
@@ -549,7 +567,7 @@ const IncomingListByDetail = ({
                         >
                             {/* 공통 검색영역 */}
                             <div className="hugreen_searchwrap overflow-hidden  p-0" style={{ boxShadow: "0 4px 8px rgba(0,0,0,.08)"}}>
-                              <div className="grid-searchwrap grid-searchwrap--4col bg-white border border-[#ddd] rounded-lg p-2" >
+                              <div className="grid-searchwrap grid-searchwrap--4col border border-[#ddd] rounded-lg p-2" >
                                 <div className="row">
                                   <div className='th'>작업일자</div>
                                   <div className='td gap-2'>

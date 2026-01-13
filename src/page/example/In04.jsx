@@ -192,7 +192,7 @@ useEffect(() => {
 
 
 //필터 숨겻다 펼치기 
-const [isFilterOpen, setIsFilterOpen] = useState(false);
+const [isFilterOpen, setIsFilterOpen] = useState(true);
 const hasFilterItems = true;
 const HAS_INCOMING_FILTER = true;
 
@@ -526,7 +526,7 @@ const IncomingListByList = ({
                         <div className='th'>조회옵션</div>
                         <div className='td gap-2'>
                           <Checkbox onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
-                         {'오더수량 − 투입수량 ＞ 0'}
+                         {'오더수량 - 투입수량 > 0'}
                         </div>
                       </div>
                         {hasFilterItems && (
@@ -777,7 +777,7 @@ const IncomingListByList = ({
                             >
                                {/* 공통 검색영역 */}
                                 <div className="hugreen_searchwrap overflow-hidden  p-0" style={{ boxShadow: "0 4px 8px rgba(0,0,0,.08)"}}>
-                                  <div className="grid-searchwrap grid-searchwrap--4col bg-white border border-[#ddd] rounded-lg p-2" >
+                                  <div className="grid-searchwrap grid-searchwrap--4col border border-[#ddd] rounded-lg p-2" >
                                     <div className="row">
                                       <div className='th'>지시일자</div>
                                       <div className='td'>

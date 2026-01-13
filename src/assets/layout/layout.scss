@@ -320,28 +320,6 @@ ol, ul {padding-left: 0rem !important;}
   display: none !important;
 }
 
-.filter-toggle-center {
-  position: fixed;         
-  left: 50%;
-  transform: translateX(-50%);
-  //bottom: 16px;             
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 32px;
-  height: 32px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  z-index: 1000;
-
-  .p-button {
-    width: 28px;
-    height: 28px;
-  }
-}
 
 /* AutoComplete 드롭다운 버튼  재정의 */
 .p-autocomplete-dropdown {
@@ -422,6 +400,7 @@ ol, ul {padding-left: 0rem !important;}
     //background: #2b579a !important;
     color: #2b579a !important;
     font-weight: 600;
+    border-bottom:2px solid #2b579a !important;
   }
 
   .hugreen-main-tabview {

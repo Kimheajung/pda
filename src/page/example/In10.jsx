@@ -192,7 +192,7 @@ useEffect(() => {
 
 
 //필터 숨겻다 펼치기 
-const [isFilterOpen, setIsFilterOpen] = useState(false);
+const [isFilterOpen, setIsFilterOpen] = useState(true);
 const hasFilterItems = true;
 const HAS_INCOMING_FILTER = true;
 

@@ -445,7 +445,7 @@ const IncomingListByDetail = ({
                         >
                             {/* 공통 검색영역 */}
                             <div className="hugreen_searchwrap overflow-hidden  p-0" style={{ boxShadow: "0 4px 8px rgba(0,0,0,.08)"}}>
-                              <div className="grid-searchwrap grid-searchwrap--4col bg-white border border-[#ddd] rounded-lg p-2" >
+                              <div className="grid-searchwrap grid-searchwrap--4col  border border-[#ddd] rounded-lg p-2" >
                                 <div className="row">
                                   <div className='th'>지시일자</div>
                                   <div className='td gap-2'>
@@ -539,7 +539,7 @@ const IncomingListByDetail = ({
                         >
                             {/* 공통 검색영역 */}
                             <div className="hugreen_searchwrap overflow-hidden  p-0" style={{ boxShadow: "0 4px 8px rgba(0,0,0,.08)"}}>
-                              <div className="grid-searchwrap grid-searchwrap--4col bg-white border border-[#ddd] rounded-lg p-2" >
+                              <div className="grid-searchwrap grid-searchwrap--4col  border border-[#ddd] rounded-lg p-2" >
                                 <div className="row">
                                   <div className='th'>작업일자</div>
                                   <div className='td gap-2'>
