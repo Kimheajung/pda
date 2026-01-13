@@ -7,8 +7,6 @@ import { Checkbox } from 'primereact/checkbox';
 import { Password } from "primereact/password";
 import { Dialog } from 'primereact/dialog';
 
-import DataGrid from '@components/grid/DataGrid';
-import MOCK_DATA3 from '@components/grid/MOCK_DATA3.json';
 
 const LoginSample = () => {
 

@@ -5,9 +5,13 @@ import { InputSwitch } from 'primereact/inputswitch';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import classNames from 'classnames';
+import { Dialog } from 'primereact/dialog';
 
 
 const DashboardMain = () => {
+  //임시용
+  const [visible, setVisible] = useState(false);
+
   /* ===============================
      기본 훅 / 참조
   =============================== */
@@ -58,10 +62,16 @@ const [favoriteMenus, setFavoriteMenus] = useState({
     { path: '/in01', lines: ['자가생산 입고 (개별)'], icon: 'pi pi-file-import' },
     { path: '/in02', lines: ['외주생산 입고 (개별)'], icon: 'pi pi-inbox' },
     { path: '/in03', lines: ['반품입고'], icon: 'pi pi-shopping-cart' },
-    { path: '', lines: [ '임시링크'],  },
-    { path: '/layout01', lines: ['모바일가이드기준'], icon: 'pi pi-sparkles' },
     { path: '/LoginSample', lines: ['로그인'], icon: 'pi pi-sparkles'},
+    {
+      //path: '/',
+      lines: ['로그인 임시용'],
+      icon: 'pi pi-sparkles',
+      onClick: () => setVisible(true),  
+    },
   ];
+
+  
 
   const outMenus = [
     { path: '/in04', lines: ['생산투입'], icon: 'pi pi-car' },
@@ -83,25 +93,36 @@ const [favoriteMenus, setFavoriteMenus] = useState({
   =============================== */
   const renderCards = (menus, tabIndex) => (
   <div className="dashboard-card-grid">
-    {menus.map((menu) => {
+    {menus.map((menu, idx) => {
       const isActive =
         checkedTabs[tabIndex] &&
         favoriteMenus[tabIndex] === menu.path;
 
       return (
         <Card
-          key={menu.path}
-          className={`dashboard-card ${
-            isActive ? 'dashboard-card--active' : ''
-          }`}
+          key={menu.path ?? `action-${idx}`}
+          className={classNames(
+            'dashboard-card',
+            isActive && 'dashboard-card--active'
+          )}
           onClick={() => {
-            if (checkedTabs[tabIndex]) {
+            if (checkedTabs[tabIndex] && menu.path) {
               setFavoriteMenus((prev) => ({
                 ...prev,
                 [tabIndex]: menu.path,
               }));
             }
-            navigate(menu.path);
+
+           
+            if (menu.onClick) {
+              menu.onClick();
+              return;
+            }
+
+           
+            if (menu.path) {
+              navigate(menu.path);
+            }
           }}
         >
           <div className="dashboard-card-label">
@@ -136,6 +157,21 @@ const [favoriteMenus, setFavoriteMenus] = useState({
             <TabPanel header="출고" />
             <TabPanel header="기타" />
           </TabView>
+
+          <Dialog header="임시용 로그인화면임." visible={visible} maximizable style={{ width: '100vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>
+<div className="main-page-wrap h-full">
+  <div
+    className="login-page w-full h-full bg-white flex items-center justify-center"
+  >
+    <img
+      src="/pda/images/login.png"
+      alt="login"
+      className="max-w-full max-h-full object-contain"
+    />
+  </div>
+</div>
+            </Dialog>
+
 
           <Swiper
             onSwiper={(swiper) => (swiperRef.current = swiper)}
