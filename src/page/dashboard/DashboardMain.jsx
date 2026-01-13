@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef,useMemo  } from 'react';
 import { Card } from 'primereact/card';
 import { TabView, TabPanel } from 'primereact/tabview';
 import { InputSwitch } from 'primereact/inputswitch';
@@ -6,11 +6,25 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import classNames from 'classnames';
 import { Dialog } from 'primereact/dialog';
-
+import { InputText } from "primereact/inputtext";
+import { Password } from "primereact/password";
+import { Button } from "primereact/button";
 
 const DashboardMain = () => {
-  //임시용
+  //임시용 로그인
   const [visible, setVisible] = useState(false);
+ const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [saveId, setSaveId] = useState(false);
+
+  const isDisabled = useMemo(() => !id.trim() || !pw.trim(), [id, pw]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // TODO: 로그인 처리 연결
+    console.log({ id, pw, saveId });
+  };
+
 
   /* ===============================
      기본 훅 / 참조
@@ -62,7 +76,6 @@ const [favoriteMenus, setFavoriteMenus] = useState({
     { path: '/in01', lines: ['자가생산 입고 (개별)'], icon: 'pi pi-file-import' },
     { path: '/in02', lines: ['외주생산 입고 (개별)'], icon: 'pi pi-inbox' },
     { path: '/in03', lines: ['반품입고'], icon: 'pi pi-shopping-cart' },
-    { path: '/LoginSample', lines: ['로그인'], icon: 'pi pi-sparkles'},
     {
       //path: '/',
       lines: ['로그인 임시용'],
@@ -158,19 +171,77 @@ const [favoriteMenus, setFavoriteMenus] = useState({
             <TabPanel header="기타" />
           </TabView>
 
-          <Dialog header="임시용 로그인화면임." visible={visible} maximizable style={{ width: '100vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>
-<div className="main-page-wrap h-full">
-  <div
-    className="login-page w-full h-full bg-white flex items-center justify-center"
-  >
-    <img
-      src="/pda/images/login.png"
-      alt="login"
-      className="max-w-full max-h-full object-contain"
-    />
-  </div>
-</div>
-            </Dialog>
+          {/*  임시 로그인 화면  - 실제구현시 다이얼로그구현 아님! */}
+          <Dialog header="임시용 로그인화면임." visible={visible}  style={{ width: '100vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>
+            <div className='flex items-center justify-center h-full'>
+
+              <section className="login-car w-full" aria-label="로그인">
+                <div className="login-card__head">
+                  <div className="login-card__welcome">Welcome</div>
+
+                  <h1 className="login-card__title">
+                    <span className="login-card__title-bold">휴그린</span>
+                    <br />
+                    <span className="login-card__title-strong">건자재</span>{" "}
+                    <span className="login-card__title-normal">바코드</span>
+                    <br />
+                    <span className="login-card__title-normal">시스템</span>
+                  </h1>
+                </div>
+
+                <form className="login-card__form" onSubmit={onSubmit}>
+                  <div className="login-card__field">
+                    <span className="p-input-icon-left login-card__inputwrap">
+                      
+                      <InputText
+                        className="login-card__input"
+                        value={id}
+                        onChange={(e) => setId(e.target.value)}
+                        placeholder="아이디를 입력해주세요"
+                        autoComplete="username"
+                      />
+                    </span>
+                  </div>
+
+                  <div className="login-card__field">
+                    <span className="p-input-icon-left login-card__inputwrap">
+                      <i className="pi pi-lock" />
+                      <Password
+                        className="login-card__password"
+                        inputClassName="login-card__input"
+                        value={pw}
+                        onChange={(e) => setPw(e.target.value)}
+                        placeholder="패스워드를 입력해주세요"
+                        toggleMask={false}
+                        feedback={false}
+                        autoComplete="current-password"
+                      />
+                    </span>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    label="LOGIN"
+                    className="login-card__submit"
+                    disabled={isDisabled}
+                  />
+
+                  <div className="login-card__footer">
+                    <div className="login-card__save">
+                      <InputSwitch
+                        checked={saveId}
+                        onChange={(e) => setSaveId(e.value)}
+                      />
+                      <span className="login-card__save-text">아이디저장</span>
+                    </div>
+
+                    <span> Version 1.0</span>
+                  </div>
+                </form>
+              </section>
+
+            </div>
+          </Dialog>
 
 
           <Swiper

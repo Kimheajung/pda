@@ -934,150 +934,161 @@ ol, ul {padding-left: 0rem !important;}
 
 
 //로그인
-.login-container {
-  width: 100%;
-  height: 100vh;
-  background: url("/images/visual_02.jpg") no-repeat top left;
-  background-size: cover;    //★ 핵심: 원본 비율 유지, 잘림 없음
-  background-size: 70% !important;
-  background-color: #fff;  
+.login-card {
+  width: min(520px, 100%);
+  padding: 16px 10px;
 
-  display: flex;
-  justify-content: end;
-  margin-right:40px !important;
-
-  align-items: center;
-  padding: 1rem !important;
-
-  @media (max-width: 768px) {
-  padding: 1rem;
-  background-position: top;
-  background: url("/images/visual_02jpg") no-repeat top left;
-  background-size: cover;  
-  background-size: 100% !important;
+  &__head {
+    margin-bottom: 22px;
   }
-}
 
-.login-box {
-  width: 430px;
-  background: #fff;
-  padding: 8rem 4rem 10rem 4rem;
-  border-radius: 12px;
-  border:1px solid #D0D0D0 !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(8px);
-  align-items: center !important;
-  justify-content: center !important;
+  &__welcome {
+    font-size: 1.25rem !important;
+    color: #b8b8b8;
+    margin-bottom: 8px;
+  }
 
-  @media (max-width: 480px) {
+  &__title {
+    margin: 0;
+    //line-height: 1.08;
+    //letter-spacing: -0.6px;
+  }
+
+  &__title-strong {
+    font-size: 44px;
+    font-weight: 600;
+    color: #505761;
+  }
+
+  &__title-bold {
+    font-size: 38px;
+    font-weight: 400;
+    color: #505761;
+  }
+
+  &__title-normal {
+    font-size: 44px;
+    font-weight: 300;
+    color: #505761;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__field {
     width: 100%;
-    padding: 4.5rem 2rem;
-  }
-}
-
-.login-title {
-  text-align: left;
-  margin-bottom: 4rem !important;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #9FAABA;
-  
-   span {
-    display: block;   
-    line-height: 1.4;  
-  }
-}
-
-.login-input-group {
-  margin-bottom: 10px;
-
-  label {
-    display: none;
   }
 
-  .p-inputtext,
-  .p-password {
-    border:1px solid #E2E8F0 !important;
-    border-radius: 6px !important;
-    width: 316px !important;
-    height: 40px !important;
+  &__inputwrap {
+    width: 100%;
+    display: block;
+    //border-color: #DBE1EA !important;
 
-      @media (max-width: 480px) {
-        width: 256px !important;
-      }
+    i {
+      color: #c6c6c6;
+    }
   }
-}
 
-.login-button {
-  background: #006666 !important;
-  border: none !important;
-  font-size: 1.1rem;
-  padding: 0.8rem;
-  margin-top: 0.5rem;
-  height: 50px !important;
+  /* InputText */
+  &__input {
+    width: 100%;
+    height: 52px !important;
+    border-radius: 6px;
+    border: 1px solid #e7e7e7;
+    box-shadow: none;
 
-  &:hover {
-    background: #003636 !important;
+    &::placeholder {
+      color: #c9c9c9;
+    }
+
+    &:focus {
+      border-color: #0a6a66;
+      box-shadow: 0 0 0 2px rgba(10, 106, 102, 0.12);
+    }
   }
-}
 
-.login-sub-options {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* PrimeReact Password wrapper가 span을 한번 감싸서 별도 처리 */
+  &__password {
+    width: 100%;
 
-  .remember-area {
+    .p-password,
+    .p-password-input {
+      width: 100%;
+    }
+  }
+
+  &__submit {
+    margin-top: 14px;
+    height: 58px !important;
+    border-radius: 4px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+
+    background: #0a6a66;
+    border: 1px solid #0a6a66;
+    box-shadow: 0  8px 16px rgba(0, 0, 0, 0.12);;
+
+    &:enabled:hover {
+      background: #085a57;
+      border-color: #085a57;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+    }
+  }
+
+  &__footer {
+    margin-top: 6px;
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-
-    .remember-label {
-      font-size: 0.85rem;
-      color: #475569;
-    }
+    justify-content: space-between;
   }
 
-  .pw-find-button {
-    background: none;
-    border: none;
-    color: #475569;
-    font-size: 0.85rem;
+  &__save {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__save-text {
+    font-size: 14px;
+    color: #7a7a7a;
+    letter-spacing: -0.2px;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 0;
+    background: transparent;
+    padding: 6px 0;
     cursor: pointer;
+    font-size: 14px;
+    color: #7a7a7a;
 
     &:hover {
-      text-decoration: underline;
+      color: #555;
+    }
+  }
+
+  &__link-icon {
+    font-size: 14px;
+    color: #9a9a9a;
+  }
+
+  @media (max-width: 420px) {
+    &__title-strong,
+    &__title-normal {
+      font-size: 38px;
     }
   }
 }
 
-.login-sub-bottom {
-  position: absolute;
-  display: flex;
-  padding-top:8rem;
-  width: 74%;
-  bottom:2rem;
-  color: #9FAABA;
-  justify-content: space-between;
-  align-items: center;
-
-  .infotext_left {
-    display: flex;
-    align-items: start;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-   .infotext_right {
-    display: flex;
-    align-items: end;
-    color: #555 !important;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
 
 .modal-field {
   margin-top: 1rem;

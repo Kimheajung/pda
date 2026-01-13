@@ -5,8 +5,6 @@ import DashboardMain from './page/dashboard/DashboardMain.jsx';
 import Tailwind from './Tailwind.jsx';
 import Dashboard from './page/dashboard/Dashboard.jsx';
 import Layout01 from './page/example/layout01.jsx';
-import LoginSample from "./page/example/LoginSample.jsx";
-import Login from "./page/login/Login.jsx";
 import In01 from './page/example/In01.jsx';
 import In02 from './page/example/In02.jsx';
 import In03 from './page/example/In03.jsx';
@@ -43,30 +41,6 @@ export default function AppRoute() {
         }
       />
       
-      <Route
-        path="/LoginSample"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <LoginSample />
-              </MainLayout>
-            }
-          />
-        }
-      />
-      <Route
-        path="/Login"
-        element={
-          <Forbidden
-            component={
-              <MainLayout>
-                <Login />
-              </MainLayout>
-            }
-          />
-        }
-      />
 
 
       
