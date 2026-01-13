@@ -100,6 +100,7 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                   onHide={() => setMobileMenuVisible(false)}
                   showCloseIcon={false}
                   header={null}
+                  blockScroll
                   className="mobile-topbar-sidebar lg:hidden">
 
               <div className="mypage" >
