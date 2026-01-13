@@ -188,10 +188,17 @@ const [favoriteMenus, setFavoriteMenus] = useState({
 
               <section className="login-card w-full" aria-label="로그인" tabIndex={-1} ref={cardRef}>
                 <div className="login-card__head">
-                  <div className="login-card__welcome">Welcome</div>
+                 
 
                   <h1 className="login-card__title">
-                    <span className="login-card__title-bold">휴그린</span>
+                    {/*  
+                     <div className="login-card__welcome">Welcome</div>
+                     <img src="/pda/public/images/story_logo.png" style={{ width: "140px"}}/>
+                     */}                    
+                    <span className="login-card__title-bold">휴그린 <img
+                      src="/pda/public/images/story_logo.png"
+                      alt="휴그린"
+                    /></span>
                     <br />
                     <span className="login-card__title-strong">건자재</span>{" "}
                     <span className="login-card__title-normal">바코드</span>

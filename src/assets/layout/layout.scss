@@ -965,9 +965,22 @@ ol, ul {padding-left: 0rem !important;}
   }
 
   &__title-bold {
+    display: inline-flex;       
+    align-items: center;  
+    position: relative;     
+    gap: 8px;
+
     font-size: 38px;
     font-weight: 400;
     color: #505761;
+
+    img {
+      width: 16px;
+      height: auto;
+      position: absolute;
+      top: -5px;   
+      right:-20px !important; 
+    }
   }
 
   &__title-normal {
