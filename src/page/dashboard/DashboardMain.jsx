@@ -184,7 +184,7 @@ const [favoriteMenus, setFavoriteMenus] = useState({
 
           {/*  임시 로그인 화면  - 실제구현시 다이얼로그구현 아님! */}
           <Dialog header="임시용 로그인화면임" appendTo={document.body} dismissableMask visible={visible} modal autoFocus={false} style={{ width: '100vw' }} onHide={() => {if (!visible) return; setVisible(false); }}>
-            <div className='flex items-center justify-center h-full' >
+            <div className='flex items-center justify-center h-full login-wrap' >
 
               <section className="login-card w-full" aria-label="로그인" tabIndex={-1} ref={cardRef}>
                 <div className="login-card__head">

@@ -144,6 +144,7 @@ const handleCloseMenu = () => setMegaMenuVisible(false);
                     <Button
                       label="Logout"
                       className="mypage-profile__logout p-button-sm" />
+                      <p className="mypage-profile__last">마지막접속일자  <span>2026.01.14 09:02:20</span></p>
                   </section>
 
                   {/* 메뉴 리스트 */}

@@ -937,10 +937,17 @@ ol, ul {padding-left: 0rem !important;}
 
 
 
-//로그인
+//로그인 bg_person.png visual_03.jpg
+.login-wrap{
+  background-image: url('/pda/public/images/fac02.jpg') !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: -1.5rem !important;
+}
 .login-card {
   width: min(520px, 100%);
-  padding: 0px 10px !important;
+  padding: 0px 20px !important;
 
   &__head {
     margin-bottom: 22px;

@@ -207,7 +207,7 @@
   }
 
   &__logout {
-    margin-top: 4px;
+    //margin-top: 4px;
     border-top: 1px solid #e5e7eb;
     padding-top: 10px;
     color: #dc2626;
@@ -519,11 +519,19 @@
     color: #888;
     margin-top:4px;
   }
+  &__last {
+    font-size: 12px;
+    color: #888;
+    margin-top:4px;
+    justify-content: space-between;
+    display: flex;
+  }
 
   &__logout {
-    margin-top: 2rem;
+    margin-top: 1rem;
     &.p-button {
       background: #222;
+      margin-bottom: .5rem;
       border: none;
       width: 100%;
       font-size: 12px;
