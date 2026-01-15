@@ -18,7 +18,7 @@ export const InSvgIcon01 = (
 );
 //외주생산입고(개별)
 export const InSvgIcon02 = (
-     <img src="images/png02.png"  style={{ width: "50px" }}/>
+     <img src="images/png02.png"  style={{ width: "66px" }}/>
     /*
 <svg
     viewBox="0 0 64 64"
@@ -38,7 +38,7 @@ export const InSvgIcon02 = (
 );
 //반품입고
 export const InSvgIcon03 = (
-      <img src="images/png03.png"  style={{ width: "50px" }}/>
+      <img src="images/png03.png"  style={{ width: "45px" }}/>
     /*
 <svg
     viewBox="0 0 512 512"
@@ -111,7 +111,7 @@ export const InSvgIcon06 = (
 );
 
 export const InSvgIcon07 = (
-    <img src="images/png07.png"  style={{ width: "50px" }}/>
+    <img src="images/png07.png"  style={{ width: "45px" }}/>
     /*
   <svg
     viewBox="0 0 64 64"
@@ -130,7 +130,7 @@ export const InSvgIcon07 = (
 );
 
 export const InSvgIcon08 = (
-    <img src="images/png08.png"  style={{ width: "50px" }}/>
+    <img src="images/png08.png"  style={{ width: "48px" }}/>
     /*
   <svg
     viewBox="0 0 64 64"
@@ -149,7 +149,7 @@ export const InSvgIcon08 = (
 );
 
 export const InSvgIcon09 = (
-     <img src="images/png09.png"  style={{ width: "50px" }}/>
+     <img src="images/png09.png"  style={{ width: "46px" }}/>
     /*
   <svg
     viewBox="0 0 64 64"
@@ -168,7 +168,7 @@ export const InSvgIcon09 = (
 );
 
 export const InSvgIcon10 = (
-     <img src="images/png10.png"  style={{ width: "50px" }}/>
+     <img src="images/png10.png"  style={{ width: "45px" }}/>
     /*
   <svg
     viewBox="0 0 64 64"
