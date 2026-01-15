@@ -168,7 +168,7 @@ export const InSvgIcon09 = (
 );
 
 export const InSvgIcon10 = (
-     <img src="images/png10.png"  style={{ width: "45px" }}/>
+     <img src="images/png10.png"  style={{ width: "50px" }}/>
     /*
   <svg
     viewBox="0 0 64 64"
