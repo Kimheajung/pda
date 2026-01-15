@@ -118,11 +118,12 @@ ol, ul {padding-left: 0rem !important;}
 .btn-28-intable {    
     //height: 2rem !important;
     background-color: #fff !important;  
-    border: 1px solid #ddd !important;
+    border: 1px solid #bbbec1 !important;
     color:#888 !important;    
      white-space: nowrap; 
     overflow: hidden;    
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;  
+    //box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08) !important;
     text-align: center;
     padding: 0 0.5rem;
     width: 60px;
@@ -130,13 +131,14 @@ ol, ul {padding-left: 0rem !important;}
 .btn-28-intable2 {    
     //height: 2rem !important;
     background-color: #fff !important;  
-    border: 1px solid #ddd !important;
+    border: 1px solid #bbbec1 !important;
     color:#888 !important;    
      white-space: nowrap; 
     overflow: hidden;    
-    text-overflow: ellipsis; 
+    //box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08) !important;
+    //text-overflow: ellipsis; 
     text-align: center;
-    padding: 0 0.5rem;
+   // padding: 0 0.5rem;
     width: 120px;
 }
 
@@ -266,6 +268,15 @@ ol, ul {padding-left: 0rem !important;}
   }
 }
 
+.dashboard-card-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #8e93a6;
+}
+
+.dashboard-card--active .dashboard-card-icon {
+  color: #00485d;
+}
 
 
 .p-overlaypanel { --overlayArrowLeft: -9999px !important;

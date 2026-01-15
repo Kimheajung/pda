@@ -80,12 +80,39 @@ const [favoriteMenus, setFavoriteMenus] = useState({
   2: null,
 });
 
-  /* ===============================
-     메뉴 데이터
-  =============================== */
+
+ const InSvgIcon = (
+  <svg
+    viewBox="0 0 64 64"
+    className="dashboard-card-icon"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path d="M8 6a2 2 0 1 0 0 4h48a2 2 0 1 0 0-4zM6 16a2 2 0 0 1 2-2h48a2 2 0 1 1 0 4H8a2 2 0 0 1-2-2zM8 22a2 2 0 1 0 0 4h48a2 2 0 1 0 0-4z" />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M8 30a6 6 0 0 0-6 6v16a6 6 0 0 0 6 6h48a6 6 0 0 0 6-6V36a6 6 0 0 0-6-6H41a2 2 0 0 0-2 2 7 7 0 1 1-14 0 2 2 0 0 0-2-2zm-2 6a2 2 0 0 1 2-2h13.181c.94 5.12 5.427 9 10.819 9s9.878-3.88 10.819-9H56a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"
+    />
+  </svg>
+);
+
+const LoginSvgIcon = (
+  <svg
+    viewBox="0 0 24 24"
+    className="dashboard-card-icon"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z" />
+  </svg>
+);
+
+  /*  메뉴 데이터 */
   const inMenus = [
-    { path: '/in01', lines: ['자가생산 입고 (개별)'], icon: 'pi pi-file-import' },
-    { path: '/in02', lines: ['외주생산 입고 (개별)'], icon: 'pi pi-inbox' },
+    { path: '/in01', lines: ['자가생산 입고 (개별)'], icon: InSvgIcon, },
+    { path: '/in02', lines: ['외주생산 입고 (개별)'], icon: LoginSvgIcon, },
     { path: '/in03', lines: ['반품입고'], icon: 'pi pi-shopping-cart' },
     {
       //path: '/',
@@ -111,6 +138,9 @@ const [favoriteMenus, setFavoriteMenus] = useState({
     { path: '/in11', lines: ['팔렛정보조회'], icon: 'pi pi-cart-arrow-down' },
     { path: '/in12', lines: ['제품검수'], icon: 'pi pi-check' },
   ];
+
+
+ 
 
   /* ===============================
      카드 렌더 함수
@@ -150,11 +180,17 @@ const [favoriteMenus, setFavoriteMenus] = useState({
           }}
         >
           <div className="dashboard-card-label">
-            {menu.icon && (
-              <i className={`${menu.icon} dashboard-card-icon`} />
+           {menu.icon && (
+              typeof menu.icon === 'string' ? (
+                <i className={`${menu.icon} dashboard-card-icon`} />
+              ) : (
+                <span className="dashboard-card-icon-wrap">
+                  {menu.icon}
+                </span>
+              )
             )}
             {menu.lines.map((text, i) => (
-              <span key={i}>{text}</span>
+              <span key={i} style={{ fontSize: "1rem"}}>{text}</span>
             ))}
           </div>
         </Card>

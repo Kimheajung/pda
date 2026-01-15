@@ -410,7 +410,7 @@ const IncomingListByDetail = ({
                         <div className='th'>작업일자</div>
                         <div className='td gap-2'>
                           <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                              <Button label="검색" text  className='btn-28-intable'/>
+                              <Button label="입고내역" text  className='btn-28-intable2'  />
                               {/* 오른쪽 : 펼치기 / 숨기기 버튼
                               <Button
                                 text
@@ -570,7 +570,7 @@ const IncomingListByDetail = ({
                         <div className='th'>작업일자</div>
                         <div className='td gap-2'>
                             <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                                <Button label="검색" text  className='btn-28-intable'/>
+                                <Button label="입고내역" text  className='btn-28-intable2' onClick={openBarcodeDialog}/>
                                 {/* 오른쪽 : 펼치기 / 숨기기 버튼
                                 <Button
                                   text
@@ -615,15 +615,9 @@ const IncomingListByDetail = ({
                                   <div className="grid-searchwrap grid-searchwrap--4col border border-[#ddd] rounded-lg p-2" >
                                     <div className="row">
                                       <div className='th'>지시일자</div>
-                                      <div className='td'>
-                                        <div className="flex flex-wrap items-center justify-between w-full" >
-                                            <div className="flex-1">
-                                              <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                                            </div>
-                                          </div>
-                                      </div>
-                                      <div className="flex search-btn-wrap">
-                                        <Button label="조회" text  className="search-btn"/>
+                                      <div className='td gap-2'>
+                                        <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
+                                        <Button label="검색" text  className='btn-28-intable' />
                                       </div>
                                     </div>
                                   </div>
@@ -643,37 +637,12 @@ const IncomingListByDetail = ({
                                     </div>
                                   </div>
                                   {/* 공통 : 카드형 그리드 + 상세화면  */}
-                                  <div className="hugreen_aggrid_hwrap p-0" >
-                                    <div className="incoming-list">
-                                      {MOCK_DATA.slice(0, visibleCount).map((item) => {
-                                        const isOpen = expandedId === item.id;
-
-                                        return (
-                                          <div key={item.id}  className={classNames("incoming-card", { "is-open": isOpen,})} onClick={() => toggleCard(item.id)}>
-                                                            
-                                            {/* ===== Summary ===== */}
-                                            <div className="incoming-card__list">
-                                              <div>
-                                                <label>지시번호</label>
-                                                <span> {item.go}</span>
-                                              </div>
-
-                                              <div>
-                                                <Button
-                                                  icon="pi pi-check"
-                                                  text
-                                                  className={classNames("toggle-btn", isOpen ? "text-black" : "text-bb")}
-                                                />
-                                              </div>
-                                            </div>
-                                          </div>
-                                        );
-                                      })}
-
-                                      {/* ===== Infinite Scroll Trigger ===== */}
-                                      <div ref={loaderRef} className="incoming-list__loader" />
-                                    </div>
-                                  </div>
+                                 <IncomingListByDetail
+                                        data={MOCK_DATA.slice(0, visibleCount)}
+                                        expandedId={expandedId}
+                                        setExpandedId={setExpandedId}
+                                        openDetailDialog={openDetailDialog}
+                                      />
                                 </div>
 
                         </Dialog> 
