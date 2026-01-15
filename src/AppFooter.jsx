@@ -59,7 +59,7 @@ export const AppFooter = (props) => {
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
                 >
-                    <g transform="scale(1.1) translate(12.5 12.5)">
+                    <g transform="scale(1.0) translate(16.5 20.5)">
                     <path d="M8 6a2 2 0 1 0 0 4h48a2 2 0 1 0 0-4zM6 16a2 2 0 0 1 2-2h48a2 2 0 1 1 0 4H8a2 2 0 0 1-2-2zM8 22a2 2 0 1 0 0 4h48a2 2 0 1 0 0-4z" />
                     <path
                     fillRule="evenodd"
