@@ -9,6 +9,9 @@ import { Dialog } from 'primereact/dialog';
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
+import {
+InSvgIcon01,InSvgIcon02,InSvgIcon03,InSvgIcon04,InSvgIcon05,InSvgIcon06,InSvgIcon07,InSvgIcon08,InSvgIcon09,InSvgIcon10,InSvgIcon11,InSvgIcon12,
+} from '@/assets/images/icons/dashboardIcons';
 
 const DashboardMain = () => {
   //임시용 로그인
@@ -81,39 +84,12 @@ const [favoriteMenus, setFavoriteMenus] = useState({
 });
 
 
- const InSvgIcon = (
-  <svg
-    viewBox="0 0 64 64"
-    className="dashboard-card-icon"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path d="M8 6a2 2 0 1 0 0 4h48a2 2 0 1 0 0-4zM6 16a2 2 0 0 1 2-2h48a2 2 0 1 1 0 4H8a2 2 0 0 1-2-2zM8 22a2 2 0 1 0 0 4h48a2 2 0 1 0 0-4z" />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M8 30a6 6 0 0 0-6 6v16a6 6 0 0 0 6 6h48a6 6 0 0 0 6-6V36a6 6 0 0 0-6-6H41a2 2 0 0 0-2 2 7 7 0 1 1-14 0 2 2 0 0 0-2-2zm-2 6a2 2 0 0 1 2-2h13.181c.94 5.12 5.427 9 10.819 9s9.878-3.88 10.819-9H56a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"
-    />
-  </svg>
-);
-
-const LoginSvgIcon = (
-  <svg
-    viewBox="0 0 24 24"
-    className="dashboard-card-icon"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z" />
-  </svg>
-);
-
+ 
   /*  메뉴 데이터 */
   const inMenus = [
-    { path: '/in01', lines: ['자가생산 입고 (개별)'], icon: InSvgIcon, },
-    { path: '/in02', lines: ['외주생산 입고 (개별)'], icon: LoginSvgIcon, },
-    { path: '/in03', lines: ['반품입고'], icon: 'pi pi-shopping-cart' },
+    { path: '/in01', lines: ['자가생산 입고 (개별)'], icon: InSvgIcon01, },
+    { path: '/in02', lines: ['외주생산 입고 (개별)'], icon: InSvgIcon02, },
+    { path: '/in03', lines: ['반품입고'], icon: InSvgIcon03, },
     {
       //path: '/',
       lines: ['로그인 임시용'],
@@ -125,18 +101,18 @@ const LoginSvgIcon = (
   
 
   const outMenus = [
-    { path: '/in04', lines: ['생산투입'], icon: 'pi pi-car' },
-    { path: '/in05', lines: ['판매출고'], icon: 'pi pi-desktop' },
+    { path: '/in04', lines: ['생산투입'],  icon: InSvgIcon04, },
+    { path: '/in05', lines: ['판매출고'], icon: InSvgIcon05, },
   ];
 
   const etcMenus = [
-    { path: '/in06', lines: ['기타출고'], icon: 'pi pi-clipboard' },
-    { path: '/in07', lines: ['재고실사계획조회'], icon: 'pi pi-briefcase' },
-    { path: '/in08', lines: ['재고변경'], icon: 'pi pi-building' },
-    { path: '/in09', lines: ['재고이동'], icon: 'pi pi-building' },
-    { path: '/in10', lines: ['팔렛병합'], icon: 'pi pi-cart-arrow-down' },
-    { path: '/in11', lines: ['팔렛정보조회'], icon: 'pi pi-cart-arrow-down' },
-    { path: '/in12', lines: ['제품검수'], icon: 'pi pi-check' },
+    { path: '/in06', lines: ['기타출고'],  icon: InSvgIcon06, },
+    { path: '/in07', lines: ['재고실사계획조회'],  icon: InSvgIcon07, },
+    { path: '/in08', lines: ['재고변경'],  icon: InSvgIcon08, },
+    { path: '/in09', lines: ['재고이동'],  icon: InSvgIcon09, },
+    { path: '/in10', lines: ['팔렛병합'],  icon: InSvgIcon10, },
+    { path: '/in11', lines: ['팔렛정보조회'],  icon: InSvgIcon11, },
+    { path: '/in12', lines: ['제품검수'],  icon: InSvgIcon12, },
   ];
 
 
