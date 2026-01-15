@@ -40,16 +40,11 @@ useEffect(() => {
 }, [visible]);
 
 
-  /* ===============================
-     기본 훅 / 참조
-  =============================== */
   const navigate = useNavigate();
   const swiperRef = useRef(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  /* ===============================
-     탭 상태 (URL ↔ state)
-  =============================== */
+  /* 탭 상태 (URL ↔ state) */
   const tabParam = Number(searchParams.get('tab'));
   const safeIndex = [0, 1, 2].includes(tabParam) ? tabParam : 0;
   const [activeIndex, setActiveIndex] = useState(safeIndex);
@@ -64,9 +59,7 @@ useEffect(() => {
     }
   }, [activeIndex]);
 
-  /* ===============================
-     자주쓰는 메뉴 토글
-  =============================== */
+  /* 자주쓰는 메뉴 토글 */
   const [checked, setChecked] = useState(false);
 
   // 탭별 활성 메뉴
@@ -118,9 +111,6 @@ const [favoriteMenus, setFavoriteMenus] = useState({
 
  
 
-  /* ===============================
-     카드 렌더 함수
-  =============================== */
   const renderCards = (menus, tabIndex) => (
   <div className="dashboard-card-grid">
     {menus.map((menu, idx) => {
@@ -175,9 +165,7 @@ const [favoriteMenus, setFavoriteMenus] = useState({
   </div>
 );
 
-  /* ===============================
-     JSX
-  =============================== */
+
   return (
     <div className="card height-full">
       <div className="hugreen_main flex flex-wrap">
