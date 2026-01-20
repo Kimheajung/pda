@@ -495,6 +495,10 @@
     }
   }
 
+  &__detail .row {
+  display: contents; /* 핵심 */
+}
+
   /* ===== Actions ===== */
   &__actions {
     display: flex;

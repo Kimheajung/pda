@@ -277,6 +277,10 @@ const IncomingListByProduct = ({
                 <label>현장명</label>
                 <span>{item.site}</span>
               </div>
+              <div className="col-span-full truncate">
+                <label>주소</label>
+                <span>서울특별시 중구 수표동 시그니처타워빌딩 4층 회으실</span>
+              </div>
             </div>
 
           </div>
