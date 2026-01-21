@@ -263,10 +263,14 @@ const IncomingListByProduct = ({
               <span> {item.length}</span>
             </div>
             
-            <div>
+            <div className='col-span-full'>
               <label>제조일자</label>
               <span> {item.deliveryDate}</span>
               <span> {item.deliveryTime}</span>
+            </div>
+            <div className='col-span-full truncate'>
+              <label>하역지</label>
+              <span>{item.address}</span>
             </div>
           </div>
 

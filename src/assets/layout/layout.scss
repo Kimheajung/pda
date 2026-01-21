@@ -5,7 +5,7 @@
 /* 전체적용 - 마우스클릭시 아웃라인 제거 */
 
 .p-button:focus,
-.p-inputtext:focus,
+//.p-inputtext:focus,
 .p-dropdown:focus,
 .p-calendar:focus,
 .p-inputnumber:focus,
@@ -14,6 +14,12 @@
 .p-radio-button:focus, a:active {
   outline: none;        /* 기본 outline 제거 */
   box-shadow: none;     /* PrimeReact focus shadow 제거 */
+}
+
+.p-inputtext:focus {
+  outline: none;
+  border-color: #2563eb !important; /* blue-600 */
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.35);
 }
 
 a:focus,
