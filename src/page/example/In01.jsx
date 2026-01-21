@@ -47,6 +47,7 @@ import {
     barcode: "P1902222049",
     status: "반영완료",
     go: "1147513",
+    address: "서울특별시 중구 수표동 시그니처타워빌딩 4층 금호석유화학 대회의실",
   }));
 
   /* 다이얼로그 타입 */
@@ -233,6 +234,7 @@ const IncomingListByProduct = ({
                     security='secondary'
                     className='text-bb'
                     onClick={openDetailDialog} />
+                    <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
                 </div>
             </div>                              
             <Button
@@ -289,6 +291,11 @@ const IncomingListByProduct = ({
                 <label>현장명</label>
                 <span>{item.site}</span>
               </div>
+              {/*  말줄임표 ...처리 truncate  */}
+              <div className='col-span-full truncate'>
+                <label>하역지</label>
+                <span>{item.address}</span>
+              </div>
             </div>
 
           </div>
@@ -320,12 +327,13 @@ const IncomingListByDetail = ({
                 <span className="date">{item.id}</span>  
                   ===== Title ===== */}
                 <div className="incoming-card__title">{item.barcode} 
+                  {/*
                   <Button  
                     icon="pi pi-desktop"
                     text
                     security='secondary'
                     className='text-bb'
-                    onClick={openDetailDialog} />
+                    onClick={openDetailDialog} />*/}
                 </div>
             </div>                              
             <Button
@@ -570,7 +578,7 @@ const IncomingListByDetail = ({
                         <div className='th'>작업일자</div>
                         <div className='td gap-2'>
                             <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
-                                <Button label="입고내역" text  className='btn-28-intable2' onClick={openBarcodeDialog}/>
+                            <Button label="입고내역" text  className='btn-28-intable2' onClick={openBarcodeDialog}/>
                                 {/* 오른쪽 : 펼치기 / 숨기기 버튼
                                 <Button
                                   text
@@ -658,7 +666,6 @@ const IncomingListByDetail = ({
                       <div className="flex gap-2"> 
                         <Button icon="pi pi-verified" className='text-bb' text style={{ width: "20px"}} />
                         <Button icon="pi pi-refresh" className='text-bb' text style={{ width: "20px"}} />
-                        <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
                         <Button label="입고확정" className='btn-28-master' text />
                       </div>
                     </div>
