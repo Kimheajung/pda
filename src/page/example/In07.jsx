@@ -236,12 +236,15 @@ const IncomingListByProduct = ({
                 <span className="date">{item.id}</span>  
                   ===== Title ===== */}
                 <div className="incoming-card__title">{item.product} 
-                  <Button  
+                    <Button  
                     icon="pi pi-desktop"
                     text
                     security='secondary'
-                    className='text-bb'
-                    onClick={openDetailDialog} />
+                    className='text-bb ml-2'
+                    onClick={openDetailDialog} 
+                    style={{ width: "30px"}}
+                     />
+                    <Button icon="pi pi-trash" className='text-bb' text style={{ width: "30px"}}  />
                 </div>
             </div>                              
             <Button
@@ -538,8 +541,7 @@ const IncomingListByDetail = ({
                          <p className="totalNumText" >총&nbsp;<span>0</span>건</p>
                       </div>
                       <div className="flex gap-2"> 
-                        <Button icon="pi pi-refresh" className='text-bb' text style={{ width: "20px"}} />
-                        <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
+                        <Button label="초기화" className='btn-28-sec' text />
                         <Button label="작업" className='btn-28-master' text />
                       </div>
                     </div>
@@ -712,8 +714,9 @@ const IncomingListByDetail = ({
                     <div className="grid-searchwrap grid-searchwrap--4col">
                       <div className="row">
                         <div className='th'>비고</div>
-                        <div className='td'>
+                        <div className='td gap-2'>
                           <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
+                          <Button label="검색" text  className='btn-28-intable'/>
                         </div>
                       </div>
                       {hasFilterItems && (
@@ -736,9 +739,8 @@ const IncomingListByDetail = ({
                          <span className="NumText"> 조회결과</span>
                          <p className="totalNumText" >총&nbsp;<span>0</span>건</p>
                       </div>
-                      <div className="flex gap-2"> 
-                        <Button icon="pi pi-refresh" className='text-bb' text style={{ width: "20px"}} />
-                        <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
+                      <div className="flex gap-2">                         
+                        <Button label="초기화" className='btn-28-sec' text />
                         <Button label="저장" className='btn-28-master' text />
                       </div>
                     </div>

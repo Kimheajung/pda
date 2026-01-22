@@ -475,13 +475,14 @@ const IncomingListByDetail = ({
                         </div>
                         <div className="row">
                         <div className="th">변경품목</div>
-                            <div className="td">
+                            <div className="td gap-2">
                             <InputText
                             className="w-full"
                             value={value}
                             onChange={(e) => setValue(e.target.value)}
                             placeholder="선택"
-                            />
+                            />    
+                            <Button label="선택" className='btn-28-sec w-28' text onClick={() => setVisibleBottom(true)} />
                         </div>
                         </div>
                         <div className="row">
@@ -509,13 +510,14 @@ const IncomingListByDetail = ({
 
                         <div className="row">
                         <div className="th">변경위치</div>
-                        <div className="td">
+                        <div className="td gap-2">
                             <InputText
                             className="w-full"
                             value={value}
                             onChange={(e) => setValue(e.target.value)}
                             placeholder="위넥스"
                             />
+                            <Button label="선택" className='btn-28-sec w-28' text onClick={() => setVisibleBottom(true)} />
                         </div>
                         </div>
                     </div>

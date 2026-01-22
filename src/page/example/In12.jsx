@@ -238,12 +238,15 @@ const IncomingListByProduct = ({
                 <span className="date">{item.id}</span>  
                   ===== Title ===== */}
                 <div className="incoming-card__title">{item.product} 
-                  <Button  
+                    <Button  
                     icon="pi pi-desktop"
                     text
                     security='secondary'
-                    className='text-bb'
-                    onClick={openDetailDialog} />
+                    className='text-bb ml-2'
+                    onClick={openDetailDialog} 
+                    style={{ width: "30px"}}
+                     />
+                    <Button icon="pi pi-trash" className='text-bb' text style={{ width: "30px"}}  />
                 </div>
             </div>                              
             <Button
@@ -443,6 +446,7 @@ const IncomingListByDetail = ({
                             <div className='th'>제품유형</div>
                             <div className='td gap-2'>
                                 <InputText value={value} className="w-full" onChange={(e) => setValue(e.target.value)}  placeholder=""/>
+                                <Button label="선택" className='btn-28-sec w-28' text onClick={() => setVisibleBottom(true)} />
                             </div>
                           </div>
                           <div className="row">

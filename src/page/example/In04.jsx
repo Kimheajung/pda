@@ -215,12 +215,15 @@ const IncomingListByProduct = ({
                 <span className="date">{item.id}</span>  
                   ===== Title ===== */}
                 <div className="incoming-card__title">{item.product} 
-                  <Button  
+                   <Button  
                     icon="pi pi-desktop"
                     text
                     security='secondary'
-                    className='text-bb'
-                    onClick={openDetailDialog} />
+                    className='text-bb ml-2'
+                    onClick={openDetailDialog} 
+                    style={{ width: "30px"}}
+                     />
+                    <Button icon="pi pi-trash" className='text-bb' text style={{ width: "30px"}}  />
                 </div>
             </div>                              
             <Button
@@ -820,9 +823,8 @@ const IncomingListByList = ({
                         <p className="totalNumText" >총&nbsp;<span>0</span>건</p>
                       </div>
                       <div className="flex gap-2"> 
-                        <Button icon="pi pi-verified" className='text-bb' text style={{ width: "20px"}} />
-                        <Button icon="pi pi-refresh" className='text-bb' text style={{ width: "20px"}} />
-                        <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
+                        <Button label="재확인" className='btn-28-sec' text />
+                        <Button label="초기화" className='btn-28-sec' text />
                         <Button label="입고확정" className='btn-28-master' text />
                       </div>
                     </div>

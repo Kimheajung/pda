@@ -35,7 +35,7 @@ import {
   const MOCK_DATA = Array.from({ length: 50 }).map((_, i) => ({
     id: i + 1,
     datetime: "2025.12.22 14:06",
-    product: "PSF-120G",
+    product: "PSF-116G24NSA",
     color: "WH",
     qty: 190,
     length: "8.0",
@@ -227,12 +227,15 @@ const IncomingListByProduct = ({
                 <span className="date">{item.id}</span>  
                   ===== Title ===== */}
                 <div className="incoming-card__title">{item.product} 
-                  <Button  
+                   <Button  
                     icon="pi pi-desktop"
                     text
                     security='secondary'
-                    className='text-bb'
-                    onClick={openDetailDialog} />
+                    className='text-bb ml-2'
+                    onClick={openDetailDialog} 
+                    style={{ width: "30px"}}
+                     />
+                    <Button icon="pi pi-trash" className='text-bb' text style={{ width: "30px"}}  />
                 </div>
             </div>                              
             <Button
@@ -442,7 +445,7 @@ const IncomingListByDetail = ({
                           <span className="NumText"> 바코드가 스캔되었습니다.</span>
                         </div>
                         <div className="flex gap-2"> 
-                          <Button icon="pi pi-refresh" className='text-bb  w-[20px]' text />
+                          <Button label="초기화" className='btn-28-sec' text />
                           <Button label="입고확정" className='btn-28-master' text />
                         </div>
                       </div>
@@ -675,9 +678,8 @@ const IncomingListByDetail = ({
                         <SelectButton value={value2} onChange={(e) => setValue2(e.value)} options={options} />
                       </div>
                       <div className="flex gap-2"> 
-                        <Button icon="pi pi-verified" className='text-bb' text style={{ width: "20px"}} />
-                        <Button icon="pi pi-refresh" className='text-bb' text style={{ width: "20px"}} />
-                        <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
+                        <Button label="재확인" className='btn-28-sec' text />
+                        <Button label="초기화" className='btn-28-sec' text />
                         <Button label="입고확정" className='btn-28-master' text />
                       </div>
                     </div>
