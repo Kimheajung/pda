@@ -35,7 +35,7 @@ import {
   const MOCK_DATA = Array.from({ length: 50 }).map((_, i) => ({
     id: i + 1,
     datetime: "2025.12.22 14:06",
-    product: "PSF-120G",
+    product: "PSF-116G24NSA",
     color: "WH",
     qty: 190,
     length: "8.0",
@@ -629,7 +629,7 @@ const IncomingListByDetail = ({
                                 <div className="hugreen_searchwrap overflow-hidden  p-0" style={{ boxShadow: "0 4px 8px rgba(0,0,0,.08)"}}>
                                   <div className="grid-searchwrap grid-searchwrap--4col border border-[#ddd] rounded-lg p-2" >
                                     <div className="row">
-                                      <div className='th'>지시일자</div>
+                                      <div className='th'>입고내역</div>
                                       <div className='td gap-2'>
                                         <Calendar className="w-full" value={toDate} onChange={(e) => setToDate(e.value)} showIcon />
                                         <Button label="검색" text  className='btn-28-intable' />
@@ -643,12 +643,11 @@ const IncomingListByDetail = ({
                                   {/* 공통 : 상단버튼 + 스위치탭  */}
                                   <div className="hugreen_aggridbtn_hwrap mt-2 p-0 border-t-[8px] border-white">
                                     <div className="flex">
-                                      <span className="NumText"> 조회결과</span>
-                                      <p className="totalNumText" >총&nbsp;<span>0</span>건</p>
+                                      <SelectButton value={value2} onChange={(e) => setValue2(e.value)} options={options} />
                                     </div>
                                     <div className="flex gap-2"> 
                                       <Button label="취소" className='btn-28-sec' text />
-                                      <Button label="선택" className='btn-28-master' text />
+                                      <Button label="입고확정" className='btn-28-master' text />
                                     </div>
                                   </div>
                                   {/* 공통 : 카드형 그리드 + 상세화면  */}
