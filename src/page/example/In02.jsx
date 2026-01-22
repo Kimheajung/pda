@@ -492,7 +492,7 @@ const IncomingListByDetail = ({
                             </div>
                           </div>
                           <div className="row">
-                            <div className="th">수량</div>
+                            <div className="th  th--required">수량</div>
                               <div className="td">
                               <InputText
                                 className="w-full"
@@ -761,7 +761,7 @@ const IncomingListByDetail = ({
                               </div>
 
                               <div className="row">
-                                <div className="th">수량</div>
+                                <div className="th  th--required">수량</div>
                                 <div className="td">
                                   <InputText
                                     ref={qtyInputRef}

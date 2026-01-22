@@ -539,7 +539,7 @@ const IncomingListByDetail = ({
                         </div>
                         </div>
                         <div className="row">
-                        <div className="th">입고창고</div>
+                        <div className="th  th--required">입고창고</div>
                         <div className="td gap-2">
                             <InputText
                             className="w-full"

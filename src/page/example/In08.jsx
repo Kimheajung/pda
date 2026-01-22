@@ -474,7 +474,7 @@ const IncomingListByDetail = ({
                         </div>
                         </div>
                         <div className="row">
-                        <div className="th">변경품목</div>
+                        <div className="th th--required">변경품목</div>
                             <div className="td gap-2">
                             <InputText
                             className="w-full"
@@ -509,7 +509,7 @@ const IncomingListByDetail = ({
                         </div>
 
                         <div className="row">
-                        <div className="th">변경위치</div>
+                        <div className="th th--required">변경위치</div>
                         <div className="td gap-2">
                             <InputText
                             className="w-full"
