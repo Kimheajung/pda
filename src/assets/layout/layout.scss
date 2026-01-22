@@ -37,6 +37,13 @@ ol, ul {padding-left: 0rem !important;}
 .row {--bs-gutter-x : 0rem !important}
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.p-divider.p-divider-horizontal {
+    margin: 1rem 0 !important;
+    padding: 0 1.25rem !important;
+}
+
+
 /* 휴그린 primreact 기본 컴퍼넌트 재정의 */
 .p-button {
     height: 2.2857rem !important;
