@@ -314,7 +314,7 @@ const IncomingListByProduct = ({
               <div className='col-span-full flex items-center'>
                 <label  className="shrink-0">대리점/현장하역지</label>
                  <span className="truncate max-w-[200px]">
-                  {item.address}
+                  주소 길어질경우 옆에 아이콘 누르면 풀주소를 보여줌.
                 </span>
                  <Button
                 type="button"
@@ -327,11 +327,10 @@ const IncomingListByProduct = ({
             </div>
             
             {/*   위치 중요 */} 
-           
               <OverlayPanel
                 ref={(el) => (overlayRefs.current[item.id] = el)}
               >
-                {item.address}
+               주소 길어질경우 옆에 아이콘 누르면 풀주소를 보여줌.
               </OverlayPanel>
 
           </div>
