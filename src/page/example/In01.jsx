@@ -41,7 +41,7 @@ import {
     length: "8.0",
     deliveryDate: "2025.11.01",
     deliveryTime: "08:00",
-    agency: "아키원(라인아산)",
+    agency: "아키원",
     site: "상시",
     machine: "8호기",
     barcode: "P1902222049",
@@ -232,9 +232,11 @@ const IncomingListByProduct = ({
                     icon="pi pi-desktop"
                     text
                     security='secondary'
-                    className='text-bb'
-                    onClick={openDetailDialog} />
-                    <Button icon="pi pi-trash" className='text-bb' text style={{ width: "20px"}}  />
+                    className='text-bb ml-4'
+                    onClick={openDetailDialog} 
+                    style={{ width: "30px"}}
+                     />
+                    <Button icon="pi pi-trash" className='text-bb' text style={{ width: "30px"}}  />
                 </div>
             </div>                              
             <Button
@@ -249,29 +251,19 @@ const IncomingListByProduct = ({
           </div>
 
           {/* ===== Summary ===== */}
-          <div className="incoming-card__summary">
+          <div className="incoming-card__summary_3col">
             <div>
               <label>색상</label>
               <span> {item.color}</span>
             </div>
             <div>
-              <label>수량</label>
-              <span> {item.qty}</span>
+              <label>현장명</label>
+              <span>{item.site}</span>
             </div>
             <div>
-              <label>길이</label>
-              <span> {item.length}</span>
-            </div>
-            
-            <div className='col-span-full'>
-              <label>제조일자</label>
-              <span> {item.deliveryDate}</span>
-              <span> {item.deliveryTime}</span>
-            </div>
-            <div className='col-span-full truncate'>
-              <label>하역지</label>
-              <span>{item.address}</span>
-            </div>
+                <label>생산호기</label>
+                <span>{item.machine}</span>
+              </div>
           </div>
 
           {/* ===== Expand Area (항상 렌더) ===== */}
@@ -280,24 +272,27 @@ const IncomingListByProduct = ({
               "is-open": isOpen,
             })}
           >
-            <Divider />
+            <Divider />     
 
-            <div className="incoming-card__detail">
-              <div>
-                <label>생산호기</label>
-                <span>{item.machine}</span>
-              </div>
+            <div className="incoming-card__summary_2col">
+              
               <div>
                 <label>대리점명</label>
                 <span>{item.agency}</span>
               </div>
-              <div>
-                <label>현장명</label>
-                <span>{item.site}</span>
-              </div>
+               <div  className='truncate'>
+              <label>제조일자</label>
+              <span> {item.deliveryDate}</span>
+              <span> {item.deliveryTime}</span>
+            </div>
               {/*  말줄임표 ...처리 truncate  */}
               <div className='col-span-full truncate'>
                 <label>하역지</label>
+                <span>{item.address}</span>
+              </div>
+              {/*  말줄임표 ...처리 truncate  */}
+              <div className='col-span-full truncate'>
+                <label>대리점/현장하역지</label>
                 <span>{item.address}</span>
               </div>
             </div>
@@ -352,7 +347,7 @@ const IncomingListByDetail = ({
           </div>
 
           {/* ===== Summary ===== */}
-          <div className="incoming-card__summary">
+          <div className="incoming-card__summary_3col">
             <div>
               <label>색상</label>
               <span> {item.color}</span>
@@ -366,7 +361,7 @@ const IncomingListByDetail = ({
               <span> {item.length}</span>
             </div>
             
-            <div>
+            <div className='col-span-full truncate'>
               <label>제조일자</label>
               <span> {item.deliveryDate}</span>
               <span> {item.deliveryTime}</span>
@@ -381,7 +376,7 @@ const IncomingListByDetail = ({
           >
             <Divider />
 
-            <div className="incoming-card__detail">
+            <div className="incoming-card__summary_3col">
               <div>
                 <label>생산호기</label>
                 <span>{item.machine}</span>
@@ -393,6 +388,14 @@ const IncomingListByDetail = ({
               <div>
                 <label>현장명</label>
                 <span>{item.site}</span>
+              </div>
+               <div className='col-span-full truncate'>
+                <label>현장명</label>
+                <span>주소가 길어질경우  ...으로 처리 클래스명 truncate</span>
+              </div>
+               <div className='col-span-full '>
+                <label>하역지</label>
+                <span>주소가 두줄처리시 클래스명 truncate을 없애면 길어도 두줄로 처리됩니다.가독성이 떨어져 추천하지 않습니다.</span>
               </div>
             </div>
 
@@ -454,7 +457,7 @@ const IncomingListByDetail = ({
                           <span className="NumText"> 바코드가 스캔되었습니다.</span>
                         </div>
                         <div className="flex gap-2"> 
-                          <Button icon="pi pi-refresh" className='text-bb  w-[20px]' text />
+                          <Button label="초기화" className='btn-28-sec' text />
                           <Button label="입고확정" className='btn-28-master' text />
                         </div>
                       </div>
@@ -669,7 +672,7 @@ const IncomingListByDetail = ({
                       </div>
                       <div className="flex gap-2"> 
                         <Button icon="pi pi-verified" className='text-bb' text style={{ width: "20px"}} />
-                        <Button icon="pi pi-refresh" className='text-bb' text style={{ width: "20px"}} />
+                        <Button label="초기화" className='btn-28-sec' text />
                         <Button label="입고확정" className='btn-28-master' text />
                       </div>
                     </div>
@@ -750,9 +753,9 @@ const IncomingListByDetail = ({
                                 </div>
                               </div>
 
-                              <div className="row">
-                                <div className="th">수량</div>
-                                <div className="td">
+                              <div className="row ing">
+                                <div className="th th--required">수량</div>
+                                <div className="td gap-2">
                                   <InputText
                                     ref={qtyInputRef}
                                     autoFocus
@@ -761,6 +764,9 @@ const IncomingListByDetail = ({
                                     onChange={(e) => setValue(e.target.value)}
                                     placeholder="77"
                                   />
+                                  {/* 버튼 필요시
+                                  <Button label="수정" text  className='btn-28-intable'/>
+                                  */}
                                 </div>
                               </div>
                               <div className="row">

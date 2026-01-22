@@ -433,7 +433,42 @@
     span {
       font-weight: 500;
     }
+  }   
+  &__summary_2col {
+    display: grid;
+    grid-template-columns: repeat(2,  1fr);
+    gap: 4px;
+    font-size: 14px;
+    color: #4b5563;
+    padding-top:10px;
+
+    label {
+      color: #888;
+      margin-right: 6px;
+    }
+
+    span {
+      font-weight: 500;
+    }
   }
+  &__summary_3col {
+    display: grid;
+    grid-template-columns: repeat(3,  1fr);
+    gap: 4px;
+    font-size: 14px;
+    color: #4b5563;
+    padding-top:10px;
+
+    label {
+      color: #888;
+      margin-right: 6px;
+    }
+
+    span {
+      font-weight: 500;
+    }
+  }
+
 
   &__list {
     display: grid;
