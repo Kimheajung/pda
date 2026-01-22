@@ -8,12 +8,14 @@ import { Dropdown } from 'primereact/dropdown';
 import { TabView, TabPanel } from 'primereact/tabview';
 import { RadioButton } from 'primereact/radiobutton';
 import { Calendar } from 'primereact/calendar';
+import { Badge } from 'primereact/badge';
 import { Tooltip } from 'primereact/tooltip';
 import classNames from 'classnames';
 import { Dialog } from 'primereact/dialog';
 import { SelectButton } from 'primereact/selectbutton';
 import { Divider } from "primereact/divider";
 import { Checkbox } from "primereact/checkbox";
+import { OverlayPanel } from 'primereact/overlaypanel';
 import {
   DtPicker,
   FormAutoComplete,
@@ -27,6 +29,9 @@ import {
   MonthPicker,
   YearPicker,
 } from '../../components/form/UseFormControl';
+
+
+
 
 
   //카드형 리스트
@@ -57,6 +62,16 @@ const DIALOG = {
 };
 
 const In01 = () => {
+
+  //주소더보기
+  const overlayRefs = useRef({});
+
+  const handleAddressToggle = useCallback((e, id) => {
+  e.stopPropagation();
+  overlayRefs.current[id]?.toggle(e);
+}, []);
+
+
 
     //툴팁
   const bellRef = useRef(null);
@@ -232,7 +247,7 @@ const IncomingListByProduct = ({
                     icon="pi pi-desktop"
                     text
                     security='secondary'
-                    className='text-bb ml-4'
+                    className='text-bb ml-2'
                     onClick={openDetailDialog} 
                     style={{ width: "30px"}}
                      />
@@ -284,18 +299,40 @@ const IncomingListByProduct = ({
               <label>제조일자</label>
               <span> {item.deliveryDate}</span>
               <span> {item.deliveryTime}</span>
-            </div>
+              </div>
               {/*  말줄임표 ...처리 truncate  */}
               <div className='col-span-full truncate'>
                 <label>하역지</label>
                 <span>{item.address}</span>
               </div>
-              {/*  말줄임표 ...처리 truncate  */}
-              <div className='col-span-full truncate'>
-                <label>대리점/현장하역지</label>
+              {/*  말줄임표 ...처리 truncate  
+              <div className='col-span-full '>
+                <label>현장</label>
                 <span>{item.address}</span>
+              </div>*/}
+              {/*   길어질경울 아이콘처리 */}   
+              <div className='col-span-full flex items-center'>
+                <label  className="shrink-0">대리점/현장하역지</label>
+                 <span className="truncate max-w-[200px]">
+                  {item.address}
+                </span>
+                 <Button
+                type="button"
+                icon="pi pi-info-circle"
+                className='text-bb'
+                text
+                onClick={(e) => handleAddressToggle(e, item.id)}
+              />
               </div>
             </div>
+            
+            {/*   위치 중요 */} 
+           
+              <OverlayPanel
+                ref={(el) => (overlayRefs.current[item.id] = el)}
+              >
+                {item.address}
+              </OverlayPanel>
 
           </div>
         </div>
@@ -670,7 +707,7 @@ const IncomingListByDetail = ({
                         <SelectButton value={value2} onChange={(e) => setValue2(e.value)} options={options} />
                       </div>
                       <div className="flex gap-2"> 
-                        <Button icon="pi pi-verified" className='text-bb' text style={{ width: "20px"}} />
+                        <Button label="재확인" className='btn-28-sec' text />
                         <Button label="초기화" className='btn-28-sec' text />
                         <Button label="입고확정" className='btn-28-master' text />
                       </div>
@@ -836,7 +873,7 @@ const IncomingListByDetail = ({
                  
 
                   {/* 공통 : 전페페이지건수  */}
-                  <button className="scan-button" text>
+                  <button className="scan-button">
                     <i><span >108</span> 건</i>
                   </button>
 
